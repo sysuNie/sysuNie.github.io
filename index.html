@@ -341,6 +341,147 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/springMVC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/04/springMVC/" itemprop="url">springMVC</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-04T19:00:32+08:00">
+                2017-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><p>###前端控制器(DispatcherServlet)</p>
+<p>接受请求，响应结果，相当于转发器，中央处理器。</p>
+<p>有了DispatcherServlet减少了其他组件之间的耦合度。</p>
+<h3 id="处理器映射器-HandlerMapping"><a href="#处理器映射器-HandlerMapping" class="headerlink" title="处理器映射器(HandlerMapping)"></a>处理器映射器(HandlerMapping)</h3><p>根据请求的url查找Handler。</p>
+<h3 id="处理器适配器-HandlerAdapter"><a href="#处理器适配器-HandlerAdapter" class="headerlink" title="处理器适配器(HandlerAdapter)"></a>处理器适配器(HandlerAdapter)</h3><p>按照特定的规则(HandlerAdapter要求的规则)去执行Handler。</p>
+<p>注意：编写Handler需要按照HandlerAdapter的要求去做，这样适配器才能正确的执行Handler。</p>
+<h3 id="视图解析器-View-resolver"><a href="#视图解析器-View-resolver" class="headerlink" title="视图解析器(View resolver)"></a>视图解析器(View resolver)</h3><p>进行视图解析，根据逻辑视图解析成真正的视图（view）</p>
+<p>第一步：发起请求到前端控制器(DispatcherServlet)。</p>
+<p>第二步：前端控制器请求HandlerMapping查找handler(根据xml配置或注解查找)</p>
+<p>第三步：处理器映射器HandlerMapping向前端控制器返回Handler</p>
+<p>第四步：向前端控制器调用处理器适配器执行Handler</p>
+<p>第五步：处理器适配器开始执行Handler</p>
+<p>第六步：Handler执行完给处理器适配器返回Model and View</p>
+<p>第七步：处理器适配器向前端控制器返回Model and View(springMVC框架底层对象)</p>
+<p>第八步：前端控制器请求视图解析器去进行视图解析(根据逻辑视图名解析成真正的视图jsp)</p>
+<p>第九步：视图解析器向前端控制器返回View</p>
+<p>第十步：前端控制器进行视图渲染，视图渲染将模型数据(在Model and View对象中)填充到request域</p>
+<p>第十一步：前端控制器向用户响应结果</p>
+<script language="javascript" type="text/javascript">
+window.location.href = "https://www.zybuluo.com/ShawnNg/note/622592"
+</script>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/03/Forward Neural Network/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -450,143 +591,6 @@
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/02/springMVC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JiKang Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/sysunie.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sysuNie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/02/springMVC/" itemprop="url">springMVC</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T19:00:32+08:00">
-                2017-11-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><p>###前端控制器(DispatcherServlet)</p>
-<p>接受请求，响应结果，相当于转发器，中央处理器。</p>
-<p>有了DispatcherServlet减少了其他组件之间的耦合度。</p>
-<h3 id="处理器映射器-HandlerMapping"><a href="#处理器映射器-HandlerMapping" class="headerlink" title="处理器映射器(HandlerMapping)"></a>处理器映射器(HandlerMapping)</h3><p>根据请求的url查找Handler。</p>
-<h3 id="处理器适配器-HandlerAdapter"><a href="#处理器适配器-HandlerAdapter" class="headerlink" title="处理器适配器(HandlerAdapter)"></a>处理器适配器(HandlerAdapter)</h3><p>按照特定的规则(HandlerAdapter要求的规则)去执行Handler。</p>
-<p>注意：编写Handler需要按照HandlerAdapter的要求去做，这样适配器才能正确的执行Handler。</p>
-<h3 id="视图解析器-View-resolver"><a href="#视图解析器-View-resolver" class="headerlink" title="视图解析器(View resolver)"></a>视图解析器(View resolver)</h3><p>进行视图解析，根据逻辑视图解析成真正的视图（view）</p>
-<p>第一步：发起请求到前端控制器(DispatcherServlet)。</p>
-<p>第二步：前端控制器请求HandlerMapping查找handler(根据xml配置或注解查找)</p>
-<p>第三步：处理器映射器HandlerMapping向前端控制器返回Handler</p>
-<p>第四步：向前端控制器调用处理器适配器执行Handler</p>
-<p>第五步：处理器适配器开始执行Handler</p>
-<p>第六步：Handler执行完给处理器适配器返回Model and View</p>
-<p>第七步：处理器适配器向前端控制器返回Model and View(springMVC框架底层对象)</p>
-<p>第八步：前端控制器请求视图解析器去进行视图解析(根据逻辑视图名解析成真正的视图jsp)</p>
-<p>第九步：视图解析器向前端控制器返回View</p>
-<p>第十步：前端控制器进行视图渲染，视图渲染将模型数据(在Model and View对象中)填充到request域</p>
-<p>第十一步：前端控制器向用户响应结果</p>
-
-          
         
       
     </div>
