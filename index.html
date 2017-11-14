@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -156,7 +156,7 @@
 
 
 
-  <title>sysuNie</title>
+  <title>sysuNie</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -181,7 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left 
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
    page-home 
  ">
     <div class="headband"></div>
@@ -578,7 +578,7 @@
 <h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><p><a href="http://cs229.stanford.edu/section/cs229-linalg.pdf" target="_blank" rel="external">线性代数(Linear Algebra)</a><br><a href="http://cs229.stanford.edu/section/cs229-prob.pdf" target="_blank" rel="external">概率论(Probability Theory)</a><br><a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf" target="_blank" rel="external">凸优化(Convex Optimization)</a></p>
 <h2 id="前向神经网络"><a href="#前向神经网络" class="headerlink" title="前向神经网络"></a>前向神经网络</h2><p>所谓神经网络就是将许多个单一“神经元”联结在一起，这样，一个“神经元”的输出就可以是另一个“神经元”的输入。以下是一个简单的<strong>三层前向全连接神经网络：</strong></p>
 <p><img src="http://oddpnmpll.bkt.clouddn.com/2016-10-18-14%3A47%3A20.jpg" alt="neural networks"></p>
-<p>图中<strong>x</strong>为输入层，<strong>h</strong>为隐藏层，$\hat{y}$为输出层。在全连接网络中，上一层和下一层的每个神经元都相连。隐藏层在接收到输入x后会进行一个非线性变化，再将输出信号传递给下一层。非线性变换由激活函数(activation function)实现。在数学上，我们可以用矩阵乘法（Matrix multiplication）来解释:<br>$$<br>\begin{align<em>}<br>\boldsymbol{h} &amp;= \text{sigmoid}(\boldsymbol{xW}_1+\boldsymbol{b}_1)\<br>\boldsymbol{\hat{y}} &amp;= \text{softmax}(\boldsymbol{hW}_2+\boldsymbol{b}_2)\<br>\end{align</em>}<br>$$</p>
+<p>图中<strong>x</strong>为输入层，<strong>h</strong>为隐藏层，$\hat{y}$为输出层。在全连接网络中，上一层和下一层的每个神经元都相连。隐藏层在接收到输入x后会进行一个非线性变化，再将输出信号传递给下一层。非线性变换由激活函数(activation function)实现。在数学上，我们可以用矩阵乘法（Matrix multiplication）来解释:<br>$$<br>\begin{align<em>}<br>\boldsymbol{h} &amp;= \text{sigmoid}(\boldsymbol{xW}_1+\boldsymbol{b}_1)\\<br>\boldsymbol{\hat{y}} &amp;= \text{softmax}(\boldsymbol{hW}_2+\boldsymbol{b}_2)\\<br>\end{align</em>}<br>$$</p>
 <p>式中<strong>sigmoid</strong>和<strong>softmax</strong>都是一个激活函数,<strong>W</strong>是指两层之间的权重，<strong>b</strong>是偏置量。我们可以看到<strong>x</strong>进行了线性变换后，再做非线性变换，<strong>x</strong>输出的信号将作为<strong>b</strong>的输入。</p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1357,7 +1357,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
