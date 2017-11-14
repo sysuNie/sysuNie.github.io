@@ -341,6 +341,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/14/Forward Neural Network/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/11/14/Forward Neural Network/" itemprop="url">Forward Neural Network</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T18:53:10+08:00">
+                2017-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/deep-NLP/" itemprop="url" rel="index">
+                    <span itemprop="name">deep NLP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="深度学习应用于自然语言处理-前向神经网络"><a href="#深度学习应用于自然语言处理-前向神经网络" class="headerlink" title="深度学习应用于自然语言处理-前向神经网络"></a>深度学习应用于自然语言处理-前向神经网络</h2><p>[TOC]</p>
+<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>深度学习的浪潮袭来，现已在各个领域中应用。深度学习的表现令人叹为观止，不得不说我们迎来了依靠深度学习的人工智能学习时代。</p>
+<blockquote>
+<p>　人工智能，让世界更美好。</p>
+</blockquote>
+<p>这一章主要是通过学习 <a href="http://cs224d.stanford.edu/" target="_blank" rel="external">Stanford cs224d</a> 课程已经阅读一些有些的博客所作出的总结。</p>
+<h2 id="本章介绍"><a href="#本章介绍" class="headerlink" title="本章介绍"></a>本章介绍</h2><p>从数学的角度对前向神经网络数学模型进行介绍、推导和证明。</p>
+<h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><p><a href="http://cs229.stanford.edu/section/cs229-linalg.pdf" target="_blank" rel="external">线性代数(Linear Algebra)</a><br><a href="http://cs229.stanford.edu/section/cs229-prob.pdf" target="_blank" rel="external">概率论(Probability Theory)</a><br><a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf" target="_blank" rel="external">凸优化(Convex Optimization)</a></p>
+<h2 id="前向神经网络"><a href="#前向神经网络" class="headerlink" title="前向神经网络"></a>前向神经网络</h2><p>所谓神经网络就是将许多个单一“神经元”联结在一起，这样，一个“神经元”的输出就可以是另一个“神经元”的输入。以下是一个简单的<strong>三层前向全连接神经网络：</strong></p>
+<p><img src="http://oddpnmpll.bkt.clouddn.com/2016-10-18-14%3A47%3A20.jpg" alt="neural networks"></p>
+<p>图中<strong>x</strong>为输入层，<strong>h</strong>为隐藏层，$\hat{y}$为输出层。在全连接网络中，上一层和下一层的每个神经元都相连。隐藏层在接收到输入x后会进行一个非线性变化，再将输出信号传递给下一层。非线性变换由激活函数(activation function)实现。在数学上，我们可以用矩阵乘法（Matrix multiplication）来解释:<br>$$<br>\begin{align<em>}<br>\boldsymbol{h} &amp;= \text{sigmoid}(\boldsymbol{xW}_1+\boldsymbol{b}_1)\\<br>\boldsymbol{\hat{y}} &amp;= \text{softmax}(\boldsymbol{hW}_2+\boldsymbol{b}_2)\\<br>\end{align</em>}<br>$$</p>
+<p>式中<strong>sigmoid</strong>和<strong>softmax</strong>都是一个激活函数,<strong>W</strong>是指两层之间的权重，<strong>b</strong>是偏置量。我们可以看到<strong>x</strong>进行了线性变换后，再做非线性变换，<strong>x</strong>输出的信号将作为<strong>b</strong>的输入。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/14/Forward Neural Network/" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/04/springMVC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -432,161 +587,6 @@
 <p>第十一步：前端控制器向用户响应结果</p>
 
           
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/03/Forward Neural Network/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JiKang Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/sysunie.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sysuNie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/11/03/Forward Neural Network/" itemprop="url">Forward Neural Network</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-03T19:23:26+08:00">
-                2017-11-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/deep-NLP/" itemprop="url" rel="index">
-                    <span itemprop="name">deep NLP</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="深度学习应用于自然语言处理-前向神经网络"><a href="#深度学习应用于自然语言处理-前向神经网络" class="headerlink" title="深度学习应用于自然语言处理-前向神经网络"></a>深度学习应用于自然语言处理-前向神经网络</h2><p>[TOC]</p>
-<h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>深度学习的浪潮袭来，现已在各个领域中应用。深度学习的表现令人叹为观止，不得不说我们迎来了依靠深度学习的人工智能学习时代。</p>
-<blockquote>
-<p>　人工智能，让世界更美好。</p>
-</blockquote>
-<p>这一章主要是通过学习 <a href="http://cs224d.stanford.edu/" target="_blank" rel="external">Stanford cs224d</a> 课程已经阅读一些有些的博客所作出的总结。</p>
-<h2 id="本章介绍"><a href="#本章介绍" class="headerlink" title="本章介绍"></a>本章介绍</h2><p>从数学的角度对前向神经网络数学模型进行介绍、推导和证明。</p>
-<h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><p><a href="http://cs229.stanford.edu/section/cs229-linalg.pdf" target="_blank" rel="external">线性代数(Linear Algebra)</a><br><a href="http://cs229.stanford.edu/section/cs229-prob.pdf" target="_blank" rel="external">概率论(Probability Theory)</a><br><a href="http://cs229.stanford.edu/section/cs229-cvxopt.pdf" target="_blank" rel="external">凸优化(Convex Optimization)</a></p>
-<h2 id="前向神经网络"><a href="#前向神经网络" class="headerlink" title="前向神经网络"></a>前向神经网络</h2><p>所谓神经网络就是将许多个单一“神经元”联结在一起，这样，一个“神经元”的输出就可以是另一个“神经元”的输入。以下是一个简单的<strong>三层前向全连接神经网络：</strong></p>
-<p><img src="http://oddpnmpll.bkt.clouddn.com/2016-10-18-14%3A47%3A20.jpg" alt="neural networks"></p>
-<p>图中<strong>x</strong>为输入层，<strong>h</strong>为隐藏层，$\hat{y}$为输出层。在全连接网络中，上一层和下一层的每个神经元都相连。隐藏层在接收到输入x后会进行一个非线性变化，再将输出信号传递给下一层。非线性变换由激活函数(activation function)实现。在数学上，我们可以用矩阵乘法（Matrix multiplication）来解释:<br>$$<br>\begin{align<em>}<br>\boldsymbol{h} &amp;= \text{sigmoid}(\boldsymbol{xW}_1+\boldsymbol{b}_1)\\<br>\boldsymbol{\hat{y}} &amp;= \text{softmax}(\boldsymbol{hW}_2+\boldsymbol{b}_2)\\<br>\end{align</em>}<br>$$</p>
-<p>式中<strong>sigmoid</strong>和<strong>softmax</strong>都是一个激活函数,<strong>W</strong>是指两层之间的权重，<strong>b</strong>是偏置量。我们可以看到<strong>x</strong>进行了线性变换后，再做非线性变换，<strong>x</strong>输出的信号将作为<strong>b</strong>的输入。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/11/03/Forward Neural Network/" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
