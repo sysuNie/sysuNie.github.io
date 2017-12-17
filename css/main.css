@@ -1649,22 +1649,6 @@ pre .javascript .function {
 .post:last-child .post-eof.post-eof.post-eof {
   display: none;
 }
-code {
-  color: #ff7600;
-  background: #fbf7f8;
-  margin: 2px;
-}
-.highlight,
-pre {
-  margin: 5px 0;
-  padding: 5px;
-  border-radius: 3px;
-}
-.highlight,
-code,
-pre {
-  border: 1px solid #d6d6d6;
-}
 .post-gallery {
   display: table;
   table-layout: fixed;
@@ -1987,7 +1971,7 @@ pre {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ec59ff;
+  background: #ffa1da;
 }
 .links-of-blogroll {
   font-size: 13px;
