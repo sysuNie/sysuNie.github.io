@@ -120,18 +120,18 @@
 
 
 
-<meta name="description" content="springMVC 框架原理###前端控制器(DispatcherServlet) 接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handle">
+<meta name="description" content="springMVC 框架原理前端控制器(DispatcherServlet)接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handler。 注">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springMVC">
 <meta property="og:url" content="http://yoursite.com/2017/11/04/springMVC/index.html">
 <meta property="og:site_name" content="sysuNie">
-<meta property="og:description" content="springMVC 框架原理###前端控制器(DispatcherServlet) 接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handle">
+<meta property="og:description" content="springMVC 框架原理前端控制器(DispatcherServlet)接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handler。 注">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-12-17T11:53:12.105Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springMVC">
-<meta name="twitter:description" content="springMVC 框架原理###前端控制器(DispatcherServlet) 接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handle">
+<meta name="twitter:description" content="springMVC 框架原理前端控制器(DispatcherServlet)接受请求，响应结果，相当于转发器，中央处理器。 有了DispatcherServlet减少了其他组件之间的耦合度。 处理器映射器(HandlerMapping)根据请求的url查找Handler。 处理器适配器(HandlerAdapter)按照特定的规则(HandlerAdapter要求的规则)去执行Handler。 注">
 
 
 
@@ -510,8 +510,7 @@
       
 
       
-        <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><p>###前端控制器(DispatcherServlet)</p>
-<p>接受请求，响应结果，相当于转发器，中央处理器。</p>
+        <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><h3 id="前端控制器-DispatcherServlet"><a href="#前端控制器-DispatcherServlet" class="headerlink" title="前端控制器(DispatcherServlet)"></a>前端控制器(DispatcherServlet)</h3><p>接受请求，响应结果，相当于转发器，中央处理器。</p>
 <p>有了DispatcherServlet减少了其他组件之间的耦合度。</p>
 <h3 id="处理器映射器-HandlerMapping"><a href="#处理器映射器-HandlerMapping" class="headerlink" title="处理器映射器(HandlerMapping)"></a>处理器映射器(HandlerMapping)</h3><p>根据请求的url查找Handler。</p>
 <h3 id="处理器适配器-HandlerAdapter"><a href="#处理器适配器-HandlerAdapter" class="headerlink" title="处理器适配器(HandlerAdapter)"></a>处理器适配器(HandlerAdapter)</h3><p>按照特定的规则(HandlerAdapter要求的规则)去执行Handler。</p>
@@ -784,7 +783,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC-框架原理"><span class="nav-text">springMVC 框架原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#处理器映射器-HandlerMapping"><span class="nav-text">处理器映射器(HandlerMapping)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理器适配器-HandlerAdapter"><span class="nav-text">处理器适配器(HandlerAdapter)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图解析器-View-resolver"><span class="nav-text">视图解析器(View resolver)</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#springMVC-框架原理"><span class="nav-text">springMVC 框架原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#前端控制器-DispatcherServlet"><span class="nav-text">前端控制器(DispatcherServlet)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理器映射器-HandlerMapping"><span class="nav-text">处理器映射器(HandlerMapping)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理器适配器-HandlerAdapter"><span class="nav-text">处理器适配器(HandlerAdapter)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#视图解析器-View-resolver"><span class="nav-text">视图解析器(View resolver)</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -818,7 +817,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">10.9k</span>
+    <span title="博客全站字数">9.9k</span>
   
 </div>
 
@@ -1479,26 +1478,6 @@ var jiathis_config={
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

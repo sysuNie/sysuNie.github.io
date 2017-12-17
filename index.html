@@ -496,7 +496,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,139
+                  1,578
                 </span>
               
 
@@ -512,7 +512,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  6
                 </span>
               
             </div>
@@ -703,7 +703,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,446
+                  2,029
                 </span>
               
 
@@ -719,7 +719,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  7
                 </span>
               
             </div>
@@ -743,7 +743,15 @@
         
           <h2 id="自然语言处理－词向量"><a href="#自然语言处理－词向量" class="headerlink" title="自然语言处理－词向量"></a>自然语言处理－词向量</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为<strong>Word Representation</strong>，一般来说，词向量经常指<strong>Word Embedding</strong>，也称<strong>Distributed Word Representation</strong>。</p>
 <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>从<strong>Word Representation</strong>的发展过程引入<strong>Word Embedding</strong>，先从简单的SVD介绍开始，再到NNLM,word2vec等词向量模型。</p>
-<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>one-hot编码也称独热编码，这是一种简单的词表征方式，每个词使用一个$R^{|V|}$的向量表示，$|V|$表示词表的大小。<br>$$<br>w^{address}=\begin{bmatrix}<br>1\\0\\0\\\vdots\\0<br>\end{bmatrix},w^{home}=\begin{bmatrix}<br>0\\1\\0\\\vdots\\0<br>\end{bmatrix},w^{at}=\begin{bmatrix}<br>0\\0\\1\\\vdots\\0<br>\end{bmatrix}<br>$$<br>使用one-hot编码的词向量之间是相互独立的，因为对于每个词$(w^{i})^{T}w^j = 0$，这种编码方式并没有编码不同词之间的语义相似性。</p>
+<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>one-hot编码也称独热编码，这是一种简单的词表征方式，每个词使用一个$R^{|V|}$的向量表示，$|V|$表示词表的大小。</p>
+<script type="math/tex; mode=display">
+w^{address}=\begin{bmatrix}
+1\\0\\0\\\vdots\\0
+\end{bmatrix},w^{home}=\begin{bmatrix}
+0\\1\\0\\\vdots\\0
+\end{bmatrix},w^{at}=\begin{bmatrix}
+0\\0\\1\\\vdots\\0
+\end{bmatrix}</script><p>使用one-hot编码的词向量之间是相互独立的，因为对于每个词$(w^{i})^{T}w^j = 0$，这种编码方式并没有编码不同词之间的语义相似性。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/12/17/word-embedding/#more" rel="contents">
@@ -908,7 +916,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,010
+                  2,998
                 </span>
               
 
@@ -1127,8 +1135,7 @@
 
       
         
-          <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><p>###前端控制器(DispatcherServlet)</p>
-<p>接受请求，响应结果，相当于转发器，中央处理器。</p>
+          <h2 id="springMVC-框架原理"><a href="#springMVC-框架原理" class="headerlink" title="springMVC 框架原理"></a>springMVC 框架原理</h2><h3 id="前端控制器-DispatcherServlet"><a href="#前端控制器-DispatcherServlet" class="headerlink" title="前端控制器(DispatcherServlet)"></a>前端控制器(DispatcherServlet)</h3><p>接受请求，响应结果，相当于转发器，中央处理器。</p>
 <p>有了DispatcherServlet减少了其他组件之间的耦合度。</p>
 <h3 id="处理器映射器-HandlerMapping"><a href="#处理器映射器-HandlerMapping" class="headerlink" title="处理器映射器(HandlerMapping)"></a>处理器映射器(HandlerMapping)</h3><p>根据请求的url查找Handler。</p>
 <h3 id="处理器适配器-HandlerAdapter"><a href="#处理器适配器-HandlerAdapter" class="headerlink" title="处理器适配器(HandlerAdapter)"></a>处理器适配器(HandlerAdapter)</h3><p>按照特定的规则(HandlerAdapter要求的规则)去执行Handler。</p>
@@ -1500,7 +1507,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,610
+                  1,638
                 </span>
               
 
@@ -1540,10 +1547,10 @@
         
           <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a> 是一个快速、简洁且高效的静态站点生成框架，它基于 <a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a> 。 它有以下特点：</p>
 <ul>
-<li><i class="fa fa-bolt"></i><h6 style="display: inline;">　超快速度</h6><br><i>Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。</i></li>
-<li><i class="fa fa-pencil"></i><h6 style="display: inline;">　支持Markdown</h6><br><i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i></li>
-<li><i class="fa fa-cloud-upload"></i><h6 style="display: inline;">　一键部署</h6><br><i>只需一条指令即可部署到Github Pages，或其他网站</i></li>
-<li><i class="fa fa-cog"></i><h6 style="display: inline;">　丰富的插件</h6><br><i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</i></li>
+<li><i class="fa fa-bolt">&lt;/i&gt;<h6 style="display: inline;">　超快速度</h6><br><i>Node.js 所带来的超快生成速度，让上百个页面在几秒内瞬间完成渲染。</i></i></li>
+<li><i class="fa fa-pencil">&lt;/i&gt;<h6 style="display: inline;">　支持Markdown</h6><br><i>Hexo 支持 GitHub Flavored Markdown 的所有功能，甚至可以整合 Octopress 的大多数插件。</i></i></li>
+<li><i class="fa fa-cloud-upload">&lt;/i&gt;<h6 style="display: inline;">　一键部署</h6><br><i>只需一条指令即可部署到Github Pages，或其他网站</i></i></li>
+<li><i class="fa fa-cog">&lt;/i&gt;<h6 style="display: inline;">　丰富的插件</h6><br><i>Hexo 拥有强大的插件系统，安装插件可以让 Hexo 支持 Jade, CoffeeScript。</i></i></li>
 </ul>
 <p>通过 Hexo 你可以轻松地使用 Markdown 编写文章，除了 Markdown 本身的语法之外，还可以使用 Hexo 提供的 <a href="https://hexo.io/zh-cn/docs/tag-plugins.html" target="_blank" rel="external">标签插件</a> 来快速的插入特定形式的内容。</p>
 <p>基于 Hexo 这个优秀的博客框架，很多优秀的开发者奉献出了它们基于 Hexo 开发的<a href="https://hexo.io/themes/" target="_blank" rel="external">主题</a>。<br><a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT</a> 因其 <span id="yu-1">精于心，简于形</span> 的风格，一直被广大用户所喜爱。</p>
@@ -1949,7 +1956,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">10.9k</span>
+    <span title="博客全站字数">9.9k</span>
   
 </div>
 
