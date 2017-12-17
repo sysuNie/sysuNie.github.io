@@ -107,7 +107,7 @@
 
 
 
-  <meta name="keywords" content="Deep Learning, NLP" />
+  <meta name="keywords" content="word_embedding," />
 
 
 
@@ -120,17 +120,22 @@
 
 
 
-<meta name="description" content="HTMLHTML文档结构1234567891011&amp;lt;!DOCTYPE html&amp;gt;－－&amp;lt;!DOCTYPE&amp;gt; 标签没有结束标签！&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;（头部部分）    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;title&amp;gt;显示在浏览器标题栏中的标题&amp;lt;/title&amp;gt;&amp;lt;/head&amp;">
+<meta name="description" content="自然语言处理－词向量引言在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为Word Representation，一般来说，词向量经常指Word Embedding，">
+<meta name="keywords" content="word_embedding">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTML知识点">
-<meta property="og:url" content="http://yoursite.com/2017/10/11/html/index.html">
+<meta property="og:title" content="词向量">
+<meta property="og:url" content="http://yoursite.com/2017/12/17/word-embedding/index.html">
 <meta property="og:site_name" content="sysuNie">
-<meta property="og:description" content="HTMLHTML文档结构1234567891011&amp;lt;!DOCTYPE html&amp;gt;－－&amp;lt;!DOCTYPE&amp;gt; 标签没有结束标签！&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;（头部部分）    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;title&amp;gt;显示在浏览器标题栏中的标题&amp;lt;/title&amp;gt;&amp;lt;/head&amp;">
+<meta property="og:description" content="自然语言处理－词向量引言在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为Word Representation，一般来说，词向量经常指Word Embedding，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-17T11:52:57.433Z">
+<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/language_model_bengio.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/cbow.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/Skip-Gram.jpg">
+<meta property="og:updated_time" content="2017-12-17T12:07:33.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTML知识点">
-<meta name="twitter:description" content="HTMLHTML文档结构1234567891011&amp;lt;!DOCTYPE html&amp;gt;－－&amp;lt;!DOCTYPE&amp;gt; 标签没有结束标签！&amp;lt;html lang=&quot;en&quot;&amp;gt;&amp;lt;head&amp;gt;（头部部分）    &amp;lt;meta charset=&quot;UTF-8&quot;&amp;gt;    &amp;lt;title&amp;gt;显示在浏览器标题栏中的标题&amp;lt;/title&amp;gt;&amp;lt;/head&amp;">
+<meta name="twitter:title" content="词向量">
+<meta name="twitter:description" content="自然语言处理－词向量引言在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为Word Representation，一般来说，词向量经常指Word Embedding，">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/Pictures/datastructure/language_model_bengio.jpg">
 
 
 
@@ -160,13 +165,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/11/html/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/17/word-embedding/"/>
 
 
 
 
 
-  <title>HTML知识点 | sysuNie</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>词向量 | sysuNie</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -387,7 +392,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/10/11/html/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/17/word-embedding/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JiKang Nie">
@@ -404,7 +409,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">HTML知识点</h2>
+          <h2 class="post-title" itemprop="name headline">词向量</h2>
         
 
         <div class="post-meta">
@@ -416,8 +421,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-11T20:30:52+08:00">
-                2017-10-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-17T20:04:30+08:00">
+                2017-12-17
               </time>
             
 
@@ -432,7 +437,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-17T19:52:57+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-17T20:07:33+08:00">
                 2017-12-17
               </time>
             
@@ -468,7 +473,7 @@
 
           
           
-             <span id="/2017/10/11/html/" class="leancloud_visitors" data-flag-title="HTML知识点">
+             <span id="/2017/12/17/word-embedding/" class="leancloud_visitors" data-flag-title="词向量">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -494,7 +499,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,208
+                  2,443
                 </span>
               
 
@@ -510,7 +515,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  10
                 </span>
               
             </div>
@@ -531,23 +536,101 @@
       
 
       
-        <h1 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h1><h2 id="HTML文档结构"><a href="#HTML文档结构" class="headerlink" title="HTML文档结构"></a>HTML文档结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line">－－<span class="meta">&lt;!DOCTYPE&gt;</span> 标签没有结束标签！</div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span>（头部部分）</div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>显示在浏览器标题栏中的标题<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span>（主体部分） </div><div class="line">（页面内容）</div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
-<p>bgcolor = 背景颜色　background = 背景图片路经</p>
+        <h2 id="自然语言处理－词向量"><a href="#自然语言处理－词向量" class="headerlink" title="自然语言处理－词向量"></a>自然语言处理－词向量</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为<strong>Word Representation</strong>，一般来说，词向量经常指<strong>Word Embedding</strong>，也称<strong>Distributed Word Representation</strong>。</p>
+<h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>从<strong>Word Representation</strong>的发展过程引入<strong>Word Embedding</strong>，先从简单的SVD介绍开始，再到NNLM,word2vec等词向量模型。</p>
+<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>one-hot编码也称独热编码，这是一种简单的词表征方式，每个词使用一个$R^{|V|}$的向量表示，$|V|$表示词表的大小。<br>$$<br>w^{address}=\begin{bmatrix}<br>1\0\0\\vdots\0<br>\end{bmatrix},w^{home}=\begin{bmatrix}<br>0\1\0\\vdots\0<br>\end{bmatrix},w^{at}=\begin{bmatrix}<br>0\0\1\\vdots\0<br>\end{bmatrix}<br>$$<br>使用one-hot编码的词向量之间是相互独立的，因为对于每个词$(w^{i})^{T}w^j = 0$，这种编码方式并没有编码不同词之间的语义相似性。</p>
 <a id="more"></a>
-<h2 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">H1</span>&gt;</span>一级标题<span class="tag">&lt;/<span class="name">H1</span>&gt;</span>     <span class="tag">&lt;<span class="name">H2</span>&gt;</span> 二级标题<span class="tag">&lt;/<span class="name">H2</span>&gt;</span>    <span class="tag">&lt;<span class="name">H3</span>&gt;</span>三级标题<span class="tag">&lt;/<span class="name">H3</span>&gt;</span>  <span class="tag">&lt;<span class="name">H4</span>&gt;</span>四级标题<span class="tag">&lt;/<span class="name">H4</span>&gt;</span>     <span class="tag">&lt;<span class="name">H5</span>&gt;</span>五级标题<span class="tag">&lt;/<span class="name">H5</span>&gt;</span>     <span class="tag">&lt;<span class="name">H6</span>&gt;</span>六级标题<span class="tag">&lt;/<span class="name">H6</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="font标签"><a href="#font标签" class="headerlink" title="font标签"></a>font标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">size</span>=<span class="string">"字体大小"</span>  <span class="attr">color</span>=<span class="string">"字体颜色"</span> <span class="attr">face</span>=<span class="string">"字体类型"</span>&gt;</span>要设置的文字<span class="tag">&lt;/<span class="name">font</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="行控制标签"><a href="#行控制标签" class="headerlink" title="行控制标签"></a>行控制标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">align</span>=<span class="string">"left"</span>/"<span class="attr">right</span>"/"<span class="attr">center</span>"&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span>      换行<span class="tag">&lt;<span class="name">br</span> /&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="图片标签"><a href="#图片标签" class="headerlink" title="图片标签"></a>图片标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span> = <span class="string">"图片地址"</span> <span class="attr">width</span> = <span class="string">"图片宽度"</span> <span class="attr">height</span> = <span class="string">"图片高度"</span> </span></div><div class="line"><span class="tag"><span class="attr">alt</span> = <span class="string">"图片的提示文字"</span> <span class="attr">align</span>=<span class="string">"top/bottom/middle/left/right"</span> <span class="attr">border</span>=<span class="string">"图片的边框宽度"</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="文字布局"><a href="#文字布局" class="headerlink" title="文字布局"></a>文字布局</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">１）<span class="tag">&lt;<span class="name">hr</span>  <span class="attr">size</span>=<span class="string">"厚度"</span>  <span class="attr">width</span>=<span class="string">"宽度"</span>  <span class="attr">color</span>=<span class="string">"颜色"</span>&gt;</span>　　水平线</div><div class="line"></div><div class="line">２）<span class="tag">&lt;<span class="name">ol</span>  <span class="attr">type</span>=<span class="string">序号类型</span>&gt;</span>（序号类型有：1、a、A、ⅰ、I）</div><div class="line"> 　　　　　<span class="tag">&lt;<span class="name">li</span>&gt;</span>填写信息<span class="tag">&lt;/<span class="name">li</span>&gt;</span>（必须用<span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span>将内容包括起来）   </div><div class="line"> 　　　　 ......</div><div class="line">   <span class="tag">&lt;/<span class="name">ol</span>&gt;</span>　　　　　　　  有序列表</div><div class="line">   </div><div class="line">３）<span class="tag">&lt;<span class="name">ul</span>  <span class="attr">type</span> = <span class="string">""</span>&gt;</span>(序号类型有：disc(默认值,实心圆点)、circle、square)</div><div class="line">          <span class="tag">&lt;<span class="name">li</span>&gt;</span>所写内容<span class="tag">&lt;<span class="name">li</span>&gt;</span></div><div class="line">         .......</div><div class="line">   <span class="tag">&lt;/<span class="name">ul</span>&gt;</span>             无序列表</div></pre></td></tr></table></figure>
-<h2 id="页面链接语法"><a href="#页面链接语法" class="headerlink" title="页面链接语法"></a>页面链接语法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"链接地址"</span>&gt;</span>连接标志<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"mailto: 邮件地址"</span>&gt;</span>站长邮箱<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="滚动标签"><a href="#滚动标签" class="headerlink" title="滚动标签"></a>滚动标签</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">marquee</span>  </span></div><div class="line"><span class="tag">　　　　　　<span class="attr">scrolldelay</span>=<span class="string">滚动延迟时间</span>  </span></div><div class="line"><span class="tag">　　　　　　<span class="attr">direction</span>=<span class="string">up/down/left/right(滚动方向)</span> </span></div><div class="line"><span class="tag">　　　　　　<span class="attr">onmouseover</span>=<span class="string">“this.stop()”(当鼠标指在上面时停止滚动)</span>  　　</span></div><div class="line"><span class="tag">　　　　　　<span class="attr">onmouseout</span>=<span class="string">“this.start()”(当鼠标离开时继续滚动)</span> &gt;</span> </div><div class="line">　　　　　　滚动的文字和图像 </div><div class="line"><span class="tag">&lt;/<span class="name">marquee</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="表格基本框架"><a href="#表格基本框架" class="headerlink" title="表格基本框架"></a>表格基本框架</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">table</span>  </span></div><div class="line"><span class="tag">      <span class="attr">border</span>=<span class="string">表格的边框的宽度(一般不超过5)</span> </span></div><div class="line"><span class="tag">      <span class="attr">width</span>=<span class="string">表格的宽度</span>  <span class="attr">height</span>=<span class="string">表格的高度</span>  </span></div><div class="line"><span class="tag">      <span class="attr">bordercolor</span>=<span class="string">表格边框线的颜色</span>  <span class="attr">bgcolor</span>=<span class="string">整个表格的背景颜色</span></span></div><div class="line"><span class="tag">      <span class="attr">background</span>=<span class="string">表格的背景图片地址(背景图片)</span> <span class="attr">align</span>=<span class="string">表格对齐方式</span>&gt;</span> </div><div class="line">      <span class="tag">&lt;<span class="name">tr</span>  <span class="attr">bgcolor</span>=<span class="string">行的背景颜色</span>&gt;</span>(行)  </div><div class="line">           <span class="tag">&lt;<span class="name">td</span>  </span></div><div class="line"><span class="tag">              <span class="attr">colspan</span>=<span class="string">跨的列数</span>  <span class="attr">rowspan</span>=<span class="string">跨的行数</span>  <span class="attr">bgcolor</span>=<span class="string">本单元格的背景颜色</span>      </span></div><div class="line"><span class="tag">              <span class="attr">background</span>=<span class="string">本单元格的背景图片地址(背景图片)</span>  </span></div><div class="line"><span class="tag">              <span class="attr">align</span>=<span class="string">单元格中的内容对齐方式(right/left/center/)</span>&gt;</span></div><div class="line">           <span class="tag">&lt;/<span class="name">td</span>&gt;</span>(单元格)  </div><div class="line">      <span class="tag">&lt;/<span class="name">tr</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="表单的基本结构"><a href="#表单的基本结构" class="headerlink" title="表单的基本结构"></a>表单的基本结构</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">form</span>  <span class="attr">action</span>=<span class="string">"URL"</span> <span class="attr">name</span>=<span class="string">表单名字</span>  <span class="attr">method</span>=<span class="string">提交数据的方式（post/get）</span>&gt;</span> 具体的内容 <span class="tag">&lt;/<span class="name">form</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="表单中元素"><a href="#表单中元素" class="headerlink" title="表单中元素"></a>表单中元素</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span>&gt;</span>元素  </div><div class="line"></div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">type</span>=<span class="string">text</span>  <span class="attr">size</span>=<span class="string">文本框的大小</span>  <span class="attr">maxlenght</span>=<span class="string">限制输入的最大字符</span>&gt;</span>(单行文本框)  </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">type</span>=<span class="string">password</span>  <span class="attr">size</span>=<span class="string">文本框的大小</span>  <span class="attr">maxlenght</span>=<span class="string">限制输入的最大字符</span>&gt;</span>(单行文本框——设置密码)  </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“name”</span> <span class="attr">type</span>=<span class="string">radio</span>  <span class="attr">value</span>=<span class="string">“男”</span>  <span class="attr">checked</span>(默认选定)&gt;</span>(单选按钮——男)(设置单选按钮的时候名字一定要一样)  </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“name”</span> <span class="attr">type</span>=<span class="string">radio</span>  <span class="attr">value</span>=<span class="string">“女”</span>&gt;</span>(单选按钮——女) </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">type</span>=<span class="string">submit</span>  <span class="attr">value</span>=<span class="string">提交</span>&gt;</span>(按钮——提交) </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">type</span>=<span class="string">reset</span>  <span class="attr">value</span>=<span class="string">重置</span>&gt;</span>(按钮——重置)  </div><div class="line">　　　 <span class="tag">&lt;<span class="name">input</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">type</span>=<span class="string">checkbox</span>  <span class="attr">value</span>=<span class="string">play(必须有)</span>  <span class="attr">checked</span>&gt;</span>玩游戏(复选框)</div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">select</span>&gt;</span><span class="tag">&lt;/<span class="name">select</span>&gt;</span>下拉列表元素 语法：</div><div class="line">　　　<span class="tag">&lt;<span class="name">select</span>  <span class="attr">name</span>=<span class="string">“”</span>&gt;</span>  </div><div class="line">　　　　　　<span class="tag">&lt;<span class="name">option</span>  <span class="attr">value</span>=<span class="string">“”(必须有)</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">option</span>&gt;</span> </div><div class="line">　　　　　　<span class="tag">&lt;<span class="name">option</span>  <span class="attr">value</span>=<span class="string">“”(必须有)</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">option</span>&gt;</span> </div><div class="line">　　　　　　<span class="tag">&lt;<span class="name">option</span>  <span class="attr">value</span>=<span class="string">“”(必须有)</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">option</span>&gt;</span> </div><div class="line">　　　　　　<span class="tag">&lt;<span class="name">option</span>  <span class="attr">value</span>=<span class="string">“”(必须有)</span>&gt;</span>内容<span class="tag">&lt;/<span class="name">option</span>&gt;</span> </div><div class="line">　　　　　　…… </div><div class="line">　　　<span class="tag">&lt;/<span class="name">select</span>&gt;</span></div></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">textarea</span>&gt;</span><span class="tag">&lt;/<span class="name">textarea</span>&gt;</span>多行文本框元素  语法：</div><div class="line">　　　<span class="tag">&lt;<span class="name">textarea</span>  <span class="attr">name</span>=<span class="string">“”</span> <span class="attr">cols</span>=<span class="string">“宽度”</span> <span class="attr">rows</span>=<span class="string">“高度”(不要和合并单元格的rowspan和colspan相混淆)</span>&gt;</span>  具体的内容  <span class="tag">&lt;/<span class="name">textarea</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="样式类型"><a href="#样式类型" class="headerlink" title="样式类型"></a>样式类型</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">1）标签选择器  语法：  </div><div class="line">   标签&#123;    </div><div class="line">        属性:属性值; </div><div class="line">       &#125;  </div><div class="line">       <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">”text/css”</span>&gt;</span><span class="undefined">  P&#123;font-size:20px;color:blue&#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>  不需要调用，直接创建标签就能使用   </div><div class="line">2）class选择器  语法：  </div><div class="line">   .类名&#123;   </div><div class="line">        属性:属性值;  </div><div class="line">        &#125;  </div><div class="line">       <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">”text/css”</span>&gt;</span><span class="undefined">  .my&#123;font-size:20px;color:blue&#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>  调用：在需要使用的地方做为属性来调用（class=类名）</div><div class="line">3）ID选择器 语法： </div><div class="line">   #名称&#123;  </div><div class="line">        属性:属性值; &#125;  </div><div class="line">       <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">”text/css”</span>&gt;</span><span class="undefined">  #my&#123;font-size:20px;color:blue&#125; </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span>  调用：在需要使用的地方做为属性来调用（ID=名称）</div></pre></td></tr></table></figure>
-<h2 id="常用的样式属性"><a href="#常用的样式属性" class="headerlink" title="常用的样式属性"></a>常用的样式属性</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">1)文本属性  </div><div class="line">　　　font-size:字体大小 </div><div class="line">　　　font-family:字体类型  </div><div class="line">　　　font-style:字体样式（斜体） </div><div class="line">　　　color:字体颜色  </div><div class="line">　　　text-algin:文本的对齐方式（left/right/center） </div><div class="line">2)背景属性  </div><div class="line">　　　background-color:背景颜色  </div><div class="line">　　　background-image:url(“图片地址”)背景图片  </div><div class="line">　　　background-repeat:（repeat/no-repeat/repeat-x/repeat-y）背景图片如何被重复显示 </div><div class="line">3)方框属性 </div><div class="line">　　　(1)边界属性 </div><div class="line">　　　 margin-left:设置对象的左边距 </div><div class="line">　　 　margin-right: 设置对象的右边距 </div><div class="line">　　 　margin-top: 设置对象的上边距 </div><div class="line">　　 　margin-bottom: 设置对象的下边距 </div><div class="line">　　 (2)填充属性  </div><div class="line">　　　 padding-left:设置内容与左边框之间的距离 </div><div class="line">　　 　padding-right: 设置内容与右边框之间的距离 </div><div class="line">　　 　padding-top: 设置内容与上边框之间的距离 </div><div class="line">　　 　padding-bottom: 设置内容与下边框之间的距离 </div><div class="line">　　 (3)边框属性 </div><div class="line">　　  　border-style:(soild细边框/dashed/虚边框)边框样式 </div><div class="line">　　 　 border-width:边框宽度 </div><div class="line">　　 　 border-color:边框颜色 </div><div class="line">4)超链接样式 </div><div class="line">　　　 A:link&#123;&#125;未被访问的链接样式 </div><div class="line">　　　 A:visited&#123;&#125;被访问过的链接样式  </div><div class="line">　　　 A:hover&#123;&#125;鼠标悬浮在链接上时的样式  </div><div class="line">　　　 A:active&#123;&#125;鼠标下在按下时链接文字的样式</div></pre></td></tr></table></figure>
+<h3 id="基于矩阵分解的词表征"><a href="#基于矩阵分解的词表征" class="headerlink" title="基于矩阵分解的词表征"></a>基于矩阵分解的词表征</h3><h4 id="词–文档矩阵-Word-Document-Matrix"><a href="#词–文档矩阵-Word-Document-Matrix" class="headerlink" title="词–文档矩阵(Word-Document Matrix)"></a>词–文档矩阵(Word-Document Matrix)</h4><p>如果我们有大量的文档，我们用一个矩阵来存储所有文档的词频信息。矩阵的行向量代表词，列向量代表文档，每个元素代表词在文档中出现的频数，比如我们现在有两篇文档：</p>
+<p>$I \quad love \quad NLP \ I \quad love \quad deep \quad learningI$</p>
+<p>经过统计次数，我们可以得到以下矩阵：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{d_1}&amp;\tiny{d_2}\<br>\begin{array}{c}<br>\tiny{I} \<br>\tiny{love} \<br>\tiny{NLP} \<br>\tiny{deep} \<br>\tiny{learning} \<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}1 \ 1 \ 1 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}1 \ 1 \ 0 \ 1 \ 1\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>如果两个文档有相似的主题，那么两个文档的列向量会趋于有相似类型的词数量。该模型主要用于衡量文档主题的相似性。</p>
+<h4 id="基于窗口的词共现矩阵-Window-based-Co-occurrence-Matrix"><a href="#基于窗口的词共现矩阵-Window-based-Co-occurrence-Matrix" class="headerlink" title="基于窗口的词共现矩阵(Window based Co-occurrence Matrix)"></a>基于窗口的词共现矩阵(Window based Co-occurrence Matrix)</h4><p>给定一个词，计算在一个限定大小的窗口中出现的其他词的次数。我们将这些计数放在一个矩阵中，矩阵的行表示词，列也是词。假如窗口大小为1，我们需要计算当前词左右两边的两个词。比如,我们两个句子：</p>
+<p>$I \quad love \quad NLP \ I \quad love \quad deep \quad learningI$</p>
+<p>窗口长度为１，我们得到的矩阵为：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{I}&amp;\tiny{love}&amp;\tiny{NLP}&amp;\tiny{deep}&amp;\tiny{learning}\<br>\begin{array}{c}<br>\tiny{I} \<br>\tiny{love} \<br>\tiny{NLP} \<br>\tiny{deep} \<br>\tiny{learning} \<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}0 \ 2 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}2 \ 0 \ 1 \ 1 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 1\end{array}<br>&amp;\begin{array}{c}0 \ 0 \ 0 \ 1 \ 0\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>以看到矩阵是对称矩阵，可以行或者列作为词表征。这个矩阵的意义在于假如两个词有相似的context则偏向于有相似的意思，也就是说相似的词有相似的词表征。</p>
+<h4 id="SVD-Singular-Value-Decomposition"><a href="#SVD-Singular-Value-Decomposition" class="headerlink" title="SVD(Singular Value Decomposition)"></a>SVD(Singular Value Decomposition)</h4><p><strong>SVD，奇异值矩阵分解</strong>。对于任意一个矩阵$X$都可以做奇异值分解：<br>$$<br>\boldsymbol{X}<em>{m\times n}=\boldsymbol{U}</em>{m\times m}\boldsymbol{S}<em>{m\times n}\boldsymbol{V}^T</em>{n\times n}<br>$$<br>其中$U$和$V$都是正交矩阵，$S$只有对角元素：<br>$$<br>\boldsymbol{S} = \begin{bmatrix}<br>\boldsymbol{S}_1 &amp; \boldsymbol{O}\<br>\boldsymbol{O} &amp; \boldsymbol{O}\<br>\end{bmatrix}，\boldsymbol{S}_1=\begin{bmatrix}<br>\sigma_1 &amp;0&amp;\dots&amp;0\<br>0&amp;\sigma_2 &amp;&amp;\vdots\<br>\vdots&amp;&amp;\ddots&amp;0\<br>0&amp;\dots&amp;0&amp;\sigma_r<br>\end{bmatrix}<br>$$<br>其中$\sigma_1…\sigma_r$是矩阵$X$的奇异值。</p>
+<h4 id="LSA-Latent-Semantic-Analysis"><a href="#LSA-Latent-Semantic-Analysis" class="headerlink" title="LSA(Latent Semantic Analysis)"></a>LSA(Latent Semantic Analysis)</h4><p>上述描述的两种矩阵中，都存在一个明显的问题－当出现大量的文档和词的时候，我们得到的矩阵会十分庞大，而且会出现矩阵稀疏问题。后来，有人为了提高相似度的计算准确度，提出了对矩阵进行SVD分解，可以得到更好的词表征。这种方法称为<strong>LSA，潜在语义分析</strong>。LSA是为了研究词表征，另外还有类似的研究文档表征的方法叫<strong>LSI(Latent Semantic Index)</strong>。 我们通过计数统计得到了词-文档矩阵或者词共现矩阵$X$，然后对矩阵$X$使用SVD，取最大的$k$个奇异值，由于每个奇异值对应于$U$的列，因此得到$\hat{\boldsymbol{U}}_{n\times k}$，每一行代表一个词表征，因此可以得到$k$维的词表征。</p>
+<p>优点：降低矩阵稀疏度　减少噪声</p>
+<p>缺点：有新词或新的语料出现，矩阵需要重新计算　矩阵维度高　</p>
+<p>　　　矩阵过于稀疏，很多词无法共现　会出现过高或过低的词频</p>
+<p><strong>Word Embedding</strong> 出现解决了上述问题。</p>
+<h3 id="基于迭代的词表征-词向量"><a href="#基于迭代的词表征-词向量" class="headerlink" title="基于迭代的词表征(词向量)"></a>基于迭代的词表征(词向量)</h3><p>迭代的词表征得到的是一个稠密的向量，与矩阵分解不同的是，词向量是通过迭代训练模型得到。</p>
+<h4 id="NNLM"><a href="#NNLM" class="headerlink" title="NNLM"></a>NNLM</h4><p>这个<a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf" target="_blank" rel="external">模型</a>是由Bengio大神于2003年发表，可以说是Neural Language Model的开山之作。本来作者的主要目的是建立语言模型，结果发现了词向量这种副产品，由此引发了后人对词向量的火热研究。</p>
+<p>模型使用了一个简单的前向神经网络，如下图所示： <img src="../../Pictures/datastructure/language_model_bengio.jpg" alt="language_model_bengio"></p>
+<p>该模型通过上下文来预测下一个单词，图中所示的输入为上文的各个词$w_i$，然后将他们的词向量$C(w_i)$连接起来，输出是每个词的概率$P(w_t|content)$，虚线表示的是词向量层和输出层的直接连接。</p>
+<h4 id="Word2vec"><a href="#Word2vec" class="headerlink" title="Ｗord2vec"></a>Ｗord2vec</h4><p>Ｗord2vec这个工具，是Tomas Mikolov在Google的时候开发的用来训练词向量的工具。Ｗord2vec这个工具中有两个模型（CBOW、Skip-Gram），还有两种加速训练的trick（层次Softmax、负采样），下面分别一一讲述。</p>
+<ul>
+<li>$w$表示词</li>
+<li>$x$表示one-hot编码</li>
+<li>$u$和$v$表示词向量</li>
+<li>$x(w)$表示one-hot编码中对应词$w$位置的值，取值为0或1，只有一个位置上的值为1。</li>
+</ul>
+<h5 id="CBOW-Continuous-Bag-of-word-Model"><a href="#CBOW-Continuous-Bag-of-word-Model" class="headerlink" title="CBOW(Continuous Bag-of-word Model)"></a>CBOW(Continuous Bag-of-word Model)</h5><p>模型的网络结构如下：</p>
+<p><img src="../../Pictures/datastructure/cbow.jpg" alt="cbow"></p>
+<p><strong>说明</strong>: </p>
+<p>模型中存在两套词向量。</p>
+<p>一套称为Input词向量，用矩阵$V_{|V|\times d}=(v<em>1,\dots,v</em>{|V|})$表示，|V|指的是词表大小，ｄ指词向量维度</p>
+<p>一套称为Output词向量，用矩阵$U_{|V|\times d}=(v<em>1,\dots,v</em>{|V|})$表示</p>
+<p><strong>建模过程</strong></p>
+<ul>
+<li><p>确定一个窗口大小m</p>
+</li>
+<li><p>选定目标词位置t。得到该位置的上下文：<br>$$<br>(w^{(t−m)},…,w^{(t−1)},w^{(t+1)},…,w^{(t+m)})<br>$$</p>
+</li>
+<li><p>得到上下文各个词的one-hot表示：<br>$$<br>(x^{(t−m)},…,x^{(t−1)},x^{(t+1)},…,x^{(t+m)})<br>$$</p>
+</li>
+<li><p>使用矩阵$V$，计算$v = Vx$得到上下文的词向量（对于图中的<strong>INPUT层</strong>）<br>$$<br>(v^{(t−m)},…,v^{(t−1)},v^{(t+1)},…,v^{(t+m)})<br>$$</p>
+</li>
+<li><p>将上下文的词向量相加或者平均，得到。<strong>（对应图中的PROJECTION层）</strong>：<br>$$<br>\hat{v} = \dfrac{v^{(t−m)}+\dots+v^{(t−1)}+v^{(t+1)}+\dots+v^{(t+m)}}{2m}<br>$$</p>
+</li>
+<li><p>使用矩阵$U$，计算目的词的概率分布<strong>（对应图中的OUTPUT层）</strong>:<br>$$<br>P(w \mid w^{(t−m)},…,w^{(t−1)},w^{(t+1)},…,w^{(t+m)})=\text{softmax}(U\hat{v})=\dfrac{e^{u\hat{v}}}{\sum\limits_{u_i\in U}{e^{u_i\hat{v}}}}<br>$$</p>
+</li>
+<li><p>使用负对数似然（又称交叉熵）损失函数$J$：<br>$$<br><empty \space="" math="" block=""><br>$$</empty></p>
+<p>$$<br>\begin{align*}</p>
+<pre><code>J &amp;= -\sum_{w} x^t(w)\log P(w \mid w^{(t−m)},...,w^{(t−1)},w^{(t+1)},...,w^{(t+m)})\\
+&amp;= -\log P(w^t \mid w^{(t−m)},...,w^{(t−1)},w^{(t+1)},...,w^{(t+m)})
+\end{align*}
+</code></pre><p>$$</p>
+</li>
+</ul>
+<p><strong>训练过程</strong></p>
+<ul>
+<li><p>选取batch的大小n</p>
+</li>
+<li><p>使用SGD训练，对于每个训练样本的损失函数$J<em>i$，构造batch的损失函数：<br>$$<br>J</em>{batch} = \sum_i^n J_i<br>$$</p>
+</li>
+<li><p>每一轮迭代更新$U$和$V$</p>
+</li>
+</ul>
+<h5 id="Skip-Gram-Continuous-Skip-gram-Model"><a href="#Skip-Gram-Continuous-Skip-gram-Model" class="headerlink" title="Skip-Gram(Continuous Skip-gram Model)"></a>Skip-Gram(Continuous Skip-gram Model)</h5><p>既然可以用上下文来预测目标词，反过来也能用目标词来预测上下文，Skip-Gram因此应运而生。</p>
+<p><img src="../../Pictures/datastructure/Skip-Gram.jpg" alt="Skip-Gram"></p>
+<p>与CBOW一样，模型中存在两套词向量$U$和$V$。</p>
+<p><strong>建模过程</strong></p>
+<ul>
+<li><p>确定Context的窗口大小$m$。</p>
+</li>
+<li><p>选取一个目标词$w^t$，然后在目标词的Context中的选择一个词$w^c$，组成训练样本：<br>$$<br>(w^t, w^c)<br>$$</p>
+</li>
+<li><p>得到训练样本one-hot表示为：$(x^t,x^c)$</p>
+</li>
+<li><p>使用矩阵$V$，得到目标词的词向量<strong>（对应图中INPUT层）</strong>：$v^t = c^tV$</p>
+</li>
+<li><p>由于只有一个词，所以不需要相加或者平均，直接复制到下一层<strong>（对应PROJECTION层）</strong>： $\hat{v} = v^t$</p>
+</li>
+<li><p>使用矩阵$U$，计算上下文中的词的概率分布<strong>（对应图中的OUTPUT层）</strong>：<br>$$<br>P(w \mid w^t) = \text{softmax}(U\hat{v}) = \dfrac{e^{u\hat{v}}}{\sum\limits_{u_i\in U}{e^{u_i\hat{v}}}}<br>$$</p>
+</li>
+<li><p>使用负对数似然（又称交叉熵）损失函数$J$：<br>$$<br>J = -\sum_{w} x^c(w)\log P(w \mid w^t) = -\log P(w^c \mid w^t)<br>$$</p>
+</li>
+</ul>
+<p><strong>训练过程</strong></p>
+<ul>
+<li><p>选取batch的大小n</p>
+</li>
+<li><p>使用SGD训练，对于每个训练样本的损失函数$J<em>i$，构造batch的损失函数：<br>$$<br>J</em>{batch} = \sum_i^n J_i<br>$$</p>
+</li>
+<li><p>每一轮迭代更新$U$和$V$</p>
+</li>
+</ul>
+<h5 id="加速技巧"><a href="#加速技巧" class="headerlink" title="加速技巧"></a>加速技巧</h5><p>Word2vec的训练是无监督的，我们只需要分好词，在训练的时候像有监督一样进行梯度下降。因此，在训练模型的时候，我们需要同时更新$U$和$V$。</p>
+<p>从公式可以看出，每次迭代只需要更新矩阵中的少量向量（Skip-Gram中是一个）。然而如果我们使用简单的Softmax，我们就要每次都更新整个$U$，假如词表大小到达千万级以上，可想而知这是多么耗时。因此，我们需要一些Trick来加速训练。</p>
 
       
     </div>
@@ -569,10 +652,63 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>很有帮助，打赏感谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="JiKang Nie 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="JiKang Nie 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
 
     
 
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    JiKang Nie
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2017/12/17/word-embedding/" title="词向量">http://yoursite.com/2017/12/17/word-embedding/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/word-embedding/" rel="tag"><i class="fa fa-tag"></i> word_embedding</a>
+          
+        </div>
       
 
       
@@ -583,8 +719,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/10/11/hexo-next-one/" rel="next" title="Hexo-NexT搭建个人博客（一）">
-                <i class="fa fa-chevron-left"></i> Hexo-NexT搭建个人博客（一）
+              <a href="/2017/12/17/Forward Neural Network/" rel="next" title="Forward Neural Network">
+                <i class="fa fa-chevron-left"></i> Forward Neural Network
               </a>
             
           </div>
@@ -592,10 +728,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/04/springMVC/" rel="prev" title="springMVC">
-                springMVC <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -797,7 +929,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML"><span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HTML文档结构"><span class="nav-text">HTML文档结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题标签"><span class="nav-text">标题标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#font标签"><span class="nav-text">font标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#行控制标签"><span class="nav-text">行控制标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图片标签"><span class="nav-text">图片标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文字布局"><span class="nav-text">文字布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面链接语法"><span class="nav-text">页面链接语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#滚动标签"><span class="nav-text">滚动标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格基本框架"><span class="nav-text">表格基本框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单的基本结构"><span class="nav-text">表单的基本结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单中元素"><span class="nav-text">表单中元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#样式类型"><span class="nav-text">样式类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用的样式属性"><span class="nav-text">常用的样式属性</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#自然语言处理－词向量"><span class="nav-text">自然语言处理－词向量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#引言"><span class="nav-text">引言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#摘要"><span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#one-hot编码"><span class="nav-text">one-hot编码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于矩阵分解的词表征"><span class="nav-text">基于矩阵分解的词表征</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#词–文档矩阵-Word-Document-Matrix"><span class="nav-text">词–文档矩阵(Word-Document Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于窗口的词共现矩阵-Window-based-Co-occurrence-Matrix"><span class="nav-text">基于窗口的词共现矩阵(Window based Co-occurrence Matrix)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SVD-Singular-Value-Decomposition"><span class="nav-text">SVD(Singular Value Decomposition)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LSA-Latent-Semantic-Analysis"><span class="nav-text">LSA(Latent Semantic Analysis)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于迭代的词表征-词向量"><span class="nav-text">基于迭代的词表征(词向量)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#NNLM"><span class="nav-text">NNLM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Word2vec"><span class="nav-text">Ｗord2vec</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#CBOW-Continuous-Bag-of-word-Model"><span class="nav-text">CBOW(Continuous Bag-of-word Model)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Skip-Gram-Continuous-Skip-gram-Model"><span class="nav-text">Skip-Gram(Continuous Skip-gram Model)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#加速技巧"><span class="nav-text">加速技巧</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
