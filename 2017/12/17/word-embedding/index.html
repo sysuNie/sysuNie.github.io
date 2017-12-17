@@ -499,7 +499,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,443
+                  2,446
                 </span>
               
 
@@ -538,15 +538,15 @@
       
         <h2 id="自然语言处理－词向量"><a href="#自然语言处理－词向量" class="headerlink" title="自然语言处理－词向量"></a>自然语言处理－词向量</h2><h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为<strong>Word Representation</strong>，一般来说，词向量经常指<strong>Word Embedding</strong>，也称<strong>Distributed Word Representation</strong>。</p>
 <h3 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h3><p>从<strong>Word Representation</strong>的发展过程引入<strong>Word Embedding</strong>，先从简单的SVD介绍开始，再到NNLM,word2vec等词向量模型。</p>
-<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>one-hot编码也称独热编码，这是一种简单的词表征方式，每个词使用一个$R^{|V|}$的向量表示，$|V|$表示词表的大小。<br>$$<br>w^{address}=\begin{bmatrix}<br>1\0\0\\vdots\0<br>\end{bmatrix},w^{home}=\begin{bmatrix}<br>0\1\0\\vdots\0<br>\end{bmatrix},w^{at}=\begin{bmatrix}<br>0\0\1\\vdots\0<br>\end{bmatrix}<br>$$<br>使用one-hot编码的词向量之间是相互独立的，因为对于每个词$(w^{i})^{T}w^j = 0$，这种编码方式并没有编码不同词之间的语义相似性。</p>
+<h3 id="one-hot编码"><a href="#one-hot编码" class="headerlink" title="one-hot编码"></a>one-hot编码</h3><p>one-hot编码也称独热编码，这是一种简单的词表征方式，每个词使用一个$R^{|V|}$的向量表示，$|V|$表示词表的大小。<br>$$<br>w^{address}=\begin{bmatrix}<br>1\\0\\0\\\vdots\\0<br>\end{bmatrix},w^{home}=\begin{bmatrix}<br>0\\1\\0\\\vdots\\0<br>\end{bmatrix},w^{at}=\begin{bmatrix}<br>0\\0\\1\\\vdots\\0<br>\end{bmatrix}<br>$$<br>使用one-hot编码的词向量之间是相互独立的，因为对于每个词$(w^{i})^{T}w^j = 0$，这种编码方式并没有编码不同词之间的语义相似性。</p>
 <a id="more"></a>
 <h3 id="基于矩阵分解的词表征"><a href="#基于矩阵分解的词表征" class="headerlink" title="基于矩阵分解的词表征"></a>基于矩阵分解的词表征</h3><h4 id="词–文档矩阵-Word-Document-Matrix"><a href="#词–文档矩阵-Word-Document-Matrix" class="headerlink" title="词–文档矩阵(Word-Document Matrix)"></a>词–文档矩阵(Word-Document Matrix)</h4><p>如果我们有大量的文档，我们用一个矩阵来存储所有文档的词频信息。矩阵的行向量代表词，列向量代表文档，每个元素代表词在文档中出现的频数，比如我们现在有两篇文档：</p>
 <p>$I \quad love \quad NLP \ I \quad love \quad deep \quad learningI$</p>
-<p>经过统计次数，我们可以得到以下矩阵：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{d_1}&amp;\tiny{d_2}\<br>\begin{array}{c}<br>\tiny{I} \<br>\tiny{love} \<br>\tiny{NLP} \<br>\tiny{deep} \<br>\tiny{learning} \<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}1 \ 1 \ 1 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}1 \ 1 \ 0 \ 1 \ 1\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>如果两个文档有相似的主题，那么两个文档的列向量会趋于有相似类型的词数量。该模型主要用于衡量文档主题的相似性。</p>
+<p>经过统计次数，我们可以得到以下矩阵：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{d_1}&amp;\tiny{d_2}\\<br>\begin{array}{c}<br>\tiny{I} \\<br>\tiny{love} \\<br>\tiny{NLP} \\<br>\tiny{deep} \\<br>\tiny{learning} \\<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}1 \ 1 \ 1 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}1 \ 1 \ 0 \ 1 \ 1\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>如果两个文档有相似的主题，那么两个文档的列向量会趋于有相似类型的词数量。该模型主要用于衡量文档主题的相似性。</p>
 <h4 id="基于窗口的词共现矩阵-Window-based-Co-occurrence-Matrix"><a href="#基于窗口的词共现矩阵-Window-based-Co-occurrence-Matrix" class="headerlink" title="基于窗口的词共现矩阵(Window based Co-occurrence Matrix)"></a>基于窗口的词共现矩阵(Window based Co-occurrence Matrix)</h4><p>给定一个词，计算在一个限定大小的窗口中出现的其他词的次数。我们将这些计数放在一个矩阵中，矩阵的行表示词，列也是词。假如窗口大小为1，我们需要计算当前词左右两边的两个词。比如,我们两个句子：</p>
 <p>$I \quad love \quad NLP \ I \quad love \quad deep \quad learningI$</p>
-<p>窗口长度为１，我们得到的矩阵为：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{I}&amp;\tiny{love}&amp;\tiny{NLP}&amp;\tiny{deep}&amp;\tiny{learning}\<br>\begin{array}{c}<br>\tiny{I} \<br>\tiny{love} \<br>\tiny{NLP} \<br>\tiny{deep} \<br>\tiny{learning} \<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}0 \ 2 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}2 \ 0 \ 1 \ 1 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 1\end{array}<br>&amp;\begin{array}{c}0 \ 0 \ 0 \ 1 \ 0\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>以看到矩阵是对称矩阵，可以行或者列作为词表征。这个矩阵的意义在于假如两个词有相似的context则偏向于有相似的意思，也就是说相似的词有相似的词表征。</p>
-<h4 id="SVD-Singular-Value-Decomposition"><a href="#SVD-Singular-Value-Decomposition" class="headerlink" title="SVD(Singular Value Decomposition)"></a>SVD(Singular Value Decomposition)</h4><p><strong>SVD，奇异值矩阵分解</strong>。对于任意一个矩阵$X$都可以做奇异值分解：<br>$$<br>\boldsymbol{X}<em>{m\times n}=\boldsymbol{U}</em>{m\times m}\boldsymbol{S}<em>{m\times n}\boldsymbol{V}^T</em>{n\times n}<br>$$<br>其中$U$和$V$都是正交矩阵，$S$只有对角元素：<br>$$<br>\boldsymbol{S} = \begin{bmatrix}<br>\boldsymbol{S}_1 &amp; \boldsymbol{O}\<br>\boldsymbol{O} &amp; \boldsymbol{O}\<br>\end{bmatrix}，\boldsymbol{S}_1=\begin{bmatrix}<br>\sigma_1 &amp;0&amp;\dots&amp;0\<br>0&amp;\sigma_2 &amp;&amp;\vdots\<br>\vdots&amp;&amp;\ddots&amp;0\<br>0&amp;\dots&amp;0&amp;\sigma_r<br>\end{bmatrix}<br>$$<br>其中$\sigma_1…\sigma_r$是矩阵$X$的奇异值。</p>
+<p>窗口长度为１，我们得到的矩阵为：<br>$$<br>\boldsymbol{X} =<br>\begin{array}{c}<br>&amp;\tiny{I}&amp;\tiny{love}&amp;\tiny{NLP}&amp;\tiny{deep}&amp;\tiny{learning}\\<br>\begin{array}{c}<br>\tiny{I} \\<br>\tiny{love} \\<br>\tiny{NLP} \\<br>\tiny{deep} \\<br>\tiny{learning} \\<br>\end{array}<br>\left.\right[<br>&amp;\begin{array}{c}0 \ 2 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}2 \ 0 \ 1 \ 1 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 0\end{array}<br>&amp;\begin{array}{c}0 \ 1 \ 0 \ 0 \ 1\end{array}<br>&amp;\begin{array}{c}0 \ 0 \ 0 \ 1 \ 0\end{array}<br>&amp;\left.\right]<br>\end{array}<br>$$<br>以看到矩阵是对称矩阵，可以行或者列作为词表征。这个矩阵的意义在于假如两个词有相似的context则偏向于有相似的意思，也就是说相似的词有相似的词表征。</p>
+<h4 id="SVD-Singular-Value-Decomposition"><a href="#SVD-Singular-Value-Decomposition" class="headerlink" title="SVD(Singular Value Decomposition)"></a>SVD(Singular Value Decomposition)</h4><p><strong>SVD，奇异值矩阵分解</strong>。对于任意一个矩阵$X$都可以做奇异值分解：<br>$$<br>\boldsymbol{X}_{m\times n}=\boldsymbol{U}_{m\times m}\boldsymbol{S}_{m\times n}\boldsymbol{V}^T_{n\times n}<br>$$<br>其中$U$和$V$都是正交矩阵，$S$只有对角元素：<br>$$<br>\boldsymbol{S} = \begin{bmatrix}<br>\boldsymbol{S}_1 &amp; \boldsymbol{O}\\<br>\boldsymbol{O} &amp; \boldsymbol{O}\\<br>\end{bmatrix}，\boldsymbol{S}_1=\begin{bmatrix}<br>\sigma_1 &amp;0&amp;\dots&amp;0\\<br>0&amp;\sigma_2 &amp;&amp;\vdots\\<br>\vdots&amp;&amp;\ddots&amp;0\\<br>0&amp;\dots&amp;0&amp;\sigma_r<br>\end{bmatrix}<br>$$<br>其中$\sigma_1…\sigma_r$是矩阵$X$的奇异值。</p>
 <h4 id="LSA-Latent-Semantic-Analysis"><a href="#LSA-Latent-Semantic-Analysis" class="headerlink" title="LSA(Latent Semantic Analysis)"></a>LSA(Latent Semantic Analysis)</h4><p>上述描述的两种矩阵中，都存在一个明显的问题－当出现大量的文档和词的时候，我们得到的矩阵会十分庞大，而且会出现矩阵稀疏问题。后来，有人为了提高相似度的计算准确度，提出了对矩阵进行SVD分解，可以得到更好的词表征。这种方法称为<strong>LSA，潜在语义分析</strong>。LSA是为了研究词表征，另外还有类似的研究文档表征的方法叫<strong>LSI(Latent Semantic Index)</strong>。 我们通过计数统计得到了词-文档矩阵或者词共现矩阵$X$，然后对矩阵$X$使用SVD，取最大的$k$个奇异值，由于每个奇异值对应于$U$的列，因此得到$\hat{\boldsymbol{U}}_{n\times k}$，每一行代表一个词表征，因此可以得到$k$维的词表征。</p>
 <p>优点：降低矩阵稀疏度　减少噪声</p>
 <p>缺点：有新词或新的语料出现，矩阵需要重新计算　矩阵维度高　</p>
@@ -567,8 +567,8 @@
 <p><img src="../../Pictures/datastructure/cbow.jpg" alt="cbow"></p>
 <p><strong>说明</strong>: </p>
 <p>模型中存在两套词向量。</p>
-<p>一套称为Input词向量，用矩阵$V_{|V|\times d}=(v<em>1,\dots,v</em>{|V|})$表示，|V|指的是词表大小，ｄ指词向量维度</p>
-<p>一套称为Output词向量，用矩阵$U_{|V|\times d}=(v<em>1,\dots,v</em>{|V|})$表示</p>
+<p>一套称为Input词向量，用矩阵$V_{|V|\times d}=(v_1,\dots,v_{|V|})$表示，|V|指的是词表大小，ｄ指词向量维度</p>
+<p>一套称为Output词向量，用矩阵$U_{|V|\times d}=(v_1,\dots,v_{|V|})$表示</p>
 <p><strong>建模过程</strong></p>
 <ul>
 <li><p>确定一个窗口大小m</p>
@@ -595,7 +595,7 @@
 <ul>
 <li><p>选取batch的大小n</p>
 </li>
-<li><p>使用SGD训练，对于每个训练样本的损失函数$J<em>i$，构造batch的损失函数：<br>$$<br>J</em>{batch} = \sum_i^n J_i<br>$$</p>
+<li><p>使用SGD训练，对于每个训练样本的损失函数$J_i$，构造batch的损失函数：<br>$$<br>J_{batch} = \sum_i^n J_i<br>$$</p>
 </li>
 <li><p>每一轮迭代更新$U$和$V$</p>
 </li>
@@ -624,7 +624,7 @@
 <ul>
 <li><p>选取batch的大小n</p>
 </li>
-<li><p>使用SGD训练，对于每个训练样本的损失函数$J<em>i$，构造batch的损失函数：<br>$$<br>J</em>{batch} = \sum_i^n J_i<br>$$</p>
+<li><p>使用SGD训练，对于每个训练样本的损失函数$J_i$，构造batch的损失函数：<br>$$<br>J_{batch} = \sum_i^n J_i<br>$$</p>
 </li>
 <li><p>每一轮迭代更新$U$和$V$</p>
 </li>
@@ -844,7 +844,7 @@ var jiathis_config={
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
