@@ -136,7 +136,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/Pictures/datastructure/gradient_al.png">
 <meta property="og:image" content="http://yoursite.com/2017/Pictures/datastructure/gradient_update.png">
 <meta property="og:image" content="http://yoursite.com/2017/Pictures/datastructure/gradient_new_v.png">
-<meta property="og:updated_time" content="2017-12-20T10:42:22.316Z">
+<meta property="og:updated_time" content="2017-12-20T10:43:27.869Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sysuNie">
 <meta name="twitter:description" content="AbstractWeight normalization: a reparameterization of the weight vectors in a neural network that decouples the length of those weight vectors from their direction. Weight normalization does not intro">
@@ -452,7 +452,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-20T18:42:22+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-20T18:43:27+08:00">
                 2017-12-20
               </time>
             
@@ -553,6 +553,7 @@
       
         <h3 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h3><p>Weight normalization: a reparameterization of the weight vectors in a neural network that decouples the length of those weight vectors from their direction. Weight normalization does not introduce any dependencies between the training sets in a minibatch. It can be applied to RNN, DQN and GAN. It is a useful way to improve the conditioning of the optimization problem and speed up convergence of stochastic gradient descent.</p>
 <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><p>The practical success of first-order gradient based optimization is highly dependent on the curvature of the objective that is optimized. If the condition number of the Hessian matrix of the bojective at the optimum is low, the problem is said to exhibit pathological curvature, and first-order gradient descent will have trouble making progress . </p>
+<a id="more"></a>
 <h3 id="Weight-normalization"><a href="#Weight-normalization" class="headerlink" title="Weight normalization"></a>Weight normalization</h3><p>For an elementwise nonlinearity:</p>
 <p><img src="../../../Pictures/datastructure/nonlinearity.png" alt="nonlinearity"></p>
 <p>After associating  a loss function to one or more neuron outputs, such a neural netword is commonly trained by stochastic gradient descent in the parameters <strong>w</strong>, <strong>b</strong> of each neuron. In order to speef up the convergence of this optimization procedure, reparameterize each weight vector <strong>w</strong> in terms of a <strong>parameter vector v</strong> and a <strong>scalar parameter g</strong> and to o perform stochastic gradient descent with respect to those parameters instead.</p>
