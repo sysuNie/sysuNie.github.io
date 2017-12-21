@@ -397,6 +397,328 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/21/operating-system/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/21/operating-system/" itemprop="url">operating_system</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-21T20:32:34+08:00">
+                2017-12-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-21T22:37:47+08:00">
+                2017-12-21
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/阅读/" itemprop="url" rel="index">
+                    <span itemprop="name">阅读</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2017/12/21/operating-system/" class="leancloud_visitors" data-flag-title="operating_system">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2,250
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="操作系统导论"><a href="#操作系统导论" class="headerlink" title="操作系统导论"></a>操作系统导论</h3><p>　　操作系统是管理和控制计算机硬件和软件资源的计算机程序．计算机系统大致可以分为四个组成部分：计算机硬件、操作系统、系统程序与应用程序和用户．计算机系统的组成部分包括硬件、软件和数据．操作系统是一直运行在计算机上的程序（通常称为内核kernel）．</p>
+<p><strong>操作系统基本特征：</strong></p>
+<ul>
+<li>并发：同一段时间内多个程序执行</li>
+<li>共享：系统中的资源可以被内存中多个并发执行的进线程共同使用  </li>
+<li>虚拟：通过分时复用以及空分复用（如虚拟内存）技术实现把一个物理实体虚拟为多个  </li>
+<li>异步：系统中的进程是以走走停停的方式执行的，且以一种不可预知的速度推进  </li>
+</ul>
+<h4 id="计算机系统组织"><a href="#计算机系统组织" class="headerlink" title="计算机系统组织"></a>计算机系统组织</h4><p>　　现在通用计算机系统有一个或多个cpu和若干设备控制器通过共同的总线相连而成，该总线提供了对共享内存的访问．每个设备控制器负责一种特定类型的设备（磁盘驱动器、音频设备、视频显示器），cpu与设备控制器可以并发工作，并竞争内存周期．</p>
+<p>　　当启动计算机时，它需要一个初始化程序．该初始化程序通常位于ROM或EEPROM中，称为计算机硬件中的固件．他初始化系统中的cpu寄存器、设备控制器和内存内容．</p>
+<p>　　计算机程序必须在内存（或随机访问内存RAM）中以便于运行．通过地特定内存地址执行一系列load或store指令来实现交互．指令load将内存中的子移到cpu的寄存器，指令store将寄存器的内容移到内存．存储设备层次：寄存器，高速缓存、驻村、电子磁盘、磁盘、光盘、磁带．</p>
+<h4 id="计算机系统体系结构"><a href="#计算机系统体系结构" class="headerlink" title="计算机系统体系结构"></a>计算机系统体系结构</h4><p>　　单处理系统（只要一个人同cpu）、多处理系统（增加吞吐量、规模经济、可靠性）、集群系统．</p>
+<h4 id="操作系统结构"><a href="#操作系统结构" class="headerlink" title="操作系统结构"></a>操作系统结构</h4><p>　　操作系统具有多道程序处理能力，多道程序设计通过组织作业是cpu总有一个作业可执行，从而提高了cpu的利用率．分时系统是多道程序设计的延伸，分时操作系统允许许多用户同时共享计算机．</p>
+<h4 id="操作系统操作"><a href="#操作系统操作" class="headerlink" title="操作系统操作"></a>操作系统操作</h4><p>　　双重模式操作：用户模式和监督程序模式．</p>
+<h4 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h4><p>　　处于执行中的程序称为进程，进程需要一定的资源（cpu时间、内存、文件、I/O设备）以完成其任务．程序本身并不是进程，程序是被动的实体，如同储存在磁盘上的内容，进程是一个活动的实体．进程是系统工作的单元，操作系统负责下述与进程管理相关的活动：</p>
+<blockquote>
+<p>创建和删除用户进程和系统进程</p>
+<p>挂起和重启进程</p>
+<p>提供进同步机制</p>
+<p>提供进程通信机制</p>
+<p>提供死锁处理机制　　</p>
+</blockquote>
+<h4 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h4><p>　操作系统负责下列有关内存管理的活动：</p>
+<blockquote>
+<p>记录内存的那部分在使用及被谁使用</p>
+<p>当有内存空间时，决定奶写进程可以装入内存</p>
+<p>根据需要分配和释放内存空间</p>
+</blockquote>
+<h4 id="存储管理"><a href="#存储管理" class="headerlink" title="存储管理"></a>存储管理</h4><p>　文件系统管理，操作系统负责下列有关文件管理的活动：</p>
+<blockquote>
+<p>创建和删除文件</p>
+<p>创建和删除目录来组织文件</p>
+<p>提供操作文件和目录的原语</p>
+<p>将文件映射到二级存储上</p>
+<p>在稳定存储介质上备份文件</p>
+</blockquote>
+<p>　操作系统负责系列有关硬盘管理的活动：</p>
+<blockquote>
+<p>空闲空间管理</p>
+<p>存储空间分配</p>
+<p>硬盘调度</p>
+</blockquote>
+<h4 id="高速缓存"><a href="#高速缓存" class="headerlink" title="高速缓存"></a>高速缓存</h4><p>　　信息通常保存在内存中，当他使用时，他会被临时复制到赶快的存储系统－高速缓存．当需要特定的信息时，首先检查他是否在高速缓存红，如果是，可直接使用高速缓存的信息，否则使用位于内存的信息，同事将其复制到高速缓存一片下次使用．索引寄存器为内存提供了高速缓存．</p>
+<h4 id="I-O系统"><a href="#I-O系统" class="headerlink" title="I/O系统"></a>I/O系统</h4><p>　　操作系统的目的之一在于对用户隐藏具体硬件设备的特性．I/O子系统摆阔如下几个部分：</p>
+<blockquote>
+<p>一个包括缓存、高速缓存和假脱机的内存管理部分</p>
+<p>通用设备驱动器接口</p>
+<p>特定硬件设备的驱动程序</p>
+</blockquote>
+<h3 id="操作系统结构-1"><a href="#操作系统结构-1" class="headerlink" title="操作系统结构"></a>操作系统结构</h3><ul>
+<li>用户界面：命令行界面、图形用户界面、</li>
+<li>程序执行：系统必须将程序装入内存中并运行程序</li>
+<li>I/O操作：操作系统必须提供I/O操作的方法</li>
+<li>文件系统操作：</li>
+<li>通信：进程之间的信息交换</li>
+<li>错误检测：</li>
+<li>资源分配：</li>
+<li>统计:</li>
+<li>保护和安全</li>
+</ul>
+<h4 id="系统调用类型"><a href="#系统调用类型" class="headerlink" title="系统调用类型"></a>系统调用类型</h4><p>　　系统调用大致分为五类：进程控制、文件管理、设备管理、信息维护和通信．</p>
+<h3 id="进程管理-1"><a href="#进程管理-1" class="headerlink" title="进程管理"></a>进程管理</h3><p>　　处于执行中的程序称为进程，进程需要一定的资源（cpu时间、内存、文件、I/O设备）以完成其任务．程序本身并不是进程，程序是被动的实体，如同储存在磁盘上的内容，进程是一个活动的实体．进程是系统工作的单元．</p>
+<p>　　<strong>进程状态：</strong></p>
+<ul>
+<li><p>新的：进程正在被创建</p>
+</li>
+<li><p>运行：指令正在被执行</p>
+</li>
+<li><p>等待：进程等待某个事件的发生</p>
+</li>
+<li><p>就绪：进程等待分配处理器</p>
+</li>
+<li><p>终止：进程完成执行</p>
+<p><strong>进程控制块：（PCB）</strong></p>
+</li>
+<li><p>进程状态：前述状态</p>
+</li>
+<li><p>程序计数器：表示进程要执行的下个指令的地址</p>
+</li>
+<li><p>CPU寄存器：包括累加器、索引寄存器、堆栈指针、通用寄存器和其他条件码信息寄存器</p>
+</li>
+<li><p>CPU调度信息：进程优先级、调度队列的指正和其他调度参数</p>
+</li>
+<li><p>内存管理信息：基址和界限寄存器的值顿号页表或段表</p>
+</li>
+<li><p>记账信息：CPU事件、实际使用时间、时间界限、记账数据、作业或进程数量</p>
+</li>
+<li><p>I/O状态信息：分配给进程的I/O设备列表、打开的文件列表</p>
+</li>
+</ul>
+<h4 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h4><p>　　进程创建：创建进程称为父进程，新进程称为子进程，新进程可以再创建其他进程，形成进程树．</p>
+<p>　　大多数操作系统根据唯一的进程标示符(pid)来识别进程，pid通常是一个整数值．在进程创建时，除了得到各种物理和罗技资源外，初始化数据由父进传递给子进程．</p>
+<p>　　当进程创建新进程是，有两种执行可能：</p>
+<ul>
+<li>父进程与子进程并发执行</li>
+<li>父进程等待，直到某个或者去全部子进程执行完</li>
+</ul>
+<p>　　新进程的地址空间也有两种可能：</p>
+<ul>
+<li>子进程是父进程的复制品</li>
+<li>子进程装入另外一个程序</li>
+</ul>
+<h4 id="进程终止"><a href="#进程终止" class="headerlink" title="进程终止"></a>进程终止</h4><p>　　当进程完成执行最后的语句后用exit()请求操作系统删除自身时，进程终止．进程可以返回状态值到父进程，所有进程资源会被操作系统释放．</p>
+<p>　　父进程终止子进程的原因：</p>
+<ul>
+<li>子进程使用了超过他所分配到的一些资源</li>
+<li>分配给子进程的任务已经不再需要</li>
+<li>父进程退出</li>
+</ul>
+<h4 id="进程间通信"><a href="#进程间通信" class="headerlink" title="进程间通信"></a>进程间通信</h4><p>　　操作系统内并发执行的进程可以是独立进程或协作进程．协作进程需要进程间通信机制来允许进程相互交换数据与信息．进程间通信有两种基本模式：共享内存、消息传递．</p>
+<h3 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h3><p>　　线程是CPU使用的基本单元，它有线程ID、陈旭计数器都闹寄存器集合和堆栈组成．它与属于同于进程的其他线程共享代码段、数据段和其他操作系统资源．单线程、多线程．</p>
+<p>　　多线程编程优点：</p>
+<ul>
+<li>响应度高：即使部分阻塞或者执行叫冗长的操作，陈旭仍然继续执行</li>
+<li>资源共享：现成默认共享他们所属进程的内存和资源</li>
+<li>经济：进程创建所需要的内存和资源的分配比较昂贵</li>
+<li>多处理器体系结构的利用：充分使用多处理器体系结构，以便每个进程能并行运行在不同的处理器</li>
+</ul>
+<h4 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h4><blockquote>
+<p>多对一模型</p>
+<p>一对一模型</p>
+<p>多对多模型</p>
+</blockquote>
+<p>现线程是进程内的控制流．多线程进程在同一地址被包括多个不同的控制流．</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/20/normalization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1274,8 +1596,8 @@ w^{address}=\begin{bmatrix}
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-17T19:47:48+08:00">
-                2017-12-17
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-21T20:35:01+08:00">
+                2017-12-21
               </time>
             
           </span>
@@ -1293,8 +1615,8 @@ w^{address}=\begin{bmatrix}
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/阅读/" itemprop="url" rel="index">
-                    <span itemprop="name">阅读</span>
+                  <a href="/categories/影音/" itemprop="url" rel="index">
+                    <span itemprop="name">影音</span>
                   </a>
                 </span>
 
@@ -2269,7 +2591,7 @@ w^{address}=\begin{bmatrix}
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2280,7 +2602,7 @@ w^{address}=\begin{bmatrix}
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -2291,7 +2613,7 @@ w^{address}=\begin{bmatrix}
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2376,7 +2698,7 @@ w^{address}=\begin{bmatrix}
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">16.0k</span>
+    <span title="博客全站字数">18.2k</span>
   
 </div>
 
