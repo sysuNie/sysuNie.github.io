@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="操作系统导论　　操作系统是管理和控制计算机硬件和软件资源的计算机程序．计算机系统大致可以分为四个组成部分：计算机硬件、操作系统、系统程序与应用程序和用户．计算机系统的组成部分包括硬件、软件和数据．操作系统是一直运行在计算机上的程序（通常称为内核kernel）． 操作系统基本特征：  并发：同一段时间内多个程序执行 共享：系统中的资源可以被内存中多个并发执行的进线程共同使用   虚拟：通过分时复用以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-12-22T12:44:32.875Z">
+<meta property="og:updated_time" content="2017-12-26T11:11:09.272Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="operating_system">
 <meta name="twitter:description" content="操作系统导论　　操作系统是管理和控制计算机硬件和软件资源的计算机程序．计算机系统大致可以分为四个组成部分：计算机硬件、操作系统、系统程序与应用程序和用户．计算机系统的组成部分包括硬件、软件和数据．操作系统是一直运行在计算机上的程序（通常称为内核kernel）． 操作系统基本特征：  并发：同一段时间内多个程序执行 共享：系统中的资源可以被内存中多个并发执行的进线程共同使用   虚拟：通过分时复用以">
@@ -443,8 +443,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-22T20:44:32+08:00">
-                2017-12-22
+              <time title="更新于" itemprop="dateModified" datetime="2017-12-26T19:11:09+08:00">
+                2017-12-26
               </time>
             
           </span>
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,480
+                  7,783
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  15
+                  26
                 </span>
               
             </div>
@@ -746,6 +746,53 @@
 <li>使用协议以预防或避免死锁，确保系统不会进入死锁状态．</li>
 <li>可允许系统进入死锁状态，然后检测它，并加以恢复．</li>
 <li>可忽视这个问题，认为死锁不可能在系统内发生．</li>
+</ul>
+<p>为了确保思索不会发生，系统可采用死锁预防或死锁避免方案．</p>
+<h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4><p><strong>互斥</strong></p>
+<p>对于非共享资源，必须要有互斥条件．例如：一台打印机不能同事为多个进程所共享．共享资源不要求互斥访问，一次不会死锁．</p>
+<p><strong>占有并等待</strong></p>
+<p>当一个进程申请一个资源时，它不能占有其他资源．一种可以使用的协议时每个进程在执行前申请并获得所以资源．另一种协议允许进程在没有资源时才可以申请资源．这两种协议的主要缺点：第一，资源利用率可能比较低，因为许多资源可能已分配，但是长时间没有被使用．第二，可能发生饥饿，一个进程如需要多个常用资源，可能会永久等待，因为其所需要的资源中至少有一个已分配给其他进程．</p>
+<p><strong>非抢占</strong></p>
+<p>如果一个进程占有资源并申请了一个不能立即分配的资源，那么其现已分配的资源都可能被强占．换句话说，这些资源都被隐式地释放了．如果一个进程申请一些资源，那么首先检查它们是否可用．如果可用，那么就分配它们；如果不可用，那么检查这些资源是否已分配给其他等待额外资源的进程．</p>
+<p><strong>循环等待</strong></p>
+<p>对所有资源类型进行完全排序，且要求每个进程按递增顺序来申请资源．</p>
+<h4 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h4><p>获得以后如何申请资源的附加信息，每次申请要求系统考虑现有可用资源、现已分配给每个进程的资源和每个进程将来申请与释放的资源，以决定当前申请是否满足或必须等待，从而避免死锁发生的可能性</p>
+<p><strong>安全状态</strong></p>
+<p>如果系统能按某个顺序诶每个进程分配资源（不超过其最大值）并能避免死锁，那么系统状态就是安全的．准确的说，如果存在一个安全写，那么系统处于安全状态．</p>
+<ul>
+<li><strong>资源分配图算法</strong> 　每种资源类型只有一个实例</li>
+<li><strong>银行家算法</strong>　每种资源类型有多个实例</li>
+</ul>
+<h4 id="检测死锁"><a href="#检测死锁" class="headerlink" title="检测死锁"></a>检测死锁</h4><p>允许系统运行过程中产生死锁，在死锁发生之后，采用一定的算法进行检测，并确定与死锁相关的资源和进程，采取相关方法清除检测到的死锁。实现难度大 ．</p>
+<h4 id="解除死锁"><a href="#解除死锁" class="headerlink" title="解除死锁"></a>解除死锁</h4><p>与死锁检测配合，将系统从死锁中解脱出来（撤销进程或者剥夺资源）。对检测到的和死锁相关的进程以及资源，通过撤销或者挂起的方式，释放一些资源并将其分配给处于阻塞状态的进程，使其转变为就绪态。实现难度大．</p>
+<h3 id="内存管理方式-段式页式和段页式"><a href="#内存管理方式-段式页式和段页式" class="headerlink" title="内存管理方式-段式页式和段页式"></a>内存管理方式-段式页式和段页式</h3><p>　　由于连续内存分配方式(单一连续分配，固定分区分配，动态分区分配，动态重定位分区分配)导致的内存利用率偏低以及内存碎片的问题，进而引出离散的内存分配方式。离散内存分配可以从OS的内存管理角度引出页式(离散分配的基本单位是页)管理，也可以从程序编制角度引出段式(离散分配的基本单位是段)管理。</p>
+<h4 id="基本分页存储管理"><a href="#基本分页存储管理" class="headerlink" title="基本分页存储管理"></a>基本分页存储管理</h4><p>   　 基本分页存储管理中不具备页面置换功能(即没有实现虚拟内存的功能)，因此需要整个程序的所有页面都装入内存之后才可以运行。因为程序数据存储在不同的页面中，而页面又离散的分布在内存中，因此需要一个<strong>页表来记录逻辑地址和实际存储地址之间的映射关系，以实现从页号到物理块号的映射</strong>。由于页表也是存储在内存中的，因此和不适用分页管理的存储方式相比，访问分页系统中内存数据需要两次的内存访问(一次是从内存中访问页表，从中找到指定的物理块号，加上页内偏移得到实际物理地址；第二次就是根据第一次得到的物理地址访问内存取出数据)。<br>　　为了<strong>减少两次访问内存导致的效率影响，分页管理中引入了快表(或者联想寄存器)机制</strong>，包含快表机制的内存管理中，当要访问内存数据的时候，首先将页号在快表中查询，如果查找到说明要访问的页表项在快表中，那么直接从快表中读取相应的物理块号；如果没有找到，那么访问内存中的页表，从页表中得到物理地址，同时将页表中的该映射表项添加到快表中(可能存在快表换出算法)。<br>　　在某些<strong>计算机中如果内存的逻辑地址很大，将会导致程序的页表项会很多，而页表在内存中是连续存放的，所以相应的就需要较大的连续内存空间。为了解决这个问题，可以采用两级页表或者多级页表的方法</strong>，其中外层页表一次性调入内存且连续存放，内层页表离散存放。相应的访问内存页表的时候需要一次地址变换，访问逻辑地址对应的物理地址的时候也需要一次地址变换，而且一共需要访问内存3次才可以读取一次数据。</p>
+<h4 id="基本分段存储管理方式"><a href="#基本分段存储管理方式" class="headerlink" title="基本分段存储管理方式"></a>基本分段存储管理方式</h4><p>　　分页是为了提高内存利用率，而分段是为了满足程序员在编写代码的时候的一些逻辑需求(比如数据共享，数据保护，动态链接等)。<br>　　分段内存管理当中，地址是二维的，一维是段号，一维是段内地址；其中每个段的长度是不一样的，而且每个段内部都是从0开始编址的。由于分段管理中，每个段内部是连续内存分配，但是段和段之间是离散分配的，因此也存在一个逻辑地址到物理地址的映射关系，相应的就是段表机制。段表中的每一个表项记录了该段在内存中的起始地址和该段的长度。段表可以放在内存中也可以放在寄存器中。<br>　　访问内存的时候根据段号和段表项的长度计算当前访问段在段表中的位置，然后访问段表，得到该段的物理地址，根据该物理地址以及段内偏移量就可以得到需要访问的内存。由于也是两次内存访问，所以分段管理中同样引入了联想寄存器。</p>
+<h4 id="分页和分段对比"><a href="#分页和分段对比" class="headerlink" title="分页和分段对比"></a>分页和分段对比</h4><ul>
+<li>页是信息的物理单位，是出于系统内存利用率的角度提出的离散分配机制；</li>
+<li>段是信息的逻辑单位，每个段含有一组意义完整的信息，是出于用户角度提出的内存管理机制 </li>
+<li>页的大小是固定的，由系统决定；</li>
+<li>段的大小是不确定的，由用户决定 </li>
+<li>页地址空间是一维的；</li>
+<li>段地址空间是二维的</li>
+</ul>
+<h4 id="段页式存储管理"><a href="#段页式存储管理" class="headerlink" title="段页式存储管理"></a>段页式存储管理</h4><p>　　先将用户程序分为若干个段，然后再把每个段分成若干个页，并且为每一个段赋予一个段名称。这样在段页式管理中，一个内存地址就由段号，段内页号以及页内地址三个部分组成。<br>　　段页式内存访问：系统中设置了一个段表寄存器，存放段表的起始地址和段表的长度。地址变换时，根据给定的段号（还需要将段号和寄存器中的段表长度进行比较防止越界）以及寄存器中的段表起始地址，就可以得到该段对应的段表项，从段表项中得到该段对应的页表的起始地址，然后利用逻辑地址中的段内页号从页表中找到页表项，从该页表项中的物理块地址以及逻辑地址中的页内地址拼接出物理地址，最后用这个物理地址访问得到所需数据。由于访问一个数据需要三次内存访问，所以段页式管理中也引入了高速缓冲寄存器。</p>
+<h3 id="虚拟内存及页面置换算法"><a href="#虚拟内存及页面置换算法" class="headerlink" title="虚拟内存及页面置换算法"></a>虚拟内存及页面置换算法</h3><p>　　如果存在一个程序，所需内存空间超过了计算机可以提供的实际内存，那么由于该程序无法装入内存所以也就无法运行。单纯的增加物理内存只能解决一部分问题，但是仍然会出现无法装入单个或者无法同时装入多个程序的问题。但是可以从逻辑的角度扩充内存容量，即可解决上述两种问题。</p>
+<p>　　<strong>虚拟存储器就是具有请求调入功能和置换功能，可以从逻辑上对内存容量加以扩充的一种存储器系统。虚拟存储器都是建立在离散内存管理的基础上．</strong></p>
+<p>虚拟存储器的特征：</p>
+<ul>
+<li>多次性：一个作业可以分多次被调入内存。多次性是虚拟存储特有的属性 ．</li>
+<li>对换性：作业运行过程中存在换进换出的过程(换出暂时不用的数据换入需要的数据) ．</li>
+<li>虚拟性：虚拟性体现在其从逻辑上扩充了内存的容量(可以运行实际内存需求比物理内存大的应用程序)。虚拟性是虚拟存储器的最重要特征也是其最终目标。虚拟性建立在多次性和对换性的基础上行，多次性和对换性又建立在离散分配的基础上．</li>
+</ul>
+<h4 id="页面置换算法"><a href="#页面置换算法" class="headerlink" title="页面置换算法"></a>页面置换算法</h4><ul>
+<li>最佳置换算法：只具有理论意义的算法，用来评价其他页面置换算法。置换策略是将当前页面中在未来最长时间内不会被访问的页置换出去。</li>
+<li>先进先出置换算法：简单粗暴的一种置换算法，没有考虑页面访问频率信息。每次淘汰最早调入的页面.</li>
+<li>最近最久未使用算法LRU：算法赋予每个页面一个访问字段，用来记录上次页面被访问到现在所经历的时间t，每次置换的时候把t值最大的页面置换出去(实现方面可以采用寄存器或者栈的方式实现).</li>
+<li>时钟算法clock(也被称为是最近未使用算法NRU)：页面设置一个访问为，并将页面链接为一个环形队列，页面被访问的时候访问位设置为1。页面置换的时候，如果当前指针所指页面访问为为0，那么置换，否则将其置为0，循环直到遇到一个访问为位0的页面.</li>
+<li>改进型Clock算法：在Clock算法的基础上添加一个修改位，替换时根究访问位和修改位综合判断。优先替换访问为何修改位都是0的页面，其次是访问位为0修改位为1的页面。</li>
+<li>最少使用算法LFU：设置寄存器记录页面被访问次数，每次置换的时候置换当前访问次数最少的。存在问题是该访问寄存器并不能真正反映当前页面访问次数，因为访问速度比较快，所以在更新寄存器的时间间隔内访问1次和访问100次都是一样的。另外，LFU和LRU是很类似的，支持硬件也是一样的，但是区分两者的关键在于一个以时间为标准，一个以次数为标准(例如对于寄存器 pa 001111 和pb 111000，两个页面，如果采用LRU，那么被淘汰的是pa，如果采用LFU那么被淘汰的是pb)。</li>
+<li>页面缓冲算法PBA：置换的时候，页面无论是否被修改过，都不被置换到磁盘，而是先暂留在内存中的页面链表(已修改页面链表和未修改页面链表，也可以不区分)里面，当其再次被访问的时候可以直接从这些链表中取出而不必进行磁盘IO，当链表中已修改也难数目达到一定数量之后，进行依次写磁盘操作(相当于将多次IO合并为一次).</li>
 </ul>
 
       
@@ -1045,7 +1092,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统导论"><span class="nav-text">操作系统导论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统组织"><span class="nav-text">计算机系统组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统体系结构"><span class="nav-text">计算机系统体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统结构"><span class="nav-text">操作系统结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统操作"><span class="nav-text">操作系统操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程管理"><span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储管理"><span class="nav-text">存储管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高速缓存"><span class="nav-text">高速缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O系统"><span class="nav-text">I/O系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统结构-1"><span class="nav-text">操作系统结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调用类型"><span class="nav-text">系统调用类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程管理-1"><span class="nav-text">进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程操作"><span class="nav-text">进程操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程终止"><span class="nav-text">进程终止</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信"><span class="nav-text">进程间通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程模型"><span class="nav-text">多线程模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度程序激活"><span class="nav-text">调度程序激活</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程的区别"><span class="nav-text">进程和线程的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU调度"><span class="nav-text">CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调度准则"><span class="nav-text">调度准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度算法"><span class="nav-text">调度算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程调度"><span class="nav-text">线程调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程同步"><span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#临界区问题"><span class="nav-text">临界区问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件同步"><span class="nav-text">硬件同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经典同步问题"><span class="nav-text">经典同步问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁特征"><span class="nav-text">死锁特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁处理方法"><span class="nav-text">死锁处理方法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统导论"><span class="nav-text">操作系统导论</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统组织"><span class="nav-text">计算机系统组织</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#计算机系统体系结构"><span class="nav-text">计算机系统体系结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统结构"><span class="nav-text">操作系统结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统操作"><span class="nav-text">操作系统操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程管理"><span class="nav-text">进程管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#内存管理"><span class="nav-text">内存管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储管理"><span class="nav-text">存储管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高速缓存"><span class="nav-text">高速缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#I-O系统"><span class="nav-text">I/O系统</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#操作系统结构-1"><span class="nav-text">操作系统结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统调用类型"><span class="nav-text">系统调用类型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程管理-1"><span class="nav-text">进程管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#进程操作"><span class="nav-text">进程操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程终止"><span class="nav-text">进程终止</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#进程间通信"><span class="nav-text">进程间通信</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程"><span class="nav-text">线程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程模型"><span class="nav-text">多线程模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程池"><span class="nav-text">线程池</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度程序激活"><span class="nav-text">调度程序激活</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程和线程的区别"><span class="nav-text">进程和线程的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU调度"><span class="nav-text">CPU调度</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#调度准则"><span class="nav-text">调度准则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调度算法"><span class="nav-text">调度算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程调度"><span class="nav-text">线程调度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#进程同步"><span class="nav-text">进程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#临界区问题"><span class="nav-text">临界区问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#硬件同步"><span class="nav-text">硬件同步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#经典同步问题"><span class="nav-text">经典同步问题</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁"><span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁特征"><span class="nav-text">死锁特征</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁处理方法"><span class="nav-text">死锁处理方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁预防"><span class="nav-text">死锁预防</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#死锁避免"><span class="nav-text">死锁避免</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#检测死锁"><span class="nav-text">检测死锁</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解除死锁"><span class="nav-text">解除死锁</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存管理方式-段式页式和段页式"><span class="nav-text">内存管理方式-段式页式和段页式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本分页存储管理"><span class="nav-text">基本分页存储管理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本分段存储管理方式"><span class="nav-text">基本分段存储管理方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分页和分段对比"><span class="nav-text">分页和分段对比</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#段页式存储管理"><span class="nav-text">段页式存储管理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟内存及页面置换算法"><span class="nav-text">虚拟内存及页面置换算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面置换算法"><span class="nav-text">页面置换算法</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -1079,7 +1126,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">20.5k</span>
+    <span title="博客全站字数">23.8k</span>
   
 </div>
 
