@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-26T14:05:30.623Z</updated>
+  <updated>2017-12-27T05:45:39.079Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>data_augmentation</title>
+    <link href="http://yoursite.com/2017/12/27/data-augmentation/"/>
+    <id>http://yoursite.com/2017/12/27/data-augmentation/</id>
+    <published>2017-12-27T05:20:58.000Z</published>
+    <updated>2017-12-27T05:45:39.079Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="数据扩充"><a href="#数据扩充" class="headerlink" title="数据扩充"></a>数据扩充</h3><p>深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．偶晓得数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．</p><h4 id="简单的数据扩充方式"><a href="#简单的数据扩充方式" class="headerlink" title="简单的数据扩充方式"></a>简单的数据扩充方式</h4><p>在数据扩充方面，简单的方法有图像水平翻转、随机扣取、尺寸变换和旋转．在此基础上，对原图或已变化的图像进行色彩抖动也是一种常用的数据扩充手段．</p><h4 id="特殊的数据扩充方式"><a href="#特殊的数据扩充方式" class="headerlink" title="特殊的数据扩充方式"></a>特殊的数据扩充方式</h4><ul><li><strong>Fancy PCA</strong></li></ul><p>Fancy PCA首先对所有训练数据的R,G,B像素值进行主成分分析（PCA）操作，得到对应的特征向量和特征值,然后根据特征向量和特征值可以计算一组随机值，将其作为扰动加到原像素值中即可．</p><ul><li>监督式数据扩充</li></ul><p>借助图像标记信息的新型数据扩充方式．首先根据元数据训练一个分类的初始模型，利用该模型对每张生成对应的特征图或热力图．这张图可指示图像区域与场景标记之间的相关概率，之后根据此概率映射回原图选择较强相关的图像区域作为扣取的图像块．适用于高层予以图像分类任务．</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;数据扩充&quot;&gt;&lt;a href=&quot;#数据扩充&quot; class=&quot;headerlink&quot; title=&quot;数据扩充&quot;&gt;&lt;/a&gt;数据扩充&lt;/h3&gt;&lt;p&gt;深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有
+      
+    
+    </summary>
+    
+      <category term="论文" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="论文，数据扩充" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%EF%BC%8C%E6%95%B0%E6%8D%AE%E6%89%A9%E5%85%85/"/>
+    
+  </entry>
   
   <entry>
     <title>Sort_Algorithms</title>
