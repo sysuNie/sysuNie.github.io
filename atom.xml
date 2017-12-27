@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-12-27T05:45:39.079Z</updated>
+  <updated>2017-12-27T10:07:59.822Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,20 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>data_preconfig</title>
+    <link href="http://yoursite.com/2017/12/27/data-preconfig/"/>
+    <id>http://yoursite.com/2017/12/27/data-preconfig/</id>
+    <published>2017-12-27T09:39:25.000Z</published>
+    <updated>2017-12-27T10:07:59.822Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="数据预处理"><a href="#数据预处理" class="headerlink" title="数据预处理"></a>数据预处理</h3><p>机器学习中，对于输入特征做归一化预处理操作是最常见的步骤．图像处理中，图像的每个像素信息同样可以看做一种特征．在实践中，对每个特征减去平均值来中心化数据(mean normalization)．卷积神经网络中数据预处理通常是计算<strong>训练集图像像素均值</strong>，之后在处理训练集、验证集和测试集图像时需要分别减去该均值．减均值操作原理：默认自然图像是一类平稳的数据分布（数据在每一个唯独的统计都服从相同分布），在每个样本上减去数据的统计平均值（逐样本计算），移除共同部分，凸显个体差异</p><a id="more"></a><h3 id="网络参数初始化"><a href="#网络参数初始化" class="headerlink" title="网络参数初始化"></a>网络参数初始化</h3><p>神经网络模型一般依靠随机梯度下降法进行模型训练和参数更新，网络的最终性能与收敛得到的最优解直接相关，而收敛效果实际上很大成都取决于网络参数的初始化．下面介绍几种初始化方式．</p><ul><li>全零初始化</li></ul><p>通过合理的数据预处理和规范化，当网络达到稳定状态时，参数在理想情况下应该保持正负各半的状态（期望为０）．因此，可以干脆将所有参数初始化为０（此时参数期望也为０）．</p><ul><li>随机初始化</li></ul><p>将参数随机设定为接近0的一个很小的随机数(有正有负)．随机参数服从高斯分布或菊云分布都是比较有效的初始化方式．为解决网络输出数据分布的方差会随着输入神经元个数改变，需要在初始化的同时加上对方差大小的规范化．</p><ul><li>预训练模型参数初始化</li></ul><p>将预训练模型的参数作为新任务模型的参数初始化．</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;数据预处理&quot;&gt;&lt;a href=&quot;#数据预处理&quot; class=&quot;headerlink&quot; title=&quot;数据预处理&quot;&gt;&lt;/a&gt;数据预处理&lt;/h3&gt;&lt;p&gt;机器学习中，对于输入特征做归一化预处理操作是最常见的步骤．图像处理中，图像的每个像素信息同样可以看做一种特征．在实践中，对每个特征减去平均值来中心化数据(mean normalization)．卷积神经网络中数据预处理通常是计算&lt;strong&gt;训练集图像像素均值&lt;/strong&gt;，之后在处理训练集、验证集和测试集图像时需要分别减去该均值．减均值操作原理：默认自然图像是一类平稳的数据分布（数据在每一个唯独的统计都服从相同分布），在每个样本上减去数据的统计平均值（逐样本计算），移除共同部分，凸显个体差异&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="论文，数据预处理" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%A2%84%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>data_augmentation</title>
     <link href="http://yoursite.com/2017/12/27/data-augmentation/"/>
     <id>http://yoursite.com/2017/12/27/data-augmentation/</id>
     <published>2017-12-27T05:20:58.000Z</published>
-    <updated>2017-12-27T05:45:39.079Z</updated>
+    <updated>2017-12-27T10:07:54.986Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="数据扩充"><a href="#数据扩充" class="headerlink" title="数据扩充"></a>数据扩充</h3><p>深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．偶晓得数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．</p><h4 id="简单的数据扩充方式"><a href="#简单的数据扩充方式" class="headerlink" title="简单的数据扩充方式"></a>简单的数据扩充方式</h4><p>在数据扩充方面，简单的方法有图像水平翻转、随机扣取、尺寸变换和旋转．在此基础上，对原图或已变化的图像进行色彩抖动也是一种常用的数据扩充手段．</p><h4 id="特殊的数据扩充方式"><a href="#特殊的数据扩充方式" class="headerlink" title="特殊的数据扩充方式"></a>特殊的数据扩充方式</h4><ul><li><strong>Fancy PCA</strong></li></ul><p>Fancy PCA首先对所有训练数据的R,G,B像素值进行主成分分析（PCA）操作，得到对应的特征向量和特征值,然后根据特征向量和特征值可以计算一组随机值，将其作为扰动加到原像素值中即可．</p><ul><li>监督式数据扩充</li></ul><p>借助图像标记信息的新型数据扩充方式．首先根据元数据训练一个分类的初始模型，利用该模型对每张生成对应的特征图或热力图．这张图可指示图像区域与场景标记之间的相关概率，之后根据此概率映射回原图选择较强相关的图像区域作为扣取的图像块．适用于高层予以图像分类任务．</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="数据扩充"><a href="#数据扩充" class="headerlink" title="数据扩充"></a>数据扩充</h3><p>深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．有效的数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．</p><a id="more"></a><h4 id="简单的数据扩充方式"><a href="#简单的数据扩充方式" class="headerlink" title="简单的数据扩充方式"></a>简单的数据扩充方式</h4><p>在数据扩充方面，简单的方法有图像水平翻转、随机扣取、尺寸变换和旋转．在此基础上，对原图或已变化的图像进行色彩抖动也是一种常用的数据扩充手段．</p><h4 id="特殊的数据扩充方式"><a href="#特殊的数据扩充方式" class="headerlink" title="特殊的数据扩充方式"></a>特殊的数据扩充方式</h4><ul><li><strong>Fancy PCA</strong></li></ul><p>Fancy PCA首先对所有训练数据的R,G,B像素值进行主成分分析（PCA）操作，得到对应的特征向量和特征值,然后根据特征向量和特征值可以计算一组随机值，将其作为扰动加到原像素值中即可．</p><ul><li>监督式数据扩充</li></ul><p>借助图像标记信息的新型数据扩充方式．首先根据元数据训练一个分类的初始模型，利用该模型对每张生成对应的特征图或热力图．这张图可指示图像区域与场景标记之间的相关概率，之后根据此概率映射回原图选择较强相关的图像区域作为扣取的图像块．适用于高层予以图像分类任务．</p>]]></content>
     
     <summary type="html">
     
-      
-      
-        &lt;h3 id=&quot;数据扩充&quot;&gt;&lt;a href=&quot;#数据扩充&quot; class=&quot;headerlink&quot; title=&quot;数据扩充&quot;&gt;&lt;/a&gt;数据扩充&lt;/h3&gt;&lt;p&gt;深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有
-      
+      &lt;h3 id=&quot;数据扩充&quot;&gt;&lt;a href=&quot;#数据扩充&quot; class=&quot;headerlink&quot; title=&quot;数据扩充&quot;&gt;&lt;/a&gt;数据扩充&lt;/h3&gt;&lt;p&gt;深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．有效的数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．&lt;/p&gt;
     
     </summary>
     
