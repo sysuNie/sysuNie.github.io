@@ -128,14 +128,14 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="自然语言处理－词向量引言在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为Word Representation，一般来说，词向量经常指Word Embedding，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/language_model_bengio.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/cbow.jpg">
-<meta property="og:image" content="http://yoursite.com/2017/12/Pictures/datastructure/Skip-Gram.jpg">
-<meta property="og:updated_time" content="2017-12-17T12:58:15.330Z">
+<meta property="og:image" content="http://yoursite.com/2017/12/17/img/language_model_bengio.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/12/17/img/cbow.jpg">
+<meta property="og:image" content="http://yoursite.com/2017/12/17/img/Skip-Gram.jpg">
+<meta property="og:updated_time" content="2018-01-03T14:17:43.526Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="词向量">
 <meta name="twitter:description" content="自然语言处理－词向量引言在计算机视觉中，作为输入的图片可以直接数值化。在语言识别中，作为输入的语音也可以直接数值化。而在自然语言处理中，我们无法将文字直接数值化，为了能够让计算机处理文字，我们需要将文字映射到一个数值空间。由于词是组成语义的基本单位，所以对词的表述就显得尤为重要，我们把词的数值（表征）表示为Word Representation，一般来说，词向量经常指Word Embedding，">
-<meta name="twitter:image" content="http://yoursite.com/2017/12/Pictures/datastructure/language_model_bengio.jpg">
+<meta name="twitter:image" content="http://yoursite.com/2017/12/17/img/language_model_bengio.jpg">
 
 
 
@@ -447,8 +447,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2017-12-17T20:58:15+08:00">
-                2017-12-17
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-03T22:17:43+08:00">
+                2018-01-03
               </time>
             
           </span>
@@ -619,7 +619,8 @@ w^{address}=\begin{bmatrix}
 <p><strong>Word Embedding</strong> 出现解决了上述问题。</p>
 <h3 id="基于迭代的词表征-词向量"><a href="#基于迭代的词表征-词向量" class="headerlink" title="基于迭代的词表征(词向量)"></a>基于迭代的词表征(词向量)</h3><p>迭代的词表征得到的是一个稠密的向量，与矩阵分解不同的是，词向量是通过迭代训练模型得到。</p>
 <h4 id="NNLM"><a href="#NNLM" class="headerlink" title="NNLM"></a>NNLM</h4><p>这个<a href="http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf" target="_blank" rel="external">模型</a>是由Bengio大神于2003年发表，可以说是Neural Language Model的开山之作。本来作者的主要目的是建立语言模型，结果发现了词向量这种副产品，由此引发了后人对词向量的火热研究。</p>
-<p>模型使用了一个简单的前向神经网络，如下图所示： <img src="../../Pictures/datastructure/language_model_bengio.jpg" alt="language_model_bengio"></p>
+<p>模型使用了一个简单的前向神经网络，如下图所示： </p>
+<p><img src="../img/language_model_bengio.jpg" alt="language_model_bengio"></p>
 <p>该模型通过上下文来预测下一个单词，图中所示的输入为上文的各个词$w_i$，然后将他们的词向量$C(w_i)$连接起来，输出是每个词的概率$P(w_t|content)$，虚线表示的是词向量层和输出层的直接连接。</p>
 <h4 id="Word2vec"><a href="#Word2vec" class="headerlink" title="Ｗord2vec"></a>Ｗord2vec</h4><p>Ｗord2vec这个工具，是Tomas Mikolov在Google的时候开发的用来训练词向量的工具。Ｗord2vec这个工具中有两个模型（CBOW、Skip-Gram），还有两种加速训练的trick（层次Softmax、负采样），下面分别一一讲述。</p>
 <ul>
@@ -629,7 +630,7 @@ w^{address}=\begin{bmatrix}
 <li>$x(w)$表示one-hot编码中对应词$w$位置的值，取值为0或1，只有一个位置上的值为1。</li>
 </ul>
 <h5 id="CBOW-Continuous-Bag-of-word-Model"><a href="#CBOW-Continuous-Bag-of-word-Model" class="headerlink" title="CBOW(Continuous Bag-of-word Model)"></a>CBOW(Continuous Bag-of-word Model)</h5><p>模型的网络结构如下：</p>
-<p><img src="../../Pictures/datastructure/cbow.jpg" alt="cbow"></p>
+<p><img src="../img/cbow.jpg" alt="cbow"></p>
 <p><strong>说明</strong>: </p>
 <p>模型中存在两套词向量。</p>
 <p>一套称为Input词向量，用矩阵$V<em>{|V|\times d}=(v_1,\dots,v</em>{|V|})$表示，|V|指的是词表大小，ｄ指词向量维度</p>
@@ -672,7 +673,7 @@ J_{batch} = \sum_i^n J_i</script></li>
 </li>
 </ul>
 <h5 id="Skip-Gram-Continuous-Skip-gram-Model"><a href="#Skip-Gram-Continuous-Skip-gram-Model" class="headerlink" title="Skip-Gram(Continuous Skip-gram Model)"></a>Skip-Gram(Continuous Skip-gram Model)</h5><p>既然可以用上下文来预测目标词，反过来也能用目标词来预测上下文，Skip-Gram因此应运而生。</p>
-<p><img src="../../Pictures/datastructure/Skip-Gram.jpg" alt="Skip-Gram"></p>
+<p><img src="../img/Skip-Gram.jpg" alt="Skip-Gram"></p>
 <p>与CBOW一样，模型中存在两套词向量$U$和$V$。</p>
 <p><strong>建模过程</strong></p>
 <ul>
