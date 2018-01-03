@@ -128,14 +128,14 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="栈和队列栈栈(stack)　限定仅在表尾进行插入或删除操作的线性表。 表尾端称为栈顶(top)，表头端称为栈底(bottom)。  后进先出的线性表。栈的抽象数据类型定义：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/01/Pictures/datastructure/stackfeature.png">
+<meta property="og:image" content="http://yoursite.com/2018/Pictures/datastructure/stackfeature.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/Pictures/datastructure/migong.png">
 <meta property="og:image" content="http://yoursite.com/2018/01/Pictures/datastructure/queue.png">
-<meta property="og:updated_time" content="2018-01-03T13:32:21.084Z">
+<meta property="og:updated_time" content="2018-01-03T13:42:42.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="栈和队列">
 <meta name="twitter:description" content="栈和队列栈栈(stack)　限定仅在表尾进行插入或删除操作的线性表。 表尾端称为栈顶(top)，表头端称为栈底(bottom)。  后进先出的线性表。栈的抽象数据类型定义：">
-<meta name="twitter:image" content="http://yoursite.com/2018/01/Pictures/datastructure/stackfeature.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/Pictures/datastructure/stackfeature.png">
 
 
 
@@ -447,7 +447,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-03T21:32:21+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-03T21:42:42+08:00">
                 2018-01-03
               </time>
             
@@ -548,7 +548,7 @@
       
         <h2 id="栈和队列"><a href="#栈和队列" class="headerlink" title="栈和队列"></a>栈和队列</h2><h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>栈(stack)　限定仅在表尾进行插入或删除操作的线性表。</p>
 <p>表尾端称为<strong>栈顶(top)</strong>，表头端称为<strong>栈底(bottom)</strong>。</p>
-<p><img src="../../Pictures/datastructure/stackfeature.png" alt="stackfeature"></p>
+<p><img src="../../../Pictures/datastructure/stackfeature.png" alt="stackfeature"></p>
 <p><strong>后进先出</strong>的线性表。栈的抽象数据类型定义：</p>
 <a id="more"></a>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">ADT Stack&#123;</div><div class="line">  数据对象： D = &#123;ai|ai belong to ElemSet,i=<span class="number">1</span>,<span class="number">2</span>,....,n, n&gt;=<span class="number">0</span>&#125;</div><div class="line">  数据关系： R1 = &#123;&lt;ai<span class="number">-1</span>,ai&gt;|ai<span class="number">-1</span>,ai belong to D,i=<span class="number">1</span>,<span class="number">2</span>,....,n&#125;</div><div class="line">      InitStack(&amp;S)</div><div class="line">      <span class="comment">// 构造一个空栈Ｓ。</span></div><div class="line">      DestoryStack(&amp;S)</div><div class="line">      <span class="comment">// 销毁栈Ｓ。</span></div><div class="line">      ClearStack(&amp;S)</div><div class="line">      <span class="comment">//将S清为空栈。</span></div><div class="line">      StackEmpty(S)</div><div class="line">      <span class="comment">// 若栈Ｓ为空栈，则返回true,否则False。</span></div><div class="line">      StackLength(S)</div><div class="line">      <span class="comment">//返回S的元素个数，即栈的长度。</span></div><div class="line">      GetTop(S,&amp;e)</div><div class="line">      <span class="comment">//用e返回S的栈顶元素。</span></div><div class="line">      Push(&amp;S,e)</div><div class="line">      <span class="comment">//插入元素e为新的栈顶元素。</span></div><div class="line">      Pop(&amp;S,&amp;e)</div><div class="line">      <span class="comment">//删除S的栈顶元素，并用e返回其值。</span></div><div class="line"> </div><div class="line">&#125;ADT Stack</div></pre></td></tr></table></figure>
