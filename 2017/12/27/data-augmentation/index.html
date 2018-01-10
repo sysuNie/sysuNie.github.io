@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="数据扩充深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．有效的数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-03T13:27:54.017Z">
+<meta property="og:updated_time" content="2018-01-10T14:28:22.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据扩充">
 <meta name="twitter:description" content="数据扩充深度卷积网络自身拥有强大的表达能力，网络本身更需要大量的数据来驱动模型训练，否则极有可能陷入过拟合的窘境．实际中，并不是所有数据集都拥有海量样本．因此，在实践中数据扩充是非常有必要的．有效的数据扩充不仅能扩充训练样本数量，还能增加训练样本额多样性，一方面可以避免过拟合，另一方面提升模型的性能．">
@@ -443,8 +443,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-03T21:27:54+08:00">
-                2018-01-03
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-10T22:28:22+08:00">
+                2018-01-10
               </time>
             
           </span>
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  428
+                  609
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  3
                 </span>
               
             </div>
@@ -553,6 +553,7 @@
 <li>监督式数据扩充</li>
 </ul>
 <p>借助图像标记信息的新型数据扩充方式．首先根据元数据训练一个分类的初始模型，利用该模型对每张生成对应的特征图或热力图．这张图可指示图像区域与场景标记之间的相关概率，之后根据此概率映射回原图选择较强相关的图像区域作为扣取的图像块．适用于高层予以图像分类任务．</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> numpy</div><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">from</span> torchvision.transforms <span class="keyword">import</span> *</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomErasing</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, probability=<span class="number">0.5</span>, sl=<span class="number">0.02</span>, sh=<span class="number">0.4</span>,  r1 = <span class="number">0.3</span>, mean=[<span class="number">0.4914</span>, <span class="number">0.4822</span>, <span class="number">0.4465</span>])</span>:</span></div><div class="line">        self.probability = probability</div><div class="line">        self.sl = sl</div><div class="line">        self.sh = sh</div><div class="line">        self.r1 = r1</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, img)</span>:</span></div><div class="line"></div><div class="line">        <span class="keyword">if</span> random.uniform(<span class="number">0</span>, <span class="number">1</span>) &gt; self.probability:</div><div class="line">            <span class="keyword">return</span> img</div><div class="line"></div><div class="line">        <span class="keyword">for</span> attempt <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">            area = img.size()[<span class="number">1</span>] * img.size()[<span class="number">2</span>]</div><div class="line">       </div><div class="line">            target_area = random.uniform(self.sl, self.sh) * area</div><div class="line">            aspect_ratio = random.uniform(self.r1, <span class="number">1</span>/self.r1)</div><div class="line"></div><div class="line">            h = int(round(math.sqrt(target_area * aspect_ratio)))</div><div class="line">            w = int(round(math.sqrt(target_area / aspect_ratio)))</div><div class="line"></div><div class="line">            <span class="keyword">if</span> w &lt;= img.size()[<span class="number">2</span>] <span class="keyword">and</span> h &lt;= img.size()[<span class="number">1</span>]:</div><div class="line">                x1 = random.randint(<span class="number">0</span>, img.size()[<span class="number">1</span>] - h)</div><div class="line">                y1 = random.randint(<span class="number">0</span>, img.size()[<span class="number">2</span>] - w)</div><div class="line">                <span class="keyword">if</span> img.size()[<span class="number">0</span>] == <span class="number">3</span>:</div><div class="line">                    img[<span class="number">0</span>, x1:x1+h, y1:y1+w] = self.mean[<span class="number">0</span>]</div><div class="line">                    img[<span class="number">1</span>, x1:x1+h, y1:y1+w] = self.mean[<span class="number">1</span>]</div><div class="line">                    img[<span class="number">2</span>, x1:x1+h, y1:y1+w] = self.mean[<span class="number">2</span>]</div><div class="line">                <span class="keyword">else</span>:</div><div class="line">                    img[<span class="number">0</span>, x1:x1+h, y1:y1+w] = self.mean[<span class="number">0</span>]</div><div class="line">                <span class="keyword">return</span> img</div><div class="line">        <span class="keyword">return</span> img</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -889,7 +890,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">42.9k</span>
+    <span title="博客全站字数">43.1k</span>
   
 </div>
 
