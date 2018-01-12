@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-10T13:22:53.769Z</updated>
+  <updated>2018-01-12T11:28:14.006Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Exploring Word Vectors with GloVe</title>
+    <link href="http://yoursite.com/2018/01/12/Golve/"/>
+    <id>http://yoursite.com/2018/01/12/Golve/</id>
+    <published>2018-01-12T11:25:20.000Z</published>
+    <updated>2018-01-12T11:28:14.006Z</updated>
+    
+    <content type="html"><![CDATA[<p>在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。</p><p>除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。</p><p>Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。</p><p><img src="../img/analogy.png" alt="analogy"></p><p>现已有一些创建Ｗord Vector的技巧。word2vec算法可预测上下文中的单词(例如”the cat”最可能出现的单词是”the mouse”)，而Glove向量则基于整个语料库的全局计数。glove最大的特点就是可以轻松的下载多套预先训练好的词向量。</p><a id="more"></a><h3 id="Loading-word-vectors"><a href="#Loading-word-vectors" class="headerlink" title="Loading word vectors"></a>Loading word vectors</h3><p>Torchtext包括下载GloVe（和其他）嵌入的函数。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torchtext.vocab <span class="keyword">as</span> vocab</div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glove = vocab.GloVe(name=<span class="string">'6B'</span>, dim=<span class="number">100</span>)</div></pre></td></tr></table></figure><blockquote><p>[out]: 98%|█████████▊| 391063/400000 [00:19&lt;00:00, 19964.76it/s]<br>​          98%|█████████▊| 393086/400000 [00:19&lt;00:00, 19965.52it/s]<br>​          99%|█████████▉| 395108/400000 [00:19&lt;00:00, 19966.79it/s]<br>​          99%|█████████▉| 397132/400000 [00:19&lt;00:00, 19968.13it/s]<br>​          100%|█████████▉| 399154/400000 [00:19&lt;00:00, 19968.55it/s]<br>​          100%|██████████| 400000/400000 [00:20&lt;00:00, 19969.45it/s]</p></blockquote><p>返回的GloVe对象包含以下属性：</p><ul><li><code>stoi</code> <em>string-to-index</em> returns a dictionary of words to indexes</li><li><code>itos</code> <em>index-to-string</em> returns an array of words by index</li><li><code>vectors</code> returns the actual vectors. To get a word vector get the index to get the vector</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_word</span><span class="params">(word)</span>:</span></div><div class="line">    <span class="keyword">return</span> glove.vectors[glove.stoi[word]]</div><div class="line"><span class="comment">#get_word('google')  输出size为100的向量</span></div></pre></td></tr></table></figure><h3 id="Finding-closest-vectors"><a href="#Finding-closest-vectors" class="headerlink" title="Finding closest vectors"></a>Finding closest vectors</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">closest</span><span class="params">(vec, n=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Find the closest words for a given vector</span></div><div class="line"><span class="string">    """</span></div><div class="line">    all_dists = [(w, torch.dist(vec, get_word(w))) <span class="keyword">for</span> w <span class="keyword">in</span> glove.itos]</div><div class="line">    <span class="keyword">return</span> sorted(all_dists, key=<span class="keyword">lambda</span> t: t[<span class="number">1</span>])[:n]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_tuples</span><span class="params">(tuples)</span>:</span></div><div class="line">    <span class="keyword">for</span> tuple <span class="keyword">in</span> tuples:</div><div class="line">        print(<span class="string">'(%.4f) %s'</span> % (tuple[<span class="number">1</span>], tuple[<span class="number">0</span>]))</div><div class="line">print_tuples(closest(get_word(<span class="string">'google'</span>)))</div></pre></td></tr></table></figure><blockquote><p>[out]: (0.0000) google<br>​           (3.0772) yahoo<br>​           (3.8836) microsoft<br>​           (4.1048) web<br>​           (4.1082) aol<br>​           (4.1165) facebook<br>​           (4.3917) ebay<br>​           (4.4122) msn<br>​           (4.4540) internet<br>​           (4.4651) netscape</p></blockquote><h3 id="Word-analogies-with-vector-arithmetic"><a href="#Word-analogies-with-vector-arithmetic" class="headerlink" title="Word analogies with vector arithmetic"></a>Word analogies with vector arithmetic</h3><p>训练有素的单词向量空间的最有趣的特征是可以用正则向量算法来捕捉某些语义关系（不仅仅是单词的紧密性）。</p><p><img src="../../Pictures/datastructure/anology_ex.png" alt="anology_ex"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In the form w1 : w2 :: w3 : ?</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">analogy</span><span class="params">(w1, w2, w3, n=<span class="number">5</span>, filter_given=True)</span>:</span></div><div class="line">    print(<span class="string">'\n[%s : %s :: %s : ?]'</span> % (w1, w2, w3))</div><div class="line">   </div><div class="line">    <span class="comment"># w2 - w1 + w3 = w4</span></div><div class="line">    closest_words = closest(get_word(w2) - get_word(w1) + get_word(w3))</div><div class="line">    </div><div class="line">    <span class="comment"># Optionally filter out given words</span></div><div class="line">    <span class="keyword">if</span> filter_given:</div><div class="line">        closest_words = [t <span class="keyword">for</span> t <span class="keyword">in</span> closest_words <span class="keyword">if</span> t[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> [w1, w2, w3]]</div><div class="line">        </div><div class="line">    print_tuples(closest_words[:n])</div></pre></td></tr></table></figure><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">analogy(<span class="string">'king'</span>, <span class="string">'man'</span>, <span class="string">'queen'</span>)</div></pre></td></tr></table></figure><blockquote><p>[out]: [king : man :: queen : ?]<br>​          (4.0811) woman<br>​          (4.6916) girl<br>​          (5.2703) she<br>​          (5.2788) teenager<br>​          (5.3084) boy</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。&lt;/p&gt;
+&lt;p&gt;除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。&lt;/p&gt;
+&lt;p&gt;Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;../img/analogy.png&quot; alt=&quot;analogy&quot;&gt;&lt;/p&gt;
+&lt;p&gt;现已有一些创建Ｗord Vector的技巧。word2vec算法可预测上下文中的单词(例如”the cat”最可能出现的单词是”the mouse”)，而Glove向量则基于整个语料库的全局计数。glove最大的特点就是可以轻松的下载多套预先训练好的词向量。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="工具资源" scheme="http://yoursite.com/categories/%E5%B7%A5%E5%85%B7%E8%B5%84%E6%BA%90/"/>
+    
+    
+      <category term="工具资源" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7%E8%B5%84%E6%BA%90/"/>
+    
+      <category term="Glove词向量" scheme="http://yoursite.com/tags/Glove%E8%AF%8D%E5%90%91%E9%87%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>An Empirical Study of Language CNN for Image Captioning</title>

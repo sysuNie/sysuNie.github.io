@@ -107,7 +107,7 @@
 
 
 
-  <meta name="keywords" content="Deep Learning, NLP" />
+  <meta name="keywords" content="工具资源,Glove词向量," />
 
 
 
@@ -120,16 +120,21 @@
 
 
 
-<meta name="description" content="Give yourself a new way to the world">
-<meta property="og:type" content="website">
-<meta property="og:title" content="sysuNie">
-<meta property="og:url" content="http://yoursite.com/tags/编程，排序/index.html">
+<meta name="description" content="在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。 除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。 Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。  现已有一些创建Ｗo">
+<meta name="keywords" content="工具资源,Glove词向量">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Exploring Word Vectors with GloVe">
+<meta property="og:url" content="http://yoursite.com/2018/01/12/Golve/index.html">
 <meta property="og:site_name" content="sysuNie">
-<meta property="og:description" content="Give yourself a new way to the world">
+<meta property="og:description" content="在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。 除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。 Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。  现已有一些创建Ｗo">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/2018/01/12/img/analogy.png">
+<meta property="og:image" content="http://yoursite.com/2018/01/Pictures/datastructure/anology_ex.png">
+<meta property="og:updated_time" content="2018-01-12T11:28:14.006Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sysuNie">
-<meta name="twitter:description" content="Give yourself a new way to the world">
+<meta name="twitter:title" content="Exploring Word Vectors with GloVe">
+<meta name="twitter:description" content="在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。 除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。 Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。  现已有一些创建Ｗo">
+<meta name="twitter:image" content="http://yoursite.com/2018/01/12/img/analogy.png">
 
 
 
@@ -159,13 +164,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/编程，排序/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/12/Golve/"/>
 
 
 
 
 
-  <title>标签: 编程，排序 | sysuNie</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Exploring Word Vectors with GloVe | sysuNie</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -184,7 +189,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -382,54 +387,340 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>编程，排序<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/12/Golve/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2017/12/26/Sort-Algorithms/" itemprop="url">
-              
-                <span itemprop="name">Sort_Algorithms</span>
-              
-            </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">Exploring Word Vectors with GloVe</h2>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-12-26T19:20:38+08:00"
-              content="2017-12-26" >
-          12-26
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-12T19:25:20+08:00">
+                2018-01-12
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-12T19:28:14+08:00">
+                2018-01-12
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具资源/" itemprop="url" rel="index">
+                    <span itemprop="name">工具资源</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/12/Golve/" class="leancloud_visitors" data-flag-title="Exploring Word Vectors with GloVe">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  631
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  3
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在处理文字时，处理庞大但是稀少的语言是很困难的。即使对于一个晓得语料库，神经网络也需要支持数以千计的离散输入和输出。</p>
+<p>除了原始数字外，将单词表示为one-hot向量的方法无法捕获任何有关单词之间关系的信息。</p>
+<p>Ｗord Vector 通过在多维向量空间中表示单词来解决这个问题。这样就可以将问题的维度数十万减少到数百。而且向量空间能够从距离向量之间的夹角来捕获单词之间的语义关系。</p>
+<p><img src="../img/analogy.png" alt="analogy"></p>
+<p>现已有一些创建Ｗord Vector的技巧。word2vec算法可预测上下文中的单词(例如”the cat”最可能出现的单词是”the mouse”)，而Glove向量则基于整个语料库的全局计数。glove最大的特点就是可以轻松的下载多套预先训练好的词向量。</p>
+<a id="more"></a>
+<h3 id="Loading-word-vectors"><a href="#Loading-word-vectors" class="headerlink" title="Loading word vectors"></a>Loading word vectors</h3><p>Torchtext包括下载GloVe（和其他）嵌入的函数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> torch</div><div class="line"><span class="keyword">import</span> torchtext.vocab <span class="keyword">as</span> vocab</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">glove = vocab.GloVe(name=<span class="string">'6B'</span>, dim=<span class="number">100</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>[out]: 98%|█████████▊| 391063/400000 [00:19&lt;00:00, 19964.76it/s]<br>​          98%|█████████▊| 393086/400000 [00:19&lt;00:00, 19965.52it/s]<br>​          99%|█████████▉| 395108/400000 [00:19&lt;00:00, 19966.79it/s]<br>​          99%|█████████▉| 397132/400000 [00:19&lt;00:00, 19968.13it/s]<br>​          100%|█████████▉| 399154/400000 [00:19&lt;00:00, 19968.55it/s]<br>​          100%|██████████| 400000/400000 [00:20&lt;00:00, 19969.45it/s]</p>
+</blockquote>
+<p>返回的GloVe对象包含以下属性：</p>
+<ul>
+<li><code>stoi</code> <em>string-to-index</em> returns a dictionary of words to indexes</li>
+<li><code>itos</code> <em>index-to-string</em> returns an array of words by index</li>
+<li><code>vectors</code> returns the actual vectors. To get a word vector get the index to get the vector</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_word</span><span class="params">(word)</span>:</span></div><div class="line">    <span class="keyword">return</span> glove.vectors[glove.stoi[word]]</div><div class="line"><span class="comment">#get_word('google')  输出size为100的向量</span></div></pre></td></tr></table></figure>
+<h3 id="Finding-closest-vectors"><a href="#Finding-closest-vectors" class="headerlink" title="Finding closest vectors"></a>Finding closest vectors</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">closest</span><span class="params">(vec, n=<span class="number">10</span>)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line"><span class="string">    Find the closest words for a given vector</span></div><div class="line"><span class="string">    """</span></div><div class="line">    all_dists = [(w, torch.dist(vec, get_word(w))) <span class="keyword">for</span> w <span class="keyword">in</span> glove.itos]</div><div class="line">    <span class="keyword">return</span> sorted(all_dists, key=<span class="keyword">lambda</span> t: t[<span class="number">1</span>])[:n]</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">print_tuples</span><span class="params">(tuples)</span>:</span></div><div class="line">    <span class="keyword">for</span> tuple <span class="keyword">in</span> tuples:</div><div class="line">        print(<span class="string">'(%.4f) %s'</span> % (tuple[<span class="number">1</span>], tuple[<span class="number">0</span>]))</div><div class="line">print_tuples(closest(get_word(<span class="string">'google'</span>)))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>[out]: (0.0000) google<br>​           (3.0772) yahoo<br>​           (3.8836) microsoft<br>​           (4.1048) web<br>​           (4.1082) aol<br>​           (4.1165) facebook<br>​           (4.3917) ebay<br>​           (4.4122) msn<br>​           (4.4540) internet<br>​           (4.4651) netscape</p>
+</blockquote>
+<h3 id="Word-analogies-with-vector-arithmetic"><a href="#Word-analogies-with-vector-arithmetic" class="headerlink" title="Word analogies with vector arithmetic"></a>Word analogies with vector arithmetic</h3><p>训练有素的单词向量空间的最有趣的特征是可以用正则向量算法来捕捉某些语义关系（不仅仅是单词的紧密性）。</p>
+<p><img src="../../Pictures/datastructure/anology_ex.png" alt="anology_ex"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># In the form w1 : w2 :: w3 : ?</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">analogy</span><span class="params">(w1, w2, w3, n=<span class="number">5</span>, filter_given=True)</span>:</span></div><div class="line">    print(<span class="string">'\n[%s : %s :: %s : ?]'</span> % (w1, w2, w3))</div><div class="line">   </div><div class="line">    <span class="comment"># w2 - w1 + w3 = w4</span></div><div class="line">    closest_words = closest(get_word(w2) - get_word(w1) + get_word(w3))</div><div class="line">    </div><div class="line">    <span class="comment"># Optionally filter out given words</span></div><div class="line">    <span class="keyword">if</span> filter_given:</div><div class="line">        closest_words = [t <span class="keyword">for</span> t <span class="keyword">in</span> closest_words <span class="keyword">if</span> t[<span class="number">0</span>] <span class="keyword">not</span> <span class="keyword">in</span> [w1, w2, w3]]</div><div class="line">        </div><div class="line">    print_tuples(closest_words[:n])</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">analogy(<span class="string">'king'</span>, <span class="string">'man'</span>, <span class="string">'queen'</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>[out]: [king : man :: queen : ?]<br>​          (4.0811) woman<br>​          (4.6916) girl<br>​          (5.2703) she<br>​          (5.2788) teenager<br>​          (5.3084) boy</p>
+</blockquote>
 
       
     </div>
+    
+    
+    
 
+    
+      <div>
+       <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-smile-o"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+      </div>
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>很有帮助，打赏感谢！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="JiKang Nie 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="JiKang Nie 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    JiKang Nie
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://yoursite.com/2018/01/12/Golve/" title="Exploring Word Vectors with GloVe">http://yoursite.com/2018/01/12/Golve/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具资源/" rel="tag"><i class="fa fa-tag"></i> 工具资源</a>
+          
+            <a href="/tags/Glove词向量/" rel="tag"><i class="fa fa-tag"></i> Glove词向量</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/10/language-CNN/" rel="next" title="An Empirical Study of Language CNN for Image Captioning">
+                <i class="fa fa-chevron-left"></i> An Empirical Study of Language CNN for Image Captioning
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+<span class="jiathis_txt">分享到：</span>
+<a class="jiathis_button_cqq">QQ好友</a>
+<a class="jiathis_button_weixin">微信</a>
+<a class="jiathis_button_tsina">新浪微博</a>
+<a class="jiathis_button_ydnote">有道云笔记</a>
+<a class="jiathis_button_douban">豆瓣</a>
+<a class="jiathis_button_fav">收藏夹</a>
+<a class="jiathis_button_copy">复制网址</a>
+<a class="jiathis_button_share">一键分享</a>
+
+<a href="http://www.jiathis.com/share?uid=" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+var jiathis_config={
+  data_track_clickback:true,
+  summary:"",
+  shortUrl:false,
+  hideMore:false
+}
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -437,6 +728,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODQwNy80OTc4"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -457,8 +757,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +865,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loading-word-vectors"><span class="nav-text">Loading word vectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Finding-closest-vectors"><span class="nav-text">Finding closest vectors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Word-analogies-with-vector-arithmetic"><span class="nav-text">Word analogies with vector arithmetic</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -732,6 +1057,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -760,6 +1089,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
@@ -1230,26 +1570,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src=""></script>
   
 
 
