@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-01-13T13:20:13.063Z</updated>
+  <updated>2018-01-15T10:11:24.638Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cache_model</title>
+    <link href="http://yoursite.com/2018/01/15/cache-model/"/>
+    <id>http://yoursite.com/2018/01/15/cache-model/</id>
+    <published>2018-01-15T10:02:44.000Z</published>
+    <updated>2018-01-15T10:11:24.638Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h3><p>我们提出对神经网络语言模型进行的一个扩展，以使其预测适应最近的历史。我们的模型是内存增强网络的简化版本。它将过去隐藏的激活存储为内存，并通过当前隐藏激活的点积访问它们。这种机制非常有效，可以扩展到非常大的内存大小。我们还在神经网络中使用外部存储器和基于计数的语言模型使用缓存模型之间建立了联系。我们在几个语言模型数据集上进行演示，我们的方法比最近的内存扩展网络性能更好。</p><h3 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h3><p>语言模型是单词序列的概率分布，具有许多应用，如machine translation，speech recognition 或dialogue agents。虽然传统的神经网络语言模型已经在这个领域获得了最先进的性能，但是它们缺乏适应其最近历史的能力，这限制了它们在动态环境中的应用。最近的解决这个问题的方法是用external memory来扩充这些网络。这些模型可能会使用外部存储器来存储新的信息并适应不断变化的环境。</p><p>虽然这些网络在语言建模数据集上取得了很好的结果，但它们在计算上相当昂贵。通常，他们必须学习一个可以参数化的机制来读取或写入存储单元。这可能会限制其可用内存的大小以及可以训练的数据量。在这项工作中，我们提出了一个非常轻量级的选择，它可以共享内存扩展网络的一些特性，特别是随着时间的推移动态调整的能力。通过最小化内存的计算负担，我们可以使用更大的内存并扩展到更大的数据集。我们在实践中观察到，这使我们能够在不同的语言建模任务上超越记忆增强网络的性能。</p><a id="more"></a><p>我们的模型与Kuhn提出的模型有一些相似之处，称为缓存模型。缓存模型存储最近过去的简单表示，通常以unigrams和…的形式存储使用它们进行预测。这种上下文信息是非常容易存储并且可以有效地访问。它也不需要任何训练，可以应用在任何模型之上。这使得这个模型对领域适应尤其有意思。</p><p>我们的主要贡献是提出一个缓存模型的连续版本，称为神经缓存模型，它可以适应任何神经网络语言模型。我们存储最近隐藏的激活并将其用作上下文的表示。并和当前的隐藏激活使用简单的点积操作，结果发现获得料非常丰富的预测。我们的模型不需要训练，可以用于任何预先训练的神经网络。它也可以毫不费力地扩展到数千个存储单元。我们演示了几种语言模型任务和LAMBADA数据集的神经缓存模型的质量。</p><h3 id="LANGUAGE-MODELING"><a href="#LANGUAGE-MODELING" class="headerlink" title="LANGUAGE MODELING"></a>LANGUAGE MODELING</h3><p>语言模型是单词序列的概率分布。令词汇表的大小为$V$。每个单词由在$R^V = K$中的one-hot编码向量表示，对应于其在词汇表中的索引。使用链式规则，分配给一系列单词$x_1,…,x_T$的概率可以被分解为:</p><script type="math/tex; mode=display">p(x_1,...,x_T) = P(x1)P(x_2|x_1)P(x_3|x_2, x_1)· · · P(x_T |x_1 . . . x_{T −1})</script><script type="math/tex; mode=display">=\prod_{t-1}^{T}p(x_t|x_{t-1},...,x_1)</script><p>Language modeling通常被定义为在给定历史的情况下在单词上学习条件概率。这个条件概率传统上是用基于计数统计的非参数模型来近似的，特别是平滑的N-gram模型在实践中取得了良好的表现。参数化模型有最大熵语言模型，前馈网络语言模型或循环神经网络语言模型。特别地，循环神经网络是目前近似这个条件概率最好的解决方案，并在标准语言建模基准上 实现了state-of-the-arts的性能。</p><p><strong>Recurrent networks.</strong> 假设我们有一个向量为$h_t \in R^d$对历史单词$x_t,…,x_1$进行编码，则可以将单词w的条件概率参数化为：</p><script type="math/tex; mode=display">p_{vocab}(w|x_t,...,x_1) \propto exp(h_t^To_w)</script><p>历史向量$h_t$通过递归地应用形式的等式由循环神经网络计算</p><script type="math/tex; mode=display">h_t = \Phi(x_t,h_{t-1})</script><p>其中$\Phi$是一个取决于网络架构的函数。已经提出了几种循环神经网络的架构，例如Elman network，LSTM,GRU。Elman network是最简单的循环神经网络之一，其中：</p><script type="math/tex; mode=display">h_t = \sigma(Lx_t+Rh_{t-1})</script><p>其中$\sigma$是非线性的，例如logistic或tanh函数，$L \in R^{d\times V}$是一个word embedding 矩阵，$R \in R^{d\times d}$是隐藏层矩阵。LSTM架构在语言建模方面尤为有趣我们将读者引用Graves到了解这个架构的细节。</p><p>通过最小化训练数据的负对数似然性来学习循环神经网络语言模型的参数。这个目标函数通常通过使用随机梯度下降算法或Adagrad等变体来最小化。使用截断后向传播时间算法计算梯度。</p><p><strong>Cache model.</strong>一个单词在一个文档出现后，它很有可能再次出现。例如，在维基百科页面上单词$tiger$出现相同名字的频率是2.8％，而整个维基百科的频率是0.0037％。Cache model利用这个简单的观察来通过捕获文档中的远程依赖关系来改进n-gram语言模型。更确切地说，这些模型有一个缓存组件，其中包含近期历史中出现的单词（文档或固定数量的单词）。一个简单的语言模型，比如一个unigram或平滑的bigram模型，被放在缓存中的单词上，并用静态语言模型进行插值（在较大的数据集上进行训练）。这种技术有很多优点。首先，这是使语言模型适应新领域的一种非常有效的方法。其次，这样的模型能够预测不在词汇表中的词（OOV词），在看过一次这些词后。最后，这有助于捕获文档中的远程依赖关系，以便生成更加一致的文本。</p><p>　　　　　　　　　　　<img src="/home/miacher/Pictures/datastructure/cache_model.png" alt="cache_model"></p><p>神经缓存模型将先前的隐藏状态存储在存储器单元中。然后将它们用作key来检索它们相应的单词，即下一个单词。在写作和阅读过程中，存储没有任何转换。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;ABSTRACT&quot;&gt;&lt;a href=&quot;#ABSTRACT&quot; class=&quot;headerlink&quot; title=&quot;ABSTRACT&quot;&gt;&lt;/a&gt;ABSTRACT&lt;/h3&gt;&lt;p&gt;我们提出对神经网络语言模型进行的一个扩展，以使其预测适应最近的历史。我们的模型是内存增强网络的简化版本。它将过去隐藏的激活存储为内存，并通过当前隐藏激活的点积访问它们。这种机制非常有效，可以扩展到非常大的内存大小。我们还在神经网络中使用外部存储器和基于计数的语言模型使用缓存模型之间建立了联系。我们在几个语言模型数据集上进行演示，我们的方法比最近的内存扩展网络性能更好。&lt;/p&gt;
+&lt;h3 id=&quot;INTRODUCTION&quot;&gt;&lt;a href=&quot;#INTRODUCTION&quot; class=&quot;headerlink&quot; title=&quot;INTRODUCTION&quot;&gt;&lt;/a&gt;INTRODUCTION&lt;/h3&gt;&lt;p&gt;语言模型是单词序列的概率分布，具有许多应用，如machine translation，speech recognition 或dialogue agents。虽然传统的神经网络语言模型已经在这个领域获得了最先进的性能，但是它们缺乏适应其最近历史的能力，这限制了它们在动态环境中的应用。最近的解决这个问题的方法是用external memory来扩充这些网络。这些模型可能会使用外部存储器来存储新的信息并适应不断变化的环境。&lt;/p&gt;
+&lt;p&gt;虽然这些网络在语言建模数据集上取得了很好的结果，但它们在计算上相当昂贵。通常，他们必须学习一个可以参数化的机制来读取或写入存储单元。这可能会限制其可用内存的大小以及可以训练的数据量。在这项工作中，我们提出了一个非常轻量级的选择，它可以共享内存扩展网络的一些特性，特别是随着时间的推移动态调整的能力。通过最小化内存的计算负担，我们可以使用更大的内存并扩展到更大的数据集。我们在实践中观察到，这使我们能够在不同的语言建模任务上超越记忆增强网络的性能。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="论文" scheme="http://yoursite.com/categories/%E8%AE%BA%E6%96%87/"/>
+    
+    
+      <category term="论文，cache model" scheme="http://yoursite.com/tags/%E8%AE%BA%E6%96%87%EF%BC%8Ccache-model/"/>
+    
+  </entry>
   
   <entry>
     <title>worldcloud</title>
@@ -495,29 +519,6 @@ w^{address}=\begin{bmatrix}
       <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
     
       <category term="Next" scheme="http://yoursite.com/tags/Next/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第一篇博客</title>
-    <link href="http://yoursite.com/2017/09/23/hello/"/>
-    <id>http://yoursite.com/2017/09/23/hello/</id>
-    <published>2017-09-23T14:03:57.000Z</published>
-    <updated>2018-01-03T14:05:22.381Z</updated>
-    
-    <content type="html"><![CDATA[<p>Welcome to sysuNie! It is my first try to share the intereseting things to all of you . If you get any problems while looking my blog,  you can ask me on <a href="https://github.com/sysuNie" target="_blank" rel="external">GitHub</a>.</p><h2 id="Coding-Change-World"><a href="#Coding-Change-World" class="headerlink" title="Coding Change World"></a>Coding Change World</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">x = np.linspace(<span class="number">-8</span> , <span class="number">8</span>, <span class="number">1024</span>)</div><div class="line">y1 = <span class="number">0.618</span>*np.abs(x) - <span class="number">0.8</span>* np.sqrt(<span class="number">64</span>-x**<span class="number">2</span>)</div><div class="line">y2 = <span class="number">0.618</span>*np.abs(x) + <span class="number">0.8</span>* np.sqrt(<span class="number">64</span>-x**<span class="number">2</span>) </div><div class="line">plt.plot(x, y1, color = <span class="string">'r'</span>)</div><div class="line">plt.plot(x, y2, color = <span class="string">'r'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure><p><img src="../img/love.jpg" alt="love"></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;Welcome to sysuNie! It is my first try to share the intereseting things to all of you . If you get any problems while looking my blog,  y
-      
-    
-    </summary>
-    
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-    
     
   </entry>
   
