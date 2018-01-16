@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T07:56:51.171Z">
+<meta property="og:updated_time" content="2018-01-16T08:11:10.874Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="torch">
 <meta name="twitter:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
@@ -443,7 +443,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-16T15:56:51+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-16T16:11:10+08:00">
                 2018-01-16
               </time>
             
@@ -625,8 +625,7 @@
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">a = torch.randn(<span class="number">3</span>,<span class="number">4</span>)</div><div class="line">index = torch.LongTensor([<span class="number">0</span>,<span class="number">1</span>])</div><div class="line">torch.index_select(a, <span class="number">0</span>, index)</div><div class="line">Out[<span class="number">66</span>]: </div><div class="line"> <span class="number">0.6552</span>  <span class="number">1.2615</span> <span class="number">-1.8676</span> <span class="number">-1.3015</span></div><div class="line"><span class="number">-0.6448</span> <span class="number">-0.0267</span>  <span class="number">0.6535</span> <span class="number">-0.2193</span></div><div class="line">[torch.FloatTensor of size <span class="number">2</span>x4]</div><div class="line"></div><div class="line">torch.index_select(a, <span class="number">1</span>, index)</div><div class="line">Out[<span class="number">67</span>]: </div><div class="line"> <span class="number">0.6552</span>  <span class="number">1.2615</span></div><div class="line"><span class="number">-0.6448</span> <span class="number">-0.0267</span></div><div class="line"><span class="number">-0.0179</span> <span class="number">-0.2577</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>x2]</div></pre></td></tr></table></figure>
 <p>返回一个新的张量，其索引input 张量沿尺寸 dim使用的条目中index这是一个LongTensor。</p>
-<p>返回的Tensor具有与原始Tensor相同数量的尺寸。</p>
-<p>注意： 返回的张量不与原始张量共享内存空间。</p>
+<p>返回的Tensor具有与原始Tensor相同数量的尺寸。注意： 返回的张量不与原始张量共享内存空间。</p>
 
       
     </div>
