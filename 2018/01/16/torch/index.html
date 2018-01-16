@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T11:36:43.287Z">
+<meta property="og:updated_time" content="2018-01-16T12:52:43.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="torch">
 <meta name="twitter:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
@@ -443,7 +443,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-16T19:36:43+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-16T20:52:43+08:00">
                 2018-01-16
               </time>
             
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,590
+                  3,354
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  13
+                  16
                 </span>
               
             </div>
@@ -701,6 +701,44 @@
 <h2 id="随机抽样-Random-sampling"><a href="#随机抽样-Random-sampling" class="headerlink" title="随机抽样 Random sampling"></a>随机抽样 Random sampling</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.manual_seed(seed)</div></pre></td></tr></table></figure>
 <p>设定生成随机数的种子，并返回一个 _torch.<em>C.Generator</em> 对象.</p>
 <p>参数: seed (int or long) – 种子.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.initial_seed()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">torch.manual_seed(<span class="number">2</span>)</div><div class="line">Out[<span class="number">1</span>]: &lt;torch._C.Generator at <span class="number">0x7fa4860b2370</span>&gt;</div><div class="line">    </div><div class="line">torch.initial_seed()</div><div class="line">Out[<span class="number">2</span>]: <span class="number">2L</span></div></pre></td></tr></table></figure>
+<p>返回生成随机数的原始种子值（python long）。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.get_rng_state()</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">torch.get_rng_state()</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line">   <span class="number">2</span></div><div class="line">   <span class="number">0</span></div><div class="line">   <span class="number">0</span></div><div class="line"> ⋮  </div><div class="line">   <span class="number">0</span></div><div class="line">   <span class="number">0</span></div><div class="line">   <span class="number">0</span></div><div class="line">[torch.ByteTensor of size <span class="number">5048</span>]</div></pre></td></tr></table></figure>
+<p>返回随机生成器状态(<em>ByteTensor</em>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.set_rng_state(new_state)</div></pre></td></tr></table></figure>
+<p>设定随机生成器状态参数:     new_state (torch.ByteTensor) – 期望的状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.bernoulli(input, out=<span class="keyword">None</span>) → Tensor</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">b = torch.Tensor(<span class="number">3</span>,<span class="number">4</span>).uniform_(<span class="number">0</span>,<span class="number">1</span>)</div><div class="line">b</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"> <span class="number">0.5596</span>  <span class="number">0.5591</span>  <span class="number">0.0915</span>  <span class="number">0.2100</span></div><div class="line"> <span class="number">0.0072</span>  <span class="number">0.0390</span>  <span class="number">0.9929</span>  <span class="number">0.9131</span></div><div class="line"> <span class="number">0.6186</span>  <span class="number">0.9744</span>  <span class="number">0.3189</span>  <span class="number">0.2148</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>x4]</div><div class="line"></div><div class="line">torch.bernoulli(b)</div><div class="line">Out[<span class="number">2</span>]: </div><div class="line"> <span class="number">1</span>  <span class="number">0</span>  <span class="number">0</span>  <span class="number">0</span></div><div class="line"> <span class="number">0</span>  <span class="number">0</span>  <span class="number">1</span>  <span class="number">1</span></div><div class="line"> <span class="number">1</span>  <span class="number">1</span>  <span class="number">0</span>  <span class="number">0</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>x4]</div></pre></td></tr></table></figure>
+<p>从伯努利分布中抽取二元随机数(0 或者 1)。输入张量须包含用于抽取上述二元随机值的概率。 因此，输入中的所有值都必须在［0,1］区间，即 ( 0&lt;=input_i&lt;=1 )输出张量的第<em>i</em>个元素值， 将会以输入张量的第<em>i</em>个概率值等于<code>1</code>。返回值将会是与输入相同大小的张量，每个值为0或者1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.multinomial(input, num_samples,replacement=False, out=None) → LongTensor</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li><code>input</code> (Tensor) – 包含概率值的张量</li>
+<li><code>num_samples</code> (int) – 抽取的样本数</li>
+<li><code>replacement</code> (bool, 可选的) – 布尔值，决定是否能重复抽取</li>
+<li><code>out</code> (Tensor, 可选的) – 结果张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">weights = torch.Tensor([<span class="number">0</span>, <span class="number">10</span>, <span class="number">3</span>, <span class="number">1</span>])</div><div class="line">torch.multinomial(weights, <span class="number">4</span>)</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"> <span class="number">1</span></div><div class="line"> <span class="number">2</span></div><div class="line"> <span class="number">3</span></div><div class="line"> <span class="number">0</span></div><div class="line">[torch.LongTensor of size <span class="number">4</span>]</div><div class="line"></div><div class="line">torch.multinomial(weights, <span class="number">4</span>, replacement=<span class="keyword">True</span>)</div><div class="line">Out[<span class="number">2</span>]: </div><div class="line"> <span class="number">1</span></div><div class="line"> <span class="number">1</span></div><div class="line"> <span class="number">1</span></div><div class="line"> <span class="number">1</span></div><div class="line">[torch.LongTensor of size <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<p>返回一个张量，每行包含从<code>input</code>相应行中定义的多项分布中抽取的<code>num_samples</code>个样本。 </p>
+<p>当抽取样本时，依次从左到右排列(第一个样本对应第一列)。</p>
+<p>如果输入<code>input</code>是一个向量，输出<code>out</code>也是一个相同长度<code>num_samples</code>的向量。如果输入<code>input</code>是有 (m )行的矩阵，输出<code>out</code>是形如( m * n )的矩阵。</p>
+<p>如果参数<code>replacement</code> 为 <em>True</em>, 则样本抽取可以重复。否则，一个样本在每行不能被重复抽取。</p>
+<p>参数<code>num_samples</code>必须小于<code>input</code>长度(即，<code>input</code>的列数，如果是<code>input</code>是一个矩阵)。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.normal(means, std, out=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li><code>means</code>  (Tensor) – 均值</li>
+<li><code>std</code>  (Tensor) – 标准差</li>
+<li><code>out</code>  (Tensor) – 可选的输出张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">torch.normal(means=torch.arange(<span class="number">0</span>, <span class="number">11</span>), std=torch.arange(<span class="number">1</span>, <span class="number">0</span>, <span class="number">-0.1</span>))</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line">  <span class="number">0.3889</span></div><div class="line"> <span class="number">-0.1244</span></div><div class="line">  <span class="number">1.4945</span></div><div class="line">  <span class="number">3.0249</span></div><div class="line">  <span class="number">3.4251</span></div><div class="line">  <span class="number">4.1258</span></div><div class="line">  <span class="number">6.5222</span></div><div class="line">  <span class="number">7.0321</span></div><div class="line">  <span class="number">7.9798</span></div><div class="line">  <span class="number">8.9608</span></div><div class="line"> <span class="number">10.0000</span></div><div class="line">[torch.FloatTensor of size <span class="number">11</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.normal(mean=<span class="number">0.0</span>, std, out=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">torch.normal(mean=<span class="number">0.5</span>, std=torch.arange(<span class="number">1</span>,<span class="number">6</span>))</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"><span class="number">-0.4879</span></div><div class="line"><span class="number">-0.2523</span></div><div class="line"><span class="number">-0.3742</span></div><div class="line"><span class="number">-1.0413</span></div><div class="line"> <span class="number">2.2176</span></div><div class="line">[torch.FloatTensor of size <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.normal(means, std=<span class="number">1.0</span>, out=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">torch.normal(means=torch.arange(<span class="number">1</span>,<span class="number">6</span>))</div><div class="line">Out[<span class="number">171</span>]: </div><div class="line"> <span class="number">1.9339</span></div><div class="line"> <span class="number">1.5494</span></div><div class="line"> <span class="number">1.9340</span></div><div class="line"> <span class="number">3.5107</span></div><div class="line"> <span class="number">3.8822</span></div><div class="line">[torch.FloatTensor of size <span class="number">5</span>]</div></pre></td></tr></table></figure>
+<p>返回一个张量，包含从给定参数<code>means</code>,<code>std</code>的离散正态分布中抽取随机数。均值<code>means</code>是一个张量，包含每个输出元素相关的正态分布的均值。<code>std</code>是一个张量，包含每个输出元素相关的正态分布的标准差。均值和标准差的形状不须匹配，但每个张量的元素个数须相同。</p>
 
       
     </div>
@@ -1033,7 +1071,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">48.5k</span>
+    <span title="博客全站字数">49.3k</span>
   
 </div>
 
