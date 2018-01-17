@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-16T12:52:43.991Z">
+<meta property="og:updated_time" content="2018-01-17T11:01:00.715Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="torch">
 <meta name="twitter:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
@@ -443,8 +443,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-16T20:52:43+08:00">
-                2018-01-16
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-17T19:01:00+08:00">
+                2018-01-17
               </time>
             
           </span>
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,354
+                  3,758
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  16
+                  18
                 </span>
               
             </div>
@@ -739,6 +739,25 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.normal(means, std=<span class="number">1.0</span>, out=<span class="keyword">None</span>)</div></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">torch.normal(means=torch.arange(<span class="number">1</span>,<span class="number">6</span>))</div><div class="line">Out[<span class="number">171</span>]: </div><div class="line"> <span class="number">1.9339</span></div><div class="line"> <span class="number">1.5494</span></div><div class="line"> <span class="number">1.9340</span></div><div class="line"> <span class="number">3.5107</span></div><div class="line"> <span class="number">3.8822</span></div><div class="line">[torch.FloatTensor of size <span class="number">5</span>]</div></pre></td></tr></table></figure>
 <p>返回一个张量，包含从给定参数<code>means</code>,<code>std</code>的离散正态分布中抽取随机数。均值<code>means</code>是一个张量，包含每个输出元素相关的正态分布的均值。<code>std</code>是一个张量，包含每个输出元素相关的正态分布的标准差。均值和标准差的形状不须匹配，但每个张量的元素个数须相同。</p>
+<h2 id="序列化-Serialization"><a href="#序列化-Serialization" class="headerlink" title="序列化 Serialization"></a>序列化 Serialization</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.save(obj, f, pickle_module=&lt;module <span class="string">'pickle'</span> <span class="keyword">from</span> <span class="string">'/usr/bin/python2.7/pickle.py'</span>&gt;, pickle_protocol=<span class="number">2</span>)</div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li><code>obj</code> – 保存对象</li>
+<li><code>f</code> － 类文件对象 (返回文件描述符)或一个保存文件名的字符串</li>
+<li><code>pickle_module</code>  – 用于pickling元数据和对象的模块</li>
+<li><code>pickle_protocol</code>  – 指定pickle protocal 可以覆盖默认参数</li>
+</ul>
+<p>保存一个对象到一个硬盘文件上。参见 <a href="http://pytorch.org/docs/0.3.0/notes/serialization.html#recommend-saving-models" target="_blank" rel="external">Recommended approach for saving a model</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.load(f, map_location=<span class="keyword">None</span>, pickle_module=&lt;module <span class="string">'pickle'</span> <span class="keyword">from</span> <span class="string">'/usr/bin/python2.7/pickle.py'</span>&gt;)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li><code>f</code> – 类文件对象 (返回文件描述符)或一个保存文件名的字符串</li>
+<li><code>map_location</code>  – 一个函数或字典规定如何remap存储位置</li>
+<li><code>pickle_module</code>   – 用于unpickling元数据和对象的模块 (必须匹配序列化文件时的pickle_module )</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>)</div><div class="line"><span class="comment"># Load all tensors onto the CPU</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=<span class="keyword">lambda</span> storage, loc: storage)</div><div class="line"><span class="comment"># Map tensors from GPU 1 to GPU 0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=&#123;<span class="string">'cuda:1'</span>:<span class="string">'cuda:0'</span>&#125;)</div></pre></td></tr></table></figure>
+<p>从磁盘文件中读取一个通过<code>torch.save()</code>保存的对象。<code>torch.load()</code> 可通过参数<code>map_location</code><br>动态地进行内存重映射，使其能从不动设备中读取文件。一般调用时，需两个参数: storage 和 location tag. 返回不同地址中的storage，或着返回None (此时地址可以通过默认方法进行解析). 如果这个参数是字典的话，意味着其是从文件的地址标记到当前系统的地址标记的映射。默认情况下， location tags中 “cpu”对应host tensors，‘cuda:device_id’ (e.g. ‘cuda:2’) 对应cuda tensors。</p>
+<p>用户可以通过register_package进行扩展，使用自己定义的标记和反序列化方法。</p>
 
       
     </div>
@@ -1037,7 +1056,7 @@ var jiathis_config={
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Torch"><span class="nav-text">Torch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量-Tensors"><span class="nav-text">张量 Tensors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建操作-Creation-Ops"><span class="nav-text">创建操作 Creation Ops</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引-切片-连接-变异操作"><span class="nav-text">索引,切片,连接,变异操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机抽样-Random-sampling"><span class="nav-text">随机抽样 Random sampling</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Torch"><span class="nav-text">Torch</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#张量-Tensors"><span class="nav-text">张量 Tensors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建操作-Creation-Ops"><span class="nav-text">创建操作 Creation Ops</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#索引-切片-连接-变异操作"><span class="nav-text">索引,切片,连接,变异操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#随机抽样-Random-sampling"><span class="nav-text">随机抽样 Random sampling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列化-Serialization"><span class="nav-text">序列化 Serialization</span></a></div>
             
 
           </div>
@@ -1071,7 +1090,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">49.3k</span>
+    <span title="博客全站字数">49.7k</span>
   
 </div>
 
