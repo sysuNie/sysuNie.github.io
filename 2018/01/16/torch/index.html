@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-18T04:53:17.445Z">
+<meta property="og:updated_time" content="2018-01-18T11:15:51.666Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch">
 <meta name="twitter:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
@@ -443,7 +443,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-18T12:53:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-18T19:15:51+08:00">
                 2018-01-18
               </time>
             
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,764
+                  3,771
                 </span>
               
 
@@ -758,7 +758,8 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>)</div><div class="line"><span class="comment"># Load all tensors onto the CPU</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=<span class="keyword">lambda</span> storage, loc: storage)</div><div class="line"><span class="comment"># Map tensors from GPU 1 to GPU 0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>torch.load(<span class="string">'tensors.pt'</span>, map_location=&#123;<span class="string">'cuda:1'</span>:<span class="string">'cuda:0'</span>&#125;)</div></pre></td></tr></table></figure>
 <p>从磁盘文件中读取一个通过<code>torch.save()</code>保存的对象。<code>torch.load()</code> 可通过参数<code>map_location</code><br>动态地进行内存重映射，使其能从不动设备中读取文件。一般调用时，需两个参数: storage 和 location tag. 返回不同地址中的storage，或着返回None (此时地址可以通过默认方法进行解析). 如果这个参数是字典的话，意味着其是从文件的地址标记到当前系统的地址标记的映射。默认情况下， location tags中 “cpu”对应host tensors，‘cuda:device_id’ (e.g. ‘cuda:2’) 对应cuda tensors。</p>
 <p>用户可以通过register_package进行扩展，使用自己定义的标记和反序列化方法。</p>
-<h1 id="数学操作Math-operations"><a href="#数学操作Math-operations" class="headerlink" title="数学操作Math operations"></a>数学操作Math operations</h1>
+<h1 id="数学操作Math-operations"><a href="#数学操作Math-operations" class="headerlink" title="数学操作Math operations"></a>数学操作Math operations</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.abs(input, out=<span class="keyword">None</span>) → Tensor</div></pre></td></tr></table></figure>
+
       
     </div>
     
