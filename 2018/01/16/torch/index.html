@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="sysuNie">
 <meta property="og:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-01-18T11:15:51.666Z">
+<meta property="og:updated_time" content="2018-01-19T13:25:49.201Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pytorch">
 <meta name="twitter:description" content="Torchtorch包含了多维的数据结构以及基于其上的数学运算。它提供了多种实用工具，具有CUDA对应的实现 张量 Tensors1torch.is_tensor(obj) 123456a = torch.randn(3,4)b = np.random.randn(3,4)torch.is_tensor(a)Out[1]: Truetorch.is_tensor(b)Out[2]: False 判">
@@ -443,8 +443,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-18T19:15:51+08:00">
-                2018-01-18
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-19T21:25:49+08:00">
+                2018-01-19
               </time>
             
           </span>
@@ -505,7 +505,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,771
+                  4,460
                 </span>
               
 
@@ -521,7 +521,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  18
+                  21
                 </span>
               
             </div>
@@ -759,6 +759,49 @@
 <p>从磁盘文件中读取一个通过<code>torch.save()</code>保存的对象。<code>torch.load()</code> 可通过参数<code>map_location</code><br>动态地进行内存重映射，使其能从不动设备中读取文件。一般调用时，需两个参数: storage 和 location tag. 返回不同地址中的storage，或着返回None (此时地址可以通过默认方法进行解析). 如果这个参数是字典的话，意味着其是从文件的地址标记到当前系统的地址标记的映射。默认情况下， location tags中 “cpu”对应host tensors，‘cuda:device_id’ (e.g. ‘cuda:2’) 对应cuda tensors。</p>
 <p>用户可以通过register_package进行扩展，使用自己定义的标记和反序列化方法。</p>
 <h1 id="数学操作Math-operations"><a href="#数学操作Math-operations" class="headerlink" title="数学操作Math operations"></a>数学操作Math operations</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.abs(input, out=<span class="keyword">None</span>) → Tensor</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">torch.abs(torch.FloatTensor([<span class="number">-1</span>, <span class="number">2</span>, <span class="number">-3</span>]))</div><div class="line">Out[<span class="number">8</span>]: </div><div class="line"> <span class="number">1</span></div><div class="line"> <span class="number">2</span></div><div class="line"> <span class="number">3</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<p>计算输入张量的每个元素绝对值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.add(input, value, out=None)</div></pre></td></tr></table></figure>
+<p>参数:</p>
+<ul>
+<li><code>input</code> (Tensor) – 输入张量</li>
+<li><code>value</code> (Number) – 添加到输入每个元素的数</li>
+<li><code>out</code> (Tensor, 可选的) – 结果张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">a = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"><span class="number">-0.5815</span> <span class="number">-1.6031</span>  <span class="number">1.9077</span>  <span class="number">0.0478</span></div><div class="line"> <span class="number">2.6821</span>  <span class="number">1.0581</span>  <span class="number">0.0966</span> <span class="number">-0.8499</span></div><div class="line"><span class="number">-0.7623</span>  <span class="number">1.3194</span>  <span class="number">1.4320</span> <span class="number">-0.0202</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>x4]</div><div class="line"></div><div class="line">torch.add(a, <span class="number">10</span>)</div><div class="line">Out[<span class="number">2</span>]: </div><div class="line">  <span class="number">9.4185</span>   <span class="number">8.3969</span>  <span class="number">11.9077</span>  <span class="number">10.0478</span></div><div class="line"> <span class="number">12.6821</span>  <span class="number">11.0581</span>  <span class="number">10.0966</span>   <span class="number">9.1501</span></div><div class="line">  <span class="number">9.2377</span>  <span class="number">11.3194</span>  <span class="number">11.4320</span>   <span class="number">9.9798</span></div><div class="line">[torch.FloatTensor of size <span class="number">3</span>x4]</div></pre></td></tr></table></figure>
+<p>对输入张量<code>input</code>逐元素加上标量值<code>value</code>，并返回结果到一个新的张量<code>out</code>，即 ( out = tensor + value )。如果输入<code>input</code>是FloatTensor or DoubleTensor类型，则<code>value</code> 必须为实数，否则须为整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.addcdiv(tensor, value=1, tensor1, tensor2, out=None) → Tensor</div></pre></td></tr></table></figure>
+<p>参数：</p>
+<ul>
+<li>tensor (Tensor) – 张量，对 tensor1 ./ tensor 进行相加</li>
+<li>value (Number, 可选的) –  标量，对 tensor1 ./ tensor2 进行相乘</li>
+<li>tensor1 (Tensor) – 张量，作为被除数(分子)</li>
+<li>tensor2 (Tensor) –张量，作为除数(分母)</li>
+<li>out (Tensor, 可选的) – 输出张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a = torch.randn(<span class="number">3</span>, <span class="number">4</span>)</div><div class="line">a1 = torch.randn(<span class="number">2</span>, <span class="number">6</span>)</div><div class="line">a2 = torch.randn(<span class="number">6</span>, <span class="number">2</span>)</div><div class="line">torch.addcdiv(a, <span class="number">0.1</span>, a1, a2)</div></pre></td></tr></table></figure>
+<p>对<code>tensor2</code>对<code>tensor1</code>逐元素相除，然后乘以标量值<code>value</code> 并加到<code>tensor</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.addcmul(tensor, value=1, tensor1, tensor2, out=None) → Tensor</div></pre></td></tr></table></figure>
+<p>用<code>tensor2</code>对<code>tensor1</code>逐元素相乘，并对结果乘以标量值<code>value</code>然后加到<code>tensor</code>。张量的形状不需要匹配，但元素数量必须一致。如果输入是FloatTensor or DoubleTensor类型，则<code>value</code> 必须为实数，否则须为整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.ceil(input, out=None) → Tensor</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">b = torch.randn(<span class="number">4</span>)</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"><span class="number">-0.4149</span></div><div class="line"> <span class="number">1.1449</span></div><div class="line"><span class="number">-1.3121</span></div><div class="line"> <span class="number">1.4417</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div><div class="line"></div><div class="line">torch.ceil(b)</div><div class="line">Out[<span class="number">20</span>]: </div><div class="line"><span class="number">-0</span></div><div class="line"> <span class="number">2</span></div><div class="line"><span class="number">-1</span></div><div class="line"> <span class="number">2</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<p>对输入<code>input</code>张量每个元素向上取整, 即取不小于每个元素的最小整数，并返回结果到输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.clamp(input, min, max, out=None) → Tensor</div></pre></td></tr></table></figure>
+<p>操作定义如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      | min, if x_i &lt; min</div><div class="line">y_i = | x_i, if min &lt;= x_i &lt;= max</div><div class="line">      | max, if x_i &gt; max</div></pre></td></tr></table></figure>
+<p>如果输入是FloatTensor or DoubleTensor类型，则参数<code>min</code> <code>max</code> 必须为实数，否则须为整数。</p>
+<p>参数：</p>
+<ul>
+<li>input (Tensor) –  输入张量</li>
+<li>min (Number) – 限制范围下限</li>
+<li>max (Number) – 限制范围上限</li>
+<li>out (Tensor, 可选的) – 输出张量</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">b = torch.randn(<span class="number">4</span>)</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"><span class="number">-0.4149</span></div><div class="line"> <span class="number">1.1449</span></div><div class="line"><span class="number">-1.3121</span></div><div class="line"> <span class="number">1.4417</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div><div class="line"></div><div class="line">torch.clamp(b, <span class="number">-1</span>, <span class="number">1</span>)</div><div class="line">Out[<span class="number">22</span>]: </div><div class="line"><span class="number">-0.4149</span></div><div class="line"> <span class="number">1.0000</span></div><div class="line"><span class="number">-1.0000</span></div><div class="line"> <span class="number">1.0000</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<p>将输入<code>input</code>张量每个元素的夹紧到区间 ([min, max] )，并返回结果到一个新张量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">torch.floor(input, out=None) → Tensor</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">b = torch.randn(<span class="number">4</span>)</div><div class="line">Out[<span class="number">1</span>]: </div><div class="line"><span class="number">-0.4149</span></div><div class="line"> <span class="number">1.1449</span></div><div class="line"><span class="number">-1.3121</span></div><div class="line"> <span class="number">1.4417</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div><div class="line"></div><div class="line">torch.floor(b)</div><div class="line">Out[<span class="number">24</span>]: </div><div class="line"><span class="number">-1</span></div><div class="line"> <span class="number">1</span></div><div class="line"><span class="number">-2</span></div><div class="line"> <span class="number">1</span></div><div class="line">[torch.FloatTensor of size <span class="number">4</span>]</div></pre></td></tr></table></figure>
+<p>床函数: 返回一个新张量，包含输入<code>input</code>张量每个元素的floor，即不小于元素的最大整数。</p>
 
       
     </div>
@@ -1091,7 +1134,7 @@ var jiathis_config={
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">49.7k</span>
+    <span title="博客全站字数">50.4k</span>
   
 </div>
 
