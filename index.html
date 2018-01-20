@@ -416,7 +416,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/20/findduplicationNoEdit/" itemprop="url">findduplicationNoEdit</a></h2>
+                <a class="post-title-link" href="/2018/01/20/findduplicationNoEdit/" itemprop="url">数组找出重复的数字</a></h2>
         
 
         <div class="post-meta">
@@ -444,7 +444,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-20T21:35:47+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-20T22:09:07+08:00">
                 2018-01-20
               </time>
             
@@ -480,7 +480,7 @@
 
           
           
-             <span id="/2018/01/20/findduplicationNoEdit/" class="leancloud_visitors" data-flag-title="findduplicationNoEdit">
+             <span id="/2018/01/20/findduplicationNoEdit/" class="leancloud_visitors" data-flag-title="数组找出重复的数字">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -506,7 +506,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  669
+                  1,487
                 </span>
               
 
@@ -522,7 +522,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  3
+                  7
                 </span>
               
             </div>
@@ -544,8 +544,8 @@
 
       
         
-          <h3 id="面试题：不修改数组找出重复的数字"><a href="#面试题：不修改数组找出重复的数字" class="headerlink" title="面试题：不修改数组找出重复的数字"></a>面试题：不修改数组找出重复的数字</h3><p>​        在一个长度为n+1的数组里的所有数字都在1到n的范围内，所以数组中至少有一个数字是重复的。请找出数组中任意一个重复的数字，但不能修改输入的数组。例如，如果输入长度为8的数组{2, 3, 5, 4, 3, 2, 6, 7}，那么对应的输出是重复的数字2或者3。</p>
-<p><strong>思路</strong>：如果没有重复的数字，那么1~n的范围内只有n个数字。有余数组里包含n个数字，所以一定包含了重复的数字。我们把从1~n的数字把中间的数字m分为两部分，前一半为1~m，后一半为m+1~n．如果1~m的数字的数目超过m，那么这一半的区间里一定包含重复数字；否则另外一半m+1~n的区间里一定包含重复的数字。我么可以继续把包含重复的数字的区间一分为二，直到找到一个重复的数字。</p>
+          <h3 id="面试题：找出数组中重复的数字"><a href="#面试题：找出数组中重复的数字" class="headerlink" title="面试题：找出数组中重复的数字"></a>面试题：找出数组中重复的数字</h3><p>　　题目：在一个长度为n的数组里的所有数字都在0到n-1的范围内。数组中某些数字是重复的，但不知道有几个数字重复了，也不知道每个数字重复了几次。请找出数组中任意一个重复的数字。例如，如果输入长度为7的数组{2, 3, 1, 0, 2, 5, 3}，那么对应的输出是重复的数字2或者3。</p>
+<p><strong>思路</strong>：排序一个长度为n的数组需要O(nlogn)的时间，我们选择利用哈希表来解决这个问题。从头到尾顺序扫描数组的每个数字，每扫描到一个数字的时候，都可以用O(1)的时间来判断哈希表里是否包含了该数字。如果哈希表没有这个数字，就把它加入哈希表。如果哈希表已经存在该数字，就找到一个重复数字。这个算法的时间复杂度是O(n),他是以创建一个大小O(n)的哈希表为代价。现在我们重排这个数组，从头到尾依次扫描这个数组。当扫描到下标为i的数组时，首先比较这个数字（用m表示）是不是等于i。如果是，则扫描下一个数字；如果不是，则再拿它和第m个数字进行比较。如果他和地ｍ个数字相等，就找到一个重复的数字；如果他和第m个数字不相等，就把第i个数字和地ｍ个数字作交换，把Ｍ放到属于他的位置。重复比较交换这个过程，知道发现一个重复数字。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/20/findduplicationNoEdit/#more" rel="contents">
@@ -2604,7 +2604,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">51.1k</span>
+    <span title="博客全站字数">51.9k</span>
   
 </div>
 
