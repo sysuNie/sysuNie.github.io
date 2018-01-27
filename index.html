@@ -416,7 +416,7 @@
         
           <h2 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/27/StringPath/" itemprop="url">矩阵中的路径</a></h2>
+                <a class="post-title-link" href="/2018/01/27/StringPath/" itemprop="url">回溯法</a></h2>
         
 
         <div class="post-meta">
@@ -444,7 +444,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-27T17:14:59+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-27T20:51:40+08:00">
                 2018-01-27
               </time>
             
@@ -480,7 +480,7 @@
 
           
           
-             <span id="/2018/01/27/StringPath/" class="leancloud_visitors" data-flag-title="矩阵中的路径">
+             <span id="/2018/01/27/StringPath/" class="leancloud_visitors" data-flag-title="回溯法">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -506,7 +506,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,231
+                  1,984
                 </span>
               
 
@@ -522,7 +522,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  5
+                  9
                 </span>
               
             </div>
@@ -544,33 +544,15 @@
 
       
         
-          <h3 id="面试题：矩阵中的路径"><a href="#面试题：矩阵中的路径" class="headerlink" title="面试题：矩阵中的路径"></a>面试题：矩阵中的路径</h3><p><strong>题目</strong>：请设计一个函数，用来判断在一个矩阵中是否存在一条包含某字符串所有字符的路径。路径可以从矩阵中任意一格开始，每一步可以在矩阵中向左、右、上、下移动一格。如果一条路径经过了矩阵的某一格，那么该路径不能再次进入该格子。例如在下面的3×4的矩阵中包含一条字符串“bfce”的路径（路径中的字母用下划线标出）。但矩阵中不包含字符串“abfb”的路径，因为字符串的第一个字符b占据了矩阵中的第一行第二个格子之后，路径不能再次进入这个格子。</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">A</th>
-<th style="text-align:center">B</th>
-<th style="text-align:center">T</th>
-<th style="text-align:center">G</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">C</td>
-<td style="text-align:center">F</td>
-<td style="text-align:center">C</td>
-<td style="text-align:center">S</td>
-</tr>
-<tr>
-<td style="text-align:center">J</td>
-<td style="text-align:center">D</td>
-<td style="text-align:center">E</td>
-<td style="text-align:center">H</td>
-</tr>
-</tbody>
-</table>
-</div>
+          <h3 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h3><p>回溯法可以看成蛮力法的升级版，主要是在搜索过程中寻找问题的解，当发现已经不满足求解条件时，就“回溯”返回，尝试别的路径。回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当搜索到某一步时，发现原先选择并不优或达不到目标，就退回一步进行选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为回溯点。</p>
+<p>在包含问题的所有解的解空间树中，按照<strong>深度优先搜索的策略</strong>，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索法）。</p>
+<p>若用回溯法求问题的所有解时，要回溯到根，且根结点的所有可行的子树都要已被搜索遍才结束。 而若使用回溯法求任一个解时，只要搜索到问题的一个解就可以结束。</p>
+<p>回溯法过程：</p>
+<ul>
+<li>针对所给问题，确定问题的解空间：首先应明确定义问题的解空间，问题的解空间应至少包含问题的一个（最优）解。</li>
+<li>确定结点的扩展搜索规则。</li>
+<li>以深度优先方式搜索解空间，并在搜索过程中用剪枝函数避免无效搜索。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/27/StringPath/#more" rel="contents">
@@ -2671,7 +2653,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">56.6k</span>
+    <span title="博客全站字数">57.4k</span>
   
 </div>
 
