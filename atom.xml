@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>sysuNie</title>
   
-  <subtitle>Morning, Moon, Night.</subtitle>
+  <subtitle>Morning, Noon, Night.</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
