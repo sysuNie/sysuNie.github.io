@@ -2136,8 +2136,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-13T21:20:13+08:00">
-                2018-01-13
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-27T14:48:18+08:00">
+                2018-01-27
               </time>
             
           </span>
@@ -2238,6 +2238,7 @@
         
           <p>　　今天介绍一个python库－－wordcloud，这个库的主要功能是对一个文本中的单词进行统计，并且以词云的方式进行展示，从生成的图片中，我们可以直观的发现哪些单词出现的频率较高，一个很有意思的用途就是统计一个会议中，提交论文的主题是哪些，从而看出当前研究的趋势。</p>
 <h3 id="快速安装词云"><a href="#快速安装词云" class="headerlink" title="快速安装词云"></a>快速安装词云</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install wordcloud</div></pre></td></tr></table></figure>
+<h3 id="快速生成词云"><a href="#快速生成词云" class="headerlink" title="快速生成词云"></a>快速生成词云</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</div><div class="line"></div><div class="line">f = open(<span class="string">u'moment.txt'</span>,<span class="string">'r'</span>).read()</div><div class="line">wordcloud = WordCloud(background_color=<span class="string">"white"</span>,width=<span class="number">1000</span>, height=<span class="number">860</span>, margin=<span class="number">2</span>).generate(f)</div><div class="line"></div><div class="line"><span class="comment"># width,height,margin可以设置图片属性</span></div><div class="line"><span class="comment"># generate 可以对全部文本进行自动分词,但是他对中文支持不好,对中文的分词处理请看我的下一篇文章</span></div><div class="line"><span class="comment">#wordcloud = WordCloud(font_path = r'~\Fonts\simkai.ttf').generate(f)</span></div><div class="line"><span class="comment"># 你可以通过font_path参数来设置字体集</span></div><div class="line"><span class="comment">#background_color参数为设置背景颜色,默认颜色为黑</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">plt.imshow(wordcloud)</div><div class="line">plt.axis(<span class="string">"off"</span>)</div><div class="line">plt.show()</div><div class="line"></div><div class="line">wordcloud.to_file(<span class="string">'test.png'</span>)</div><div class="line"><span class="comment"># 保存图片,但是在第三模块的例子中 图片大小将会按照 mask 保存</span></div></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/13/worldcloud/#more" rel="contents">
