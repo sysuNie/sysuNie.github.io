@@ -397,6 +397,796 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/28/concrete-NLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/concrete-NLP/" itemprop="url">concrete_NLP</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T14:27:00+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-28T16:35:25+08:00">
+                2018-01-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具资源/" itemprop="url" rel="index">
+                    <span itemprop="name">工具资源</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/28/concrete-NLP/" class="leancloud_visitors" data-flag-title="concrete_NLP">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,670
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  8
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>虽然存在丰富的精细和抽象的NLP技术，但集群和分类应始终作为处理这类数据时使用的第一种技术。 除了在生产中最容易扩展之外，它们的易用性可以迅速帮助企业解决一系列应用问题：</p>
+<ul>
+<li>如何自动区分不同类别的句子？</li>
+<li>如何找到一个数据集中最相似的句子？</li>
+<li>如何提取一个丰富而简洁的表示，然后可以用于一系列其他任务？</li>
+<li>如何快速找到这些任务是否可以在你的数据集上？</li>
+</ul>
+<p>这篇文章的作用是提供一个简单方式的寻找句子表示，以便将它们分类或组合在一起。</p>
+<h3 id="收集数据"><a href="#收集数据" class="headerlink" title="收集数据"></a>收集数据</h3><h4 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h4><p>每个机器学习问题都是从数据开始，例如电子邮件、帖子或推文。文本信息常见来源包括：</p>
+<ul>
+<li>产品评论（来自亚马逊，Yelp和各种原因商店）</li>
+<li>用户发布的内容（推文，facebook帖子，stackOverflow问题）</li>
+<li>故障排除（客户请求，聊天记录）</li>
+</ul>
+<p>本文我们使用的是由 <a href="https://www.crowdflower.com/data-for-everyone/" target="_blank" rel="external">Crowdflower</a>提供的名为“社交媒体中出现的灾难”数据集，其中：</p>
+<p>投稿人查看了超过10000条推文，包括“着火”，“隔离”和“混乱”等各种检索，然后看推文是否是指灾难事件（排除掉用单词或电影评论的笑话， 一些非灾难性的）。</p>
+<p>我们将尝试正确预测关于灾难的推文。 这是一个非常相关的问题，因为：</p>
+<ul>
+<li>任何试图从噪音中获得信号的人都可以采取行动（比如在这种情况下的警察部门）</li>
+<li>这是棘手的，因为依赖于关键字比在大多数情况下像垃圾邮件更难</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding( <span class="string">"utf-8"</span> )</div><div class="line"><span class="keyword">import</span> keras</div><div class="line"><span class="keyword">import</span> nltk</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">import</span> re</div><div class="line"><span class="keyword">import</span> codecs</div></pre></td></tr></table></figure>
+<h3 id="数据清理"><a href="#数据清理" class="headerlink" title="数据清理"></a>数据清理</h3><p>让我们确保我们的推文只有我们想要的字符。 我们删除’＃’字符，但保留’＃’后的单词，因为它们可能是相关的（例如：#disaster）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">input_file = codecs.open(<span class="string">"socialmedia_relevant_cols.csv"</span>, <span class="string">"r"</span>,encoding=<span class="string">'utf-8'</span>, errors=<span class="string">'replace'</span>)</div><div class="line">output_file = open(<span class="string">"socialmedia_relevant_cols_clean.csv"</span>, <span class="string">"w"</span>)</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sanitize_characters</span><span class="params">(raw, clean)</span>:</span>    </div><div class="line">    <span class="keyword">for</span> line <span class="keyword">in</span> input_file:</div><div class="line">        out = line</div><div class="line">        output_file.write(line)</div><div class="line">sanitize_characters(input_file, output_file)</div></pre></td></tr></table></figure>
+<h4 id="检查数据"><a href="#检查数据" class="headerlink" title="检查数据"></a>检查数据</h4><p>它看起来很稳固，但我们并不需要网址，我们希望我们的文字都是小写字母（Hello和HELLO对我们的任务来说非常相似）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">questions = pd.read_csv(<span class="string">"socialmedia_relevant_cols_clean.csv"</span>)</div><div class="line">questions.columns=[<span class="string">'text'</span>, <span class="string">'choose_one'</span>, <span class="string">'class_label'</span>]</div><div class="line">questions.head()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+<th style="text-align:center">class_label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">Just happened a terrible car crash</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Our Deeds are the Reason of this #earthquake M…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Heard about #earthquake is different cities, s…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">there is a forest fire at spot pond, geese are…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Forest fire near La Ronge Sask. Canada</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">questions.tail()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+<th style="text-align:center">class_label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10871</td>
+<td style="text-align:center">M1.94 [01:04 UTC]?5km S of Volcano Hawaii. htt…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10872</td>
+<td style="text-align:center">Police investigating after an e-bike collided …</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10873</td>
+<td style="text-align:center">The Latest: More Homes Razed by Northern Calif…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10874</td>
+<td style="text-align:center">MEG issues Hazardous Weather Outlook (HWO)</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10875</td>
+<td style="text-align:center">CityofCalgary has activated its Muni</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">questions.describe()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">class_label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">count</td>
+<td style="text-align:center">10875.000000</td>
+</tr>
+<tr>
+<td style="text-align:center">mean</td>
+<td style="text-align:center">0.432552</td>
+</tr>
+<tr>
+<td style="text-align:center">std</td>
+<td style="text-align:center">0.498414</td>
+</tr>
+<tr>
+<td style="text-align:center">min</td>
+<td style="text-align:center">0.000000</td>
+</tr>
+<tr>
+<td style="text-align:center">25%</td>
+<td style="text-align:center">0.000000</td>
+</tr>
+<tr>
+<td style="text-align:center">50%</td>
+<td style="text-align:center">0.000000</td>
+</tr>
+<tr>
+<td style="text-align:center">75%</td>
+<td style="text-align:center">1.000000</td>
+</tr>
+<tr>
+<td style="text-align:center">max</td>
+<td style="text-align:center">2.000000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>让我们使用一些正则表达式来清理不必要的数据，并将其保存回csv文件供将来使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">standardize_text</span><span class="params">(ques, text_field)</span>:</span></div><div class="line">    ques[text_field] = ques[text_field].str.replace(<span class="string">r"http\S+"</span>, <span class="string">""</span>)</div><div class="line">    ques[text_field] = ques[text_field].str.replace(<span class="string">r"http"</span>, <span class="string">""</span>)</div><div class="line">    ques[text_field] = ques[text_field].str.replace(<span class="string">r"@\S+"</span>, <span class="string">""</span>)</div><div class="line">    ques[text_field] = ques[text_field].str.replace(<span class="string">r"[^A-Za-z0-9(),!?@\'\`\"\_\n]"</span>, <span class="string">" "</span>)</div><div class="line">    ques[text_field] = ques[text_field].str.replace(<span class="string">r"@"</span>, <span class="string">"at"</span>)</div><div class="line">    ques[text_field] = ques[text_field].str.lower()</div><div class="line">    <span class="keyword">return</span> ques</div><div class="line">questions = standardize_text(questions, <span class="string">"text"</span>)</div><div class="line">questions.to_csv(<span class="string">"clean_data.csv"</span>)</div><div class="line">questions.head()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+<th style="text-align:center">class_label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">just happened a terrible car crash</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">our deeds are the reason of this  earthquake m…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">heard about  earthquake is different cities, s…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">there is a forest fire at spot pond, geese are…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">forest fire near la ronge sask  canada</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">clean_questions = pd.read_csv(<span class="string">"clean_data.csv"</span>)</div><div class="line">clean_questions.tail()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+<th style="text-align:center">class_label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">10871</td>
+<td style="text-align:center">m1 94  01 04 utc ?5km s of volcano hawaii</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10872</td>
+<td style="text-align:center">police investigating after an e bike collided …</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10873</td>
+<td style="text-align:center">the latest  more homes razed by northern calif…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10874</td>
+<td style="text-align:center">meg issues hazardous weather outlook (hwo)</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+</tr>
+<tr>
+<td style="text-align:center">10875</td>
+<td style="text-align:center">cityofcalgary has activated its muni</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="数据概述"><a href="#数据概述" class="headerlink" title="数据概述"></a>数据概述</h3><p>让我们来看看我们的class_label</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clean_questions.groupby(<span class="string">"class_label"</span>).count()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Unnamed: 0</th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">class_label</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">0.0</td>
+<td style="text-align:center">6187</td>
+<td style="text-align:center">6187</td>
+<td style="text-align:center">6187</td>
+</tr>
+<tr>
+<td style="text-align:center">1.0</td>
+<td style="text-align:center">4672</td>
+<td style="text-align:center">4672</td>
+<td style="text-align:center">4672</td>
+</tr>
+<tr>
+<td style="text-align:center">2.0</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">16</td>
+<td style="text-align:center">16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>我们可以看到我们的类非常平衡，对“不相关的”类稍加过度抽样。</p>
+<p><strong>我们的数据很干净，现在需要做好准备</strong></p>
+<p>现在我们的输入数据是更合理的，让我们以我们的模型可以理解的方式来改变我们的输入数据。</p>
+<p>这意味着：</p>
+<ul>
+<li>将句子标记为单独的单词列表</li>
+<li>创建训练集好测试集</li>
+<li>仔细检查我们的数据来验证结果</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> nltk.tokenize <span class="keyword">import</span> RegexpTokenizer</div><div class="line">tokenizer = RegexpTokenizer(<span class="string">r'\w+'</span>)</div><div class="line">clean_questions[<span class="string">"tokens"</span>] = clean_questions[<span class="string">"text"</span>].apply(tokenizer.tokenize)</div><div class="line">clean_questions.head()</div></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">Unnamed: 0</th>
+<th style="text-align:center">text</th>
+<th style="text-align:center">choose_one</th>
+<th style="text-align:center">class_label</th>
+<th>tokens</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">just happened a terrible car crash</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+<td>[just, happened, a, terrible, car, crash]</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">our deeds are the reason of this  earthquake m…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+<td>[our, deeds, are, the, reason, of, this, earth…</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">heard about  earthquake is different cities, s…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+<td>[heard, about, earthquake, is, different, citi…</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">there is a forest fire at spot pond, geese are…</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+<td>[there, is, a, forest, fire, at, spot, pond, g…</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">forest fire near la ronge sask  canada</td>
+<td style="text-align:center">Relevant</td>
+<td style="text-align:center">1.0</td>
+<td>[forest, fire, near, la, ronge, sask, canada]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="深入挖掘数据"><a href="#深入挖掘数据" class="headerlink" title="深入挖掘数据"></a>深入挖掘数据</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> keras.preprocessing.text <span class="keyword">import</span> Tokenizer</div><div class="line"><span class="keyword">from</span> keras.preprocessing.sequence <span class="keyword">import</span> pad_sequences</div><div class="line"><span class="keyword">from</span> keras.utils <span class="keyword">import</span> to_categorical</div><div class="line">all_words = [word <span class="keyword">for</span> tokens <span class="keyword">in</span> clean_questions[<span class="string">'tokens'</span>] <span class="keyword">for</span> word <span class="keyword">in</span> tokens]</div><div class="line">sentence_lengths = [len(tokens) <span class="keyword">for</span> tokens <span class="keyword">in</span> clean_questions[<span class="string">"tokens"</span>]]</div><div class="line">VOCAB = sorted(list(set(all_words)))</div><div class="line">print(<span class="string">"%s words total, with a vocabulary size of %s"</span> % (len(all_words), len(VOCAB)))</div><div class="line">print(<span class="string">"Max sentence length is %s"</span> % max(sentence_lengths))</div></pre></td></tr></table></figure>
+<blockquote>
+<p>154721 words total, with a vocabulary size of 18102<br>Max sentence length is 34</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line">fig = plt.figure(figsize=(<span class="number">10</span>, <span class="number">10</span>)) </div><div class="line">plt.xlabel(<span class="string">'Sentence length'</span>)</div><div class="line">plt.ylabel(<span class="string">'Number of sentences'</span>)</div><div class="line">plt.hist(sentence_lengths)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="data:image/png;base64,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%0Arv3cvpOctcZjXZDkgkM3HQDAeJw5AQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMIN%0AAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBg%0AEMINAGAQwg0AYBDCDQBgEMINAGAQh696AOCRb/vOS1Y9wiFxy7mnrXoEYIuzxw0AYBDCDQBgEMIN%0AAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBg%0AEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDCDQBgEMINAGAQwg0AYBDC%0ADQBgEMINAGAQh696ADiUtu+8ZNUjAMDS2OMGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEG%0AADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAw%0ACOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjh%0ABgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADAI4QYA%0AMAjhBgAwCOEGADAI4QYAMAjhBgAwCOEGADCIA4ZbVT22qh41Xf66qnphVR2xwP0uqKq7quqTc2uv%0Ar6rbq+ra6ecFc397bVXtrqobq+p5c+unTmu7q2rnwf8TAQAeGRbZ4/bhJF9VVccl+UCSH0jy9gXu%0A9/Ykp+5n/Re7++Tp59IkqaqTkrwsyTdM9/mVqjqsqg5L8tYkz09yUpKXT7cFANhyFgm36u4vJnlR%0Akl/p7u/LLLDW1d0fTnLPgnOcnuSi7r6/uz+dZHeSp08/u7v75u7+UpKLptsCAGw5C4VbVT0zyfcn%0AuWRaO+xhPOdrqurj01upR01rxyW5de42t01ra63vb8gzq2pXVe26++67H8Z4AACb0yLh9mNJXpvk%0Ad7r7uqp6cpIPPsTnOy/JU5KcnOSOJG96iI+zj+4+v7t3dPeObdu2HaqHBQDYNA4/0A26+8okV1bV%0A10zXb07ybx7Kk3X3nXsuV9WvJ3n/dPX2JMfP3fSJ01rWWQcA2FIWOar0mVV1fZJPTde/uap+5aE8%0A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%0ARK5CYII=%0A" alt=""></p>
+<p>现在我们的数据是干净的，准备好了，让我们进入机器学习部分</p>
+<h3 id="Embeddings"><a href="#Embeddings" class="headerlink" title="Embeddings"></a>Embeddings</h3><p>机器学习中图像可以使用原始像素作为输入，那么NLP可以使用什么？</p>
+<p>为计算机表示文本的一种自然方式是对每个字符进行单独编码，这似乎不足以表示和理解语言。我们的目标是首先为我们的数据集中的每个句子（或推文）创建一个有用的嵌入，然后使用这些嵌入来准确地预测相关类别。</p>
+<p>我们可以从最简单的方法开始，使用一袋文字模型，并在上面应用逻辑回归。一袋单词只是将一个索引与我们词汇表中的每个单词相关联，并且将每个句子嵌入一个0的列表，每个索引中的每个索引对应于该句子中出现的单词。</p>
+<h4 id="Bag-of-Words-Counts"><a href="#Bag-of-Words-Counts" class="headerlink" title="Bag of Words Counts"></a>Bag of Words Counts</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">rom sklearn.model_selection <span class="keyword">import</span> train_test_split</div><div class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer, TfidfVectorizer</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">cv</span><span class="params">(data)</span>:</span></div><div class="line">    count_vectorizer = CountVectorizer()</div><div class="line">    emb = count_vectorizer.fit_transform(data)</div><div class="line">    <span class="keyword">return</span> emb, count_vectorizer</div><div class="line">list_corpus = clean_questions[<span class="string">"text"</span>].tolist()</div><div class="line">list_labels = clean_questions[<span class="string">"class_label"</span>].tolist()</div><div class="line">x_train, x_test, y_train, y_test = train_test_split(list_corpus, list_labels, test_size=<span class="number">0.2</span>, random_state=<span class="number">40</span>)</div><div class="line">x_train_count, count_vectorizer = cv(x_train)</div><div class="line">x_test_count = count_vectorizer.transform(x_test)</div></pre></td></tr></table></figure>
+<h4 id="可视化embeddings"><a href="#可视化embeddings" class="headerlink" title="可视化embeddings"></a>可视化embeddings</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA, TruncatedSVD</div><div class="line"><span class="keyword">import</span> matplotlib</div><div class="line"><span class="keyword">import</span> matplotlib.patches <span class="keyword">as</span> patches</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_LSA</span><span class="params">(test_data, test_labels, savepath=<span class="string">"PCA_demo.csv"</span>, plot=True)</span>:</span></div><div class="line">    lsa = TruncatedSVD(n_components=<span class="number">2</span>)</div><div class="line">    lsa.fit(test_data)</div><div class="line">    lsa_scores = lsa.transform(test_data)</div><div class="line">    color_mapper = &#123;label: idx <span class="keyword">for</span> idx, label <span class="keyword">in</span> enumerate(set(test_labels))&#125;</div><div class="line">    color_column = [color_mapper[label] <span class="keyword">for</span> label <span class="keyword">in</span> test_labels]</div><div class="line">    colors = [<span class="string">'orange'</span>, <span class="string">'blue'</span>, <span class="string">'blue'</span>]</div><div class="line">    <span class="keyword">if</span> plot:</div><div class="line">        plt.scatter(lsa_scores[:, <span class="number">0</span>], lsa_scores[:, <span class="number">1</span>], s=<span class="number">8</span>, alpha=<span class="number">.8</span>, c=test_labels,</div><div class="line">                    cmap=matplotlib.colors.ListedColormap(colors))</div><div class="line">        red_patch = patches.Patch(color=<span class="string">'orange'</span>, label=<span class="string">'Irrelevant'</span>)</div><div class="line">        blue_patch = patches.Patch(color=<span class="string">'blue'</span>, label=<span class="string">'Disaster'</span>)</div><div class="line">        plt.legend(handles=[red_patch, blue_patch], prop=&#123;<span class="string">'size'</span>: <span class="number">30</span>&#125;)</div><div class="line"></div><div class="line">fig = plt.figure(figsize=(<span class="number">20</span>, <span class="number">20</span>))          </div><div class="line">plot_LSA(X_train_counts, y_train)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="../img/raw_distribution.png" alt="raw_distribution"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/28/CuttingRope/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JiKang Nie">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/sysunie.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="sysuNie">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/28/CuttingRope/" itemprop="url">动态规划与贪婪算法</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-28T11:18:13+08:00">
+                2018-01-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-01-28T17:13:17+08:00">
+                2018-01-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/编程/" itemprop="url" rel="index">
+                    <span itemprop="name">编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2018/01/28/CuttingRope/" class="leancloud_visitors" data-flag-title="动态规划与贪婪算法">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1,263
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  5
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>动态规划算法的基本思想与分治法类似，也是将待求解的问题分解为若干个子问题（阶段），按顺序求解子阶段，前一子问题的解，为后一子问题的求解提供了有用的信息。在求解任一子问题时，列出各种可能的局部解，通过决策保留那些有可能达到最优的局部解，丢弃其他局部解。依次解决各子问题，最后一个子问题就是初始问题的解。由于动态规划解决的问题多数有重叠子问题这个特点，为减少重复计算，对每一个子问题只解一次，将其不同阶段的不同状态保存在一个二维数组中。</p>
+<p>能采用动态规划求解的问题的特点：</p>
+<ul>
+<li>最优化原理：如果问题的最优解所包含的子问题的解也是最优的，就称该问题具有最优子结构，即满足最优化原理。</li>
+<li>无后效性：即某阶段状态一旦确定，就不受这个状态以后决策的影响。也就是说，某状态以后的过程不会影响以前的状态，只与当前状态有关。</li>
+<li>有重叠子问题：即子问题之间是不独立的，一个子问题在下一阶段决策中可能被多次使用到。（该性质并不是动态规划适用的必要条件，但是如果没有这条性质，动态规划算法同其他算法相比就不具备优势）</li>
+<li>从上往下分析问题，从下往上求解问题。</li>
+</ul>
+<h3 id="贪婪算法"><a href="#贪婪算法" class="headerlink" title="贪婪算法"></a>贪婪算法</h3><p>贪心算法是指在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，只做出在某种意义上的局部最优解。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，即某个状态以前的过程不会影响以后的状态，只与当前状态有关。</p>
+<p>解题的一般步骤是：</p>
+<ul>
+<li>建立数学模型来描述问题；</li>
+<li>把求解的问题分成若干个子问题；</li>
+<li>对每一子问题求解，得到子问题的局部最优解；</li>
+<li>把子问题的解局部最优解合成原来解问题的一个解。</li>
+</ul>
+<h3 id="面试题：剪绳子"><a href="#面试题：剪绳子" class="headerlink" title="面试题：剪绳子"></a>面试题：剪绳子</h3><p><strong>题目</strong>：给你一根长度为n绳子，请把绳子剪成m段（m、n都是整数，n&gt;1并且m≥1）。每段的绳子的长度记为k[0]、k[1]、……、k[m]。k[0]<em>k[1]</em>…*k[m]可能的最大乘积是多少？例如当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到最大的乘积18。</p>
+<p><strong>动态规划思路</strong>：首先定义函数f(n)把长度为n的绳子剪成若干段后各段长度乘积的最大值。在剪第一刀的时候，我们有n-1种可能的选择，也就是剪出来的第一段绳子的科能长度分别为1,2,….,n-1。因此我们可以得到f(n)=max(f(i)*f(n-i))，其中0&lt;i&lt;n。</p>
+<p>这是一个从上至下的递归公式。由于递归会有很多重复的子问题，从而有大量不必要的计算。一个更好的办法是按照从下而上的顺序计算，也就是说我们先得到f(2),f(3)，再得到f(4),f(5)，直到得到f(n)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="comment">//==============动态规划============</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxProductAfterCutting_solution1</span><span class="params">(<span class="keyword">int</span> length)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(length &lt; <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">3</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span>* products = <span class="keyword">new</span> <span class="keyword">int</span>[length+<span class="number">1</span>];</div><div class="line">    <span class="keyword">int</span> Max = <span class="number">0</span>;</div><div class="line"></div><div class="line">    products[<span class="number">0</span>] = <span class="number">0</span>;</div><div class="line">    products[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    products[<span class="number">2</span>] = <span class="number">2</span>;</div><div class="line">    products[<span class="number">3</span>] = <span class="number">3</span>;</div><div class="line"></div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> n=<span class="number">4</span>; n&lt;=length; ++n)</div><div class="line">    &#123;</div><div class="line">        Max = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;=n/<span class="number">2</span>; ++i)</div><div class="line">        &#123;</div><div class="line">            <span class="keyword">int</span> product = products[i] * products[n-i];</div><div class="line">            <span class="keyword">if</span>(Max&lt;product)</div><div class="line">                Max = product;</div><div class="line">            products[n] = Max;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    Max = products[length];</div><div class="line">    <span class="keyword">delete</span>[] products;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> Max;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>贪婪算法思路</strong>：如果我们按照以下策略来剪绳子，则得到的各段长度的绳子的长度的乘积将最大：当n&gt;=5时，我们尽量多地剪去长度为３的绳子；当剩下的绳子长度为４时，把绳子剪成两段长度为2的绳子。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//==============贪婪算法============</span></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxProductAfterCutting_solution2</span><span class="params">(<span class="keyword">int</span> length)</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">if</span>(length &lt; <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">2</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">    <span class="keyword">if</span>(length == <span class="number">3</span>)</div><div class="line">        <span class="keyword">return</span> <span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="comment">// 尽可能多地减去长度为3的绳子段</span></div><div class="line">    <span class="keyword">int</span> timesOf3 = length / <span class="number">3</span>;</div><div class="line"></div><div class="line">  　 <span class="comment">// 当绳子最后剩下的长度为4的时候，不能再剪去长度为3的绳子段。</span></div><div class="line">    <span class="comment">// 此时更好的方法是把绳子剪成长度为2的两段，因为2*2 &gt; 3*1。</span></div><div class="line">    <span class="keyword">if</span>(length - timesOf3*<span class="number">3</span> == <span class="number">1</span>)</div><div class="line">        timesOf3-=<span class="number">1</span>;</div><div class="line"></div><div class="line">    <span class="keyword">int</span> timesOf2 = (length - timesOf3 * <span class="number">3</span>)/<span class="number">2</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> (<span class="keyword">long</span> <span class="keyword">int</span>)<span class="built_in">pow</span>(<span class="number">3</span>, timesOf3) *(<span class="keyword">long</span> <span class="keyword">int</span>) <span class="built_in">pow</span>(<span class="number">2</span>, timesOf2);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">    <span class="keyword">int</span> length = <span class="number">58</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;maxProductAfterCutting_solution1(length)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    <span class="built_in">cout</span>&lt;&lt;maxProductAfterCutting_solution2(length)&lt;&lt;<span class="built_in">endl</span>;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>发现一个有趣的现象，当n&gt;58时，贪婪算法失效了，大家觉得这是什么原因呢？</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/27/StringPath/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2082,421 +2872,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/15/cache-model/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JiKang Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/sysunie.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sysuNie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/15/cache-model/" itemprop="url">cache_model</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-15T18:02:44+08:00">
-                2018-01-15
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-15T18:13:21+08:00">
-                2018-01-15
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/论文/" itemprop="url" rel="index">
-                    <span itemprop="name">论文</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/15/cache-model/" class="leancloud_visitors" data-flag-title="cache_model">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1,670
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h3><p>我们提出对神经网络语言模型进行的一个扩展，以使其预测适应最近的历史。我们的模型是内存增强网络的简化版本。它将过去隐藏的激活存储为内存，并通过当前隐藏激活的点积访问它们。这种机制非常有效，可以扩展到非常大的内存大小。我们还在神经网络中使用外部存储器和基于计数的语言模型使用缓存模型之间建立了联系。我们在几个语言模型数据集上进行演示，我们的方法比最近的内存扩展网络性能更好。</p>
-<h3 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h3><p>语言模型是单词序列的概率分布，具有许多应用，如machine translation，speech recognition 或dialogue agents。虽然传统的神经网络语言模型已经在这个领域获得了最先进的性能，但是它们缺乏适应其最近历史的能力，这限制了它们在动态环境中的应用。最近的解决这个问题的方法是用external memory来扩充这些网络。这些模型可能会使用外部存储器来存储新的信息并适应不断变化的环境。</p>
-<p>虽然这些网络在语言建模数据集上取得了很好的结果，但它们在计算上相当昂贵。通常，他们必须学习一个可以参数化的机制来读取或写入存储单元。这可能会限制其可用内存的大小以及可以训练的数据量。在这项工作中，我们提出了一个非常轻量级的选择，它可以共享内存扩展网络的一些特性，特别是随着时间的推移动态调整的能力。通过最小化内存的计算负担，我们可以使用更大的内存并扩展到更大的数据集。我们在实践中观察到，这使我们能够在不同的语言建模任务上超越记忆增强网络的性能。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/15/cache-model/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/13/worldcloud/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JiKang Nie">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/sysunie.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="sysuNie">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/worldcloud/" itemprop="url">worldcloud</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T20:25:37+08:00">
-                2018-01-13
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2018-01-27T14:48:18+08:00">
-                2018-01-27
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具资源/" itemprop="url" rel="index">
-                    <span itemprop="name">工具资源</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2018/01/13/worldcloud/" class="leancloud_visitors" data-flag-title="worldcloud">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">热度&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-                 <span>℃</span>
-             </span>
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  528
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>　　今天介绍一个python库－－wordcloud，这个库的主要功能是对一个文本中的单词进行统计，并且以词云的方式进行展示，从生成的图片中，我们可以直观的发现哪些单词出现的频率较高，一个很有意思的用途就是统计一个会议中，提交论文的主题是哪些，从而看出当前研究的趋势。</p>
-<h3 id="快速安装词云"><a href="#快速安装词云" class="headerlink" title="快速安装词云"></a>快速安装词云</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install wordcloud</div></pre></td></tr></table></figure>
-<h3 id="快速生成词云"><a href="#快速生成词云" class="headerlink" title="快速生成词云"></a>快速生成词云</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</div><div class="line"></div><div class="line">f = open(<span class="string">u'moment.txt'</span>,<span class="string">'r'</span>).read()</div><div class="line">wordcloud = WordCloud(background_color=<span class="string">"white"</span>,width=<span class="number">1000</span>, height=<span class="number">860</span>, margin=<span class="number">2</span>).generate(f)</div><div class="line"></div><div class="line"><span class="comment"># width,height,margin可以设置图片属性</span></div><div class="line"><span class="comment"># generate 可以对全部文本进行自动分词,但是他对中文支持不好,对中文的分词处理请看我的下一篇文章</span></div><div class="line"><span class="comment">#wordcloud = WordCloud(font_path = r'~\Fonts\simkai.ttf').generate(f)</span></div><div class="line"><span class="comment"># 你可以通过font_path参数来设置字体集</span></div><div class="line"><span class="comment">#background_color参数为设置背景颜色,默认颜色为黑</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line">plt.imshow(wordcloud)</div><div class="line">plt.axis(<span class="string">"off"</span>)</div><div class="line">plt.show()</div><div class="line"></div><div class="line">wordcloud.to_file(<span class="string">'test.png'</span>)</div><div class="line"><span class="comment"># 保存图片,但是在第三模块的例子中 图片大小将会按照 mask 保存</span></div></pre></td></tr></table></figure>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/13/worldcloud/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2546,7 +2926,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2568,7 +2948,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">29</span>
+                  <span class="site-state-item-count">31</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -2653,7 +3033,7 @@
     
       <span class="post-meta-item-text">博客全站字数&#58;</span>
     
-    <span title="博客全站字数">57.4k</span>
+    <span title="博客全站字数">60.3k</span>
   
 </div>
 
